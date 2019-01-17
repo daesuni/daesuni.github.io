@@ -12,12 +12,12 @@
 /**************/
 /* BASE RULES */
 /**************/
-@font-face { font-family:'nsrl'; src:url('../assets/fonts/nsrl.woff')}
-@font-face { font-family:'nsrl'; src:url('../assets/fonts/nsrl.eot')}
-@font-face { font-family:'nsrb'; src:url('../assets/fonts/nsrb.woff')}
-@font-face { font-family:'nsrb'; src:url('../assets/fonts/nsrb.eot')}
-@font-face { font-family:'ttlw'; src:url('../assets/fonts/ttlw.woff')}
-@font-face { font-family:'ttlw'; src:url('../assets/fonts/ttlw.eot')}
+@font-face { font-family:'nsrl'; src:url('./assets/fonts/nsrl.woff')}
+@font-face { font-family:'nsrl'; src:url('./assets/fonts/nsrl.eot')}
+@font-face { font-family:'nsrb'; src:url('./assets/fonts/nsrb.woff')}
+@font-face { font-family:'nsrb'; src:url('./assets/fonts/nsrb.eot')}
+@font-face { font-family:'ttlw'; src:url('./assets/fonts/ttlw.woff')}
+@font-face { font-family:'ttlw'; src:url('./assets/fonts/ttlw.eot')}
 
 html {
   font-size: 100%;
@@ -25,7 +25,7 @@ html {
 
 body {
 	background: $white;
-  font-family: ttlw;
+  font-family: nsrl;
   color: $darkGray;
 }
 
