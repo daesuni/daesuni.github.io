@@ -152,10 +152,7 @@ img {
 //
 
 .wrapper-masthead {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background: $white;
+  margin-bottom: 10px;
 }
 
 .masthead {
@@ -229,7 +226,6 @@ nav {
 
   a {
     margin-left: 20px;
-    color: #aaa;
     text-align: right;
 
     @include mobile {
@@ -243,16 +239,14 @@ nav {
 // .main
 //
 
-#main {
-  margin-top: 100px;
-}
-
 .posts > .post {
   border-bottom: 1px solid $lightGray;
   display: flex;
   align-items: center;
 
   .title {
+    font-family: nsrl;
+    margin: 5px 0;
     font-size: 13px;
     flex: 1;
   }

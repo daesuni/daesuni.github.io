@@ -8,11 +8,11 @@
     <!--[if lt IE 9]>
       <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+    <script src="{{ site.baseurl }}/assets/utils/simple-jekyll-search.min.js"></script>
 
+    <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/assets/utils/fontawesome-5.6.3/css/all.min.css" />
     <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css" />
     <link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}" href="{{ site.baseurl }}/feed.xml" />
-
-    <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
   </head>
 
   <body>
@@ -25,6 +25,10 @@
             <h1 class="site-name"><a href="{{ site.baseurl }}/">{{ site.name }}</a></h1>
             <p class="site-description">{{ site.description }}</p>
           </div>
+
+          <!-- HTML elements for search -->
+          <input type="text" id="search-input" placeholder="Search blog posts..">
+          <ul id="results-container"></ul>
 
           <nav>
             <a href="{{ site.baseurl }}/">Posts</a>
@@ -49,5 +53,13 @@
     </div>
 
     {% include analytics.html %}
+
+    <script>
+      var sjs = SimpleJekyllSearch({
+        searchInput: document.getElementById('search-input'),
+        resultsContainer: document.getElementById('results-container'),
+        json: '/search.json'
+      })
+    </script>
   </body>
 </html>
