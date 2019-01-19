@@ -19,159 +19,56 @@
 @font-face { font-family:'ttlw'; src:url('./assets/fonts/ttlw.woff')}
 @font-face { font-family:'ttlw'; src:url('./assets/fonts/ttlw.eot')}
 
-html {
-  font-size: 100%;
+html    { font-size: 100%; }
+body    { background: $white; font-size: 13px; color: $darkGray; }
+h1, h2, h3, h4, h5, h6 { color: $darkerGray; line-height: 1.7; margin: 1em 0 15px; padding: 0;
+  @include mobile { line-height: 1.4; }
 }
-
-body {
-	background: $white;
-  font-family: nsrl;
-  font-size: 13px;
-  color: $darkGray;
+h1      { font-size: 30px; }
+h1 a    { color: inherit; }
+h2      { font-size: 24px; }
+h3      { font-size: 20px; }
+h4      { font-size: 18px; color: $gray; }
+p       { margin: 15px 0; }
+a       { color: $blue; text-decoration: none; cursor: pointer;
+  &:hover, &:active { color: $blue; }
 }
-
-.container {
-  margin: 0 auto;
-  max-width: 740px;
-  padding: 0 10px;
-  width: 100%;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  color: $darkerGray;
-  font-family: nsrb;
-
-  line-height: 1.7;
-  margin: 1em 0 15px;
-  padding: 0;
-
-  @include mobile {
-    line-height: 1.4;
-  }
-}
-
-h1 {
-  font-size: 30px;
-  a {
-    color: inherit;
-  }
-}
-
-h2 {
-  font-size: 24px;
-}
-
-h3 {
-  font-size: 20px;
-}
-
-h4 {
-  font-size: 18px;
-  color: $gray;
-}
-
-p {
-  margin: 15px 0;
-}
-
-a {
-  color: $blue;
-  text-decoration: none;
-	cursor: pointer;
-  &:hover, &:active {
-    color: $blue;
-  }
-}
-
-ul, ol {
-  margin: 15px 0;
-  padding-left: 30px;
-}
-
-ul {
-  list-style-type: disc;
-}
-
-ol {
-  list-style-type: decimal;
-}
-
-ol ul, ul ol, ul ul, ol ol {
-  margin: 0;
-}
-
-ul ul, ol ul {
-  list-style-type: circle;
-}
-
-em, i {
-  font-style: italic;
-}
-
-strong, b {
-  font-family: nsrb;
-}
-
-img {
-  max-width: 100%;
-}
+ul, ol  { margin: 15px 0; padding-left: 30px; }
+ul      { list-style-type: disc; }
+ol      { list-style-type: decimal; }
+ol ul, ul ol, ul ul, ol ol { margin: 0; }
+ul ul, ol ul { list-style-type: circle; }
+em, i   { font-style: italic; }
+strong, b { }
+img     { max-width: 100%; }
 
 // Fixes images in popup boxes from Google Translate
-.gmnoprint img {
-  max-width: none;
-}
+.gmnoprint img { max-width: none; }
 
 // Specify the color of the selection
-::-moz-selection {
-  color: $black;
-  background: $lightGray;
-}
-::selection {
-  color: $black;
-  background: $lightGray;
-}
+::-moz-selection  { color: $black; background: $lightGray; }
+::selection       { color: $black; background: $lightGray; }
 
 // Nicolas Gallagher's micro clearfix hack
 // http://nicolasgallagher.com/micro-clearfix-hack/
-.clearfix:before,
-.clearfix:after {
-    content: " ";
-    display: table;
-}
-
-.clearfix:after {
-    clear: both;
-}
+.clearfix:before, .clearfix:after { content: " "; display: table; }
+.clearfix:after { clear: both; }
 
 /*********************/
 /* LAYOUT / SECTIONS */
 /*********************/
 
-//
-// .masthead
-//
-
-.wrapper-masthead {
-  margin-bottom: 10px;
+.container    { margin: 0 auto; max-width: 760px; padding: 0 15px; width: 100%; }
+.header-wrap  { align-items: center; padding: 20px 0 10px 0; border-bottom: 1px solid $lightGray; display: flex; margin-bottom: 10px;
+  @include mobile { text-align: center; }
 }
 
-.masthead {
-  padding: 20px 0;
-  border-bottom: 1px solid $lightGray;
-
-  @include mobile {
-    text-align: center;
-  }
-}
-
-.site-avatar {
-  float: left;
+.header-avatar {
   width: 50px;
   height: 50px;
   margin-right: 15px;
 
   @include mobile {
-    float: none;
     display: block;
     margin: 0 auto;
   }
@@ -181,26 +78,15 @@ img {
   }
 }
 
-.site-info {
-  float: left;
-
-  @include mobile {
-    float: none;
-    display: block;
-    margin: 0 auto;
-  }
-}
-
-.site-name {
+.header-title {
   font-family: ttlw;
   margin: 0;
   color: $darkGray;
   cursor: pointer;
   font-size: 24px;
-  line-height: 1;
 }
 
-.site-description {
+.header-description {
   font-family: ttlw;
   margin: 10px 0 0 0;
   color: $gray;
@@ -212,27 +98,27 @@ img {
 }
 
 nav {
-  float: right;
-  margin-top: 23px; // @TODO: Vertically middle align
   font-size: 15px;
   font-family: ttlw;
 
   @include mobile {
-    float: none;
     margin-top: 9px;
     display: block;
-    font-size: 16px;
+    font-size: 15px;
   }
 
   a {
     margin-left: 20px;
-    text-align: right;
 
     @include mobile {
       margin: 0 10px;
       color: $blue;
     }
   }
+}
+
+.search-wrap  {
+
 }
 
 //
@@ -243,17 +129,6 @@ nav {
   border-bottom: 1px solid $lightGray;
   display: flex;
   align-items: center;
-
-  .title {
-    font-family: nsrl;
-    margin: 5px 0;
-    font-size: 13px;
-    flex: 1;
-  }
-  .date {
-    font-style: italic;
-    color: $gray;
-  }
 }
 
 .posts > .post:last-child {
@@ -278,6 +153,16 @@ nav {
   .read-more {
     text-transform: uppercase;
   }
+}
+
+.post-title {
+  margin: 5px 0;
+  font-size: 14px;
+  flex: 1;
+}
+.post-date {
+  font-style: italic;
+  color: $gray;
 }
 
 .wrapper-footer {
