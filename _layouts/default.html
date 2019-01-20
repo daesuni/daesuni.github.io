@@ -8,9 +8,12 @@
     <!--[if lt IE 9]>
       <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+    <script src="{{ site.baseurl }}/assets/utils/jquery-1.12.4/jquery-1.12.4.min.js"></script>
     <script src="{{ site.baseurl }}/assets/utils/simple-jekyll-search.min.js"></script>
 
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700|Titillium+Web:400,700" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/assets/utils/fontawesome-5.6.3/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/assets/utils/material-icons/material-icons.css" />
     <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css" />
     <link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}" href="{{ site.baseurl }}/feed.xml" />
   </head>
@@ -21,25 +24,19 @@
         <a href="{{ site.baseurl }}/" class="header-avatar"><img src="{{ site.avatar }}" /></a>
 
         <h1 class="header-title">
-          <a href="{{ site.baseurl }}/">{{ site.name }}</a>
-          <span class="header-description">: {{ site.description }}</span>
+          <a href="{{ site.baseurl }}/">{{ site.name }}
+            <span class="header-description">: {{ site.description }}</span>
+          </a>
         </h1>
 
         <div class="spacer"></div>
 
-        <nav>
-          <a href="{{ site.baseurl }}/">Posts</a>
-          <a href="{{ site.baseurl }}/playground">playground</a>
-          <a href="{{ site.baseurl }}/works">works</a>
-          <a href="{{ site.baseurl }}/about">About</a>
+        <nav class="nav-wrap">
+          <a href="{{ site.baseurl }}/" class="nav">Posts</a>
+          <a href="{{ site.baseurl }}/playground" class="nav">playground</a>
+          <a href="{{ site.baseurl }}/works" class="nav">works</a>
+          <a href="{{ site.baseurl }}/about" class="nav">About</a>
         </nav>
-      </div>
-    </div>
-
-    <div class="container">
-      <div class="search-wrap">
-        <input type="text" id="search-input" placeholder="Search blog posts..">
-        <ul id="results-container"></ul>
       </div>
     </div>
 

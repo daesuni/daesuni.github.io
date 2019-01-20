@@ -2,13 +2,8 @@
 # This file contains configuration flags to customize your site
 #
 
-# Name of your site (displayed in the header)
 name: Daesuni
-
-# Short bio or description (displayed in the header)
-description: Fullstack Developer
-
-# URL of your avatar or profile pic (you could use your GitHub profile pic)
+description: web developer
 avatar: https://avatars2.githubusercontent.com/u/18520212?s=460&v=4
 
 #
@@ -72,7 +67,7 @@ kramdown:
 sass:
   style: :expanded # You might prefer to minify using :compressed
 
-paginate: 10
+paginate: 15
 
 # Use the following plug-ins
 plugins:
