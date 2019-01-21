@@ -1,0 +1,92 @@
+---
+layout: default
+---
+
+<h1>Hi :)</h1>
+&nbsp;I'm a web-developer from South Korea, living in Daejeon.
+&nbsp;I've worked across desktop and mobile and love to take an idea through design iterations and then code it up for others to enjoy, elegantly solving some complex UI/UX problems along the way.
+&nbsp;I spend my days building amazing products for the web, share the experience on my codepen, blog and respond to e-mails.
+
+<h1>Philosophy</h1>
+&nbsp;<b>Simple is the best.</b>
+서두
+Simple design is increasingly difficult due to consumer desire for integrated software, big data and the internet of things amongst others
+심플의 장점
+Maintain clarity by designing for your user’s main goals. Don’t confuse your users with extraneous information that are irrelevant to those goals. Help your users understand what actions they can take by calling attention to only the core aspects you want them to focus on.
+<blockquote>
+Simple can be harder than complex: You have to work hard to get your thinking clean to make it simple. But it’s worth it in the end because once you get there, you can move mountains.	― <a target="_blank" href="https://en.wikipedia.org/wiki/Steve_Jobs">Steve Jobs</a>
+</blockquote>
+
+<h1>What I can do?</h1>
+<div class="skill-wrap">
+	<div class="skill" step="9" color="#ed5565">
+		<div class="skill-title">
+			<i class="skill-icon fab fa-html5"></i>
+			<div class="skill-name">HTML 5</div>
+		</div>
+		<div class="skill-bar"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+	</div>
+
+	<div class="skill" step="9" color="#e9573f">
+		<div class="skill-title">
+			<i class="skill-icon fab fa-css3"></i>
+			<div class="skill-name">CSS 3</div>
+		</div>
+		<div class="skill-bar"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+	</div>
+
+	<div class="skill" step="8" color="#f6bb42">
+		<div class="skill-title">
+			<i class="skill-icon fab fa-js"></i>
+			<div class="skill-name">Javascript</div>
+		</div>
+		<div class="skill-bar"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+	</div>
+
+	<div class="skill" step="7" color="#8cc152">
+		<div class="skill-title">
+			<i class="skill-icon fab fa-node-js"></i>
+			<div class="skill-name">Node js</div>
+		</div>
+		<div class="skill-bar"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+	</div>
+
+	<div class="skill" step="6" color="#37bc9b">
+		<div class="skill-title">
+			<i class="skill-icon fab fa-python"></i>
+			<div class="skill-name">Python</div>
+		</div>
+		<div class="skill-bar"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+	</div>
+
+	<div class="skill" step="5" color="#4a89dc">
+		<div class="skill-title">
+			<i class="skill-icon fas fa-gem"></i>
+			<div class="skill-name">Ruby</div>
+		</div>
+		<div class="skill-bar"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+	</div>
+</div>
+
+<h1>Contact</h1>
+<li><span>Email :</span>eotnd2@gmail.com</li>
+<li><span>Kakao ID :</span>eotnd</li>
+<li><a target="_blank" href="https://github.com/daesuni">Github</a></li>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		fn_initSkills();
+	});
+
+	function fn_initSkills() {
+		var skills = $('.skill');
+		$.each(skills, function(si, skill) {
+			var step = parseInt($(skill).attr('step'));
+			var color = $(skill).attr('color');
+			var bars = $('.skill-bar > div', skill);
+			for (var i=0; i<step; i++) {
+				$(bars).eq(i).css('background', color);
+			};
+		});
+	};
+</script>
