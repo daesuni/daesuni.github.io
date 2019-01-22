@@ -49,8 +49,9 @@
     </div>
 
     <script type="text/javascript">
-
+      document.body.className += ' fade-out';
       $(document).ready(function() {
+        $('body').removeClass('fade-out');
         $('.nav[href="' + location.pathname + '"]').addClass('active');
       });
 
