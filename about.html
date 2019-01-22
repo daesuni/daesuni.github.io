@@ -70,11 +70,20 @@ layout: default
 	</div>
 </div>
 
-<h1>Contact me</h1>
+<h1>Get in touch</h1>
 <form id="contact-form" action="https://formspree.io/eotnd2@gmail.com" method="POST">
-	<input placeholder="Name" type="text" name="name" required />
-	<input placeholder="Email" type="email" name="email" required />
-	<textarea placeholder="Message" name="message" required></textarea>
+	<label>
+		<div class="contact-label">Name</div>
+		<input type="text" name="name" required />
+	</label>
+	<label>
+		<div class="contact-label">Email</div>
+		<input type="email" name="email" required />
+	</label>
+	<label>
+		<div class="contact-label">Message</div>
+		<textarea name="message" required></textarea>
+	</label>
 	<input type="submit" value="POST" />
 </form>
 

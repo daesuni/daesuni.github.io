@@ -87,6 +87,7 @@ blockquote::after { content: "\2013 \2003" attr(cite);
 }
 
 .nav { font-family: 'Titillium Web', sans-serif; margin-left: 20px; color: rgba(0, 0, 0, 0.7); }
+.nav::after { content: ""; }
 .nav.active { background: #000; }
 
 .search-wrap  { display: flex; align-items: center; justify-content: flex-end; position: relative; }
@@ -131,9 +132,18 @@ blockquote::after { content: "\2013 \2003" attr(cite);
   font-size: 13px;
   flex: 1;
 }
+.post-title a {
+  color: #000;
+}
+.post-title a:hover {
+  text-decoration: none;
+}
+.post-title a:active {
+  text-decoration: none;
+}
 .post-date {
-  font-style: italic;
   color: $gray;
+  font-size: 13px;
 }
 
 .spacer {
@@ -152,10 +162,13 @@ blockquote::after { content: "\2013 \2003" attr(cite);
 // about
 #quote-jobs {
 background-image: url("{{ site.baseurl }}/images/about/steve_jobs.png");
-    background-size: 125px;
+    background-size: contain;
     background-repeat: no-repeat;
     background-position: left bottom;
-    padding-left: 140px;
+    padding-left: 180px;
+    background-position-y: 15px;
+
+    @include mobile {padding-left: 220px; }
 }
 .skill-wrap {
   overflow: auto;
@@ -163,9 +176,7 @@ background-image: url("{{ site.baseurl }}/images/about/steve_jobs.png");
 .skill {
   display: flex;
   flex-direction: column;
-  width: 100px;
-  margin-right: 20px;
-  margin-bottom: 15px;
+  padding: 0 20px 15px 20px;
   float: left;
 }
 .skill-bar {
@@ -191,6 +202,7 @@ background-image: url("{{ site.baseurl }}/images/about/steve_jobs.png");
 }
 
 #contact-form {  }
+.contact-label { font-size: 15px; }
 #contact-form input, #contact-form textarea { display: block; margin-bottom: 10px; padding: 4px 8px; }
 #contact-form input[name="name"] {  }
 #contact-form input[name="email"] {   }
