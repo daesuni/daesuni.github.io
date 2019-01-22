@@ -7,7 +7,7 @@
 
 // common
 html    { font-size: 100%; }
-body    { background: #f7f8f9; font-size: 15px; font-family: 'Roboto', sans-serif; line-height: 1.8; font-weight: 300; }
+body    { background: #fff; font-size: 15px; font-family: 'Roboto', sans-serif; line-height: 1.8; font-weight: 300; }
 h1, h2, h3, h4, h5, h6 { margin: 1em 0 15px; padding: 0; }
 h1      { font-size: 24px; font-weight: 400; }
 h1 a    { color: inherit; }
@@ -16,9 +16,9 @@ h2 a    { color: inherit; }
 h3      { font-size: 20px; }
 h4      { font-size: 18px; color: $gray; }
 p       { margin: 15px 0; }
-a       { cursor: pointer; color: #e4093a; text-decoration: none;
-  &:hover, &:active { text-decoration: underline; }
-}
+a       { cursor: pointer; color: #e4093a; text-decoration: none; }
+a:hover { text-decoration: underline; }
+a:active{ text-decoration: underline; }
 ul, ol  { margin: 15px 0; padding-left: 30px; }
 ul      { list-style-type: disc; }
 ol      { list-style-type: decimal; }
@@ -27,6 +27,21 @@ ul ul, ol ul { list-style-type: circle; }
 em, i   { font-style: italic; }
 strong, b { font-weight: 400;}
 img     { max-width: 100%; }
+blockquote { display: block; border-width: 2px 0; border-style: solid; border-color: #eee; padding: 1.5em 0; margin: 1.5em 0; position: relative; }
+blockquote::before {
+  position: absolute; top: 0em; left: 50%; -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background: #fff;
+    width: 3rem;
+    height: 2rem;
+    font-family: "Font Awesome 5 Free"; font-weight: 900; content: "\f10d";
+    color: #666;
+    text-align: center; }
+blockquote::after { content: "\2013 \2003" attr(cite);
+    display: block;
+    text-align: right;
+    color: #e4093a; }
+
 
 // Fixes images in popup boxes from Google Translate
 .gmnoprint img { max-width: none; }
@@ -139,6 +154,13 @@ img     { max-width: 100%; }
 
 
 // about
+#quote-jobs {
+background-image: url("{{ site.baseurl }}/images/about/steve_jobs.png");
+    background-size: 100px;
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    padding-left: 115px;
+}
 .skill-wrap {
   overflow: auto;
 }
@@ -147,6 +169,7 @@ img     { max-width: 100%; }
   flex-direction: column;
   width: 100px;
   margin-right: 20px;
+  margin-bottom: 15px;
   float: left;
 }
 .skill-bar {
