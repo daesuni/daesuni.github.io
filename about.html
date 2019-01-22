@@ -3,17 +3,21 @@ layout: default
 ---
 
 <h1>Hi :)</h1>
-&nbsp;I'm a web-developer from South Korea, living in Daejeon.
-&nbsp;I've worked across desktop and mobile and love to take an idea through design iterations and then code it up for others to enjoy, elegantly solving some complex UI/UX problems along the way.
-&nbsp;I spend my days building amazing products for the web, share the experience on my codepen, blog and respond to e-mails.
+<p>
+	&nbsp;I'm a web-developer from South Korea, living in <a target="_blank" href="https://www.google.com/maps/place/%EB%8C%80%EC%A0%84%EA%B4%91%EC%97%AD%EC%8B%9C/@36.3421996,127.3436674,11z/data=!4m5!3m4!1s0x356548d7ba4a6601:0xd196d69d988ad3b5!8m2!3d36.3504119!4d127.3845475">Daejeon</a>.
+	&nbsp;I've worked across desktop and mobile and love to take an idea through design iterations and then code it up for others to enjoy, elegantly solving some complex UI/UX problems along the way.
+	&nbsp;I spend my days building amazing products for the web, share the experience on my codepen, blog, <a target="_blank" href="https://github.com/daesuni">github</a> and respond to e-mails.
+</p>
 
 <h1>Philosophy</h1>
-<b>Simple is the best.</b>
-Simple designs are becoming increasingly difficult due to consumer desires for software integration, big data, and the Internet of Things.
-It should be designed to meet the user's main objectives and maintain clarity. The ability to understand what actions users can take with attention only to the key aspects that they want to focus on.
-<blockquote cite="Steve Jobs" id="quote-jobs">
-Simple can be harder than complex: You have to work hard to get your thinking clean to make it simple. But it’s worth it in the end because once you get there, you can move mountains.
-</blockquote>
+<p>
+	<b>Simple is the best.</b>
+	Simple designs are becoming increasingly difficult due to consumer desires for software integration, big data, and the Internet of Things.
+	It should be designed to meet the user's main objectives and maintain clarity. The ability to understand what actions users can take with attention only to the key aspects that they want to focus on.
+	<blockquote cite="Steve Jobs" id="quote-jobs">
+		Simple can be harder than complex: You have to work hard to get your thinking clean to make it simple. But it’s worth it in the end because once you get there, you can move mountains.
+	</blockquote>
+</p>
 
 <h1>What I can do?</h1>
 <div class="skill-wrap">
@@ -66,10 +70,13 @@ Simple can be harder than complex: You have to work hard to get your thinking cl
 	</div>
 </div>
 
-<h1>Contact</h1>
-<li><span>Email :</span>eotnd2@gmail.com</li>
-<li><span>Kakao ID :</span>eotnd</li>
-<li><a target="_blank" href="https://github.com/daesuni">Github</a></li>
+<h1>Contact me</h1>
+<form id="contact-form" action="https://formspree.io/eotnd2@gmail.com" method="POST">
+	<input placeholder="Name" type="text" name="name" required />
+	<input placeholder="Email" type="email" name="email" required />
+	<textarea placeholder="Message" name="message" required></textarea>
+	<input type="submit" value="POST" />
+</form>
 
 <script type="text/javascript">
 	$(document).ready(function() {

@@ -21,13 +21,11 @@
   <body>
     <div class="container">
       <div class="header-wrap">
-        <a href="{{ site.baseurl }}/" class="header-avatar"><img src="{{ site.avatar }}" /></a>
-
-        <div class="header-title">
-          <a href="{{ site.baseurl }}/">{{ site.name }}
-            <span class="header-description">: {{ site.description }}</span>
-          </a>
-        </div>
+        <a href="{{ site.baseurl }}/" class="header-title">
+          <div class="header-avatar"><img src="{{ site.avatar }}" /></div>
+          {{ site.name }}
+          <span class="header-description"> : {{ site.description }}</span>
+        </a>
 
         <div class="spacer"></div>
 
@@ -45,6 +43,10 @@
     </div>
 
     {% include analytics.html %}
+
+    <div class="footer-wrap">
+
+    </div>
 
     <script type="text/javascript">
 
