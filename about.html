@@ -4,9 +4,9 @@ layout: default
 
 <h1>Hi :)</h1>
 <p>
-	&nbsp;I'm a web-developer from South Korea, living in <a target="_blank" href="https://www.google.com/maps/place/%EB%8C%80%EC%A0%84%EA%B4%91%EC%97%AD%EC%8B%9C/@36.3421996,127.3436674,11z/data=!4m5!3m4!1s0x356548d7ba4a6601:0xd196d69d988ad3b5!8m2!3d36.3504119!4d127.3845475">Daejeon</a>.
+	&nbsp;I'm a fullstack web-developer from South Korea, living in <a target="_blank" href="https://www.google.com/maps/place/%EB%8C%80%EC%A0%84%EA%B4%91%EC%97%AD%EC%8B%9C/@36.3421996,127.3436674,11z/data=!4m5!3m4!1s0x356548d7ba4a6601:0xd196d69d988ad3b5!8m2!3d36.3504119!4d127.3845475">Daejeon</a>.
 	&nbsp;I've worked across desktop and mobile and love to take an idea through design iterations and then code it up for others to enjoy, elegantly solving some complex UI/UX problems along the way.
-	&nbsp;I spend my days building amazing products for the web, share the experience on my codepen, blog, <a target="_blank" href="https://github.com/daesuni">github</a> and respond to e-mails.
+	&nbsp;I spend my days building amazing products for the web, share the experience on my blog, <a target="_blank" href="https://github.com/daesuni">github</a> and respond to e-mails.
 </p>
 
 <h1>Philosophy</h1>
@@ -72,18 +72,24 @@ layout: default
 
 <h1>Get in touch</h1>
 <form id="contact-form" action="https://formspree.io/eotnd2@gmail.com" method="POST">
-	<label>
-		<div class="contact-label">Name</div>
-		<input type="text" name="name" required />
-	</label>
-	<label>
-		<div class="contact-label">Email</div>
-		<input type="email" name="email" required />
-	</label>
-	<label>
-		<div class="contact-label">Message</div>
-		<textarea name="message" required></textarea>
-	</label>
+	<div class="contact-wrap">
+		<div class="contact-left">
+			<label>
+				Name
+				<input type="text" name="name" required />
+			</label>
+			<label>
+				Email
+				<input type="email" name="email" required />
+			</label>
+		</div>
+		<div class="contact-right">
+			<label>
+				Message
+				<textarea name="message" required></textarea>
+			</label>
+		</div>
+	</div>
 	<input type="submit" value="POST" />
 </form>
 
