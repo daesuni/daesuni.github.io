@@ -9,8 +9,8 @@
 html    { font-size: 100%; }
 body    { background: #fff; font-size: 16px; font-family: 'Roboto', sans-serif; line-height: 1.8; font-weight: 300; opacity: 1; transition: 0.3s opacity; }
 input, textarea { font-family: 'Roboto', sans-serif; padding: 5px; }
-h1, h2, h3, h4, h5, h6 { margin: 1em 0 15px; padding: 0; }
-h1      { font-size: 24px; font-weight: 400; }
+h1, h2, h3, h4, h5, h6 { margin: 1em 0 15px; padding: 0; font-weight: 500; }
+h1      { font-size: 24px; }
 h1 a    { color: inherit; }
 h2      { font-size: 22px; }
 h2 a    { color: inherit; }
@@ -99,7 +99,7 @@ blockquote::after { content: "\2013 \2003" attr(cite);
 .nav-wrap { display: flex; }
 .nav { font-family: 'Titillium Web', sans-serif; margin-left: 20px; color: rgba(0, 0, 0, 0.7); }
 .nav:hover { text-decoration: none; }
-.nav.active { font-weight: bold; }
+.nav.active { }
 
 .search-wrap  { display: flex; align-items: center; justify-content: flex-end; position: relative; margin: 15px 0; }
 #search-input { flex: 1; border: 1px solid #ccc; font-size: 14px; }
@@ -111,6 +111,25 @@ blockquote::after { content: "\2013 \2003" attr(cite);
 .post-wrap > .post {
   border-bottom: 1px solid $lightGray;
   align-items: center;
+  padding: 15px 0;
+
+  .post-title {
+  }
+  .post-title a {
+    color: #000;
+    font-weight: 500;
+  }
+  .post-title a:hover {
+    text-decoration: none;
+  }
+  .post-date {
+    color: #969696;
+    text-transform: uppercase;
+    font-size: 13px;
+  }
+  .post-entry {
+    font-size: 14px;
+  }
 }
 
 .post-wrap > .post:last-child {
@@ -118,36 +137,9 @@ blockquote::after { content: "\2013 \2003" attr(cite);
   border-bottom: none;
 }
 
-.post {
-  blockquote {
-    margin: 1.8em .8em;
-    border-left: 2px solid $gray;
-    padding: 0.1em 1em;
-    color: $gray;
-    font-size: 22px;
-    font-style: italic;
-  }
 
-  .comments {
-    margin-top: 10px;
-  }
 
-  .read-more {
-    text-transform: uppercase;
-  }
-}
 
-.post-title {
-}
-.post-title a {
-  color: #000;
-}
-.post-title a:hover {
-  text-decoration: none;
-}
-.post-date {
-  color: #666;
-}
 .pagination li {
   float: left;
     margin-right: 5px;
