@@ -67,7 +67,7 @@ kramdown:
 sass:
   style: :expanded # You might prefer to minify using :compressed
 
-paginate: 15
+paginate: 5
 
 # Use the following plug-ins
 plugins:
