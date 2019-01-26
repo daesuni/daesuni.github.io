@@ -7,9 +7,9 @@
 
 // common
 html    { font-size: 100%; }
-body    { background: #fff; font-size: 16px; font-family: 'Roboto', sans-serif; line-height: 1.8; font-weight: 300; opacity: 1; transition: 0.3s opacity; }
-input, textarea { font-family: 'Roboto', sans-serif; padding: 5px; }
-h1, h2, h3, h4, h5, h6 { margin: 1em 0 15px; padding: 0; font-weight: 500; }
+body    { background: #fff; font-size: 16px; line-height: 1.8; font-family: 'Titillium Web', 'Nanum Gothic', sans-serif; }
+input, textarea { padding: 5px; }
+h1, h2, h3, h4, h5, h6 { margin: 1em 0 15px; padding: 0; }
 h1      { font-size: 24px; }
 h1 a    { color: inherit; }
 h2      { font-size: 22px; }
@@ -29,7 +29,7 @@ ol      { list-style-type: decimal; }
 ol ul, ul ol, ul ul, ol ol { margin: 0; }
 ul ul, ol ul { list-style-type: circle; }
 em, i   { font-style: italic; }
-strong, b { font-weight: 500;}
+strong, b { font-weight: bold;}
 img     { max-width: 100%; }
 blockquote { display: block; border-width: 1px 0; border-style: solid; border-color: #ddd; padding: 20px 0 10px 0; margin: 20px 0; position: relative; }
 blockquote::before {
@@ -51,6 +51,12 @@ blockquote::after { content: "\2013 \2003" attr(cite);
     display: block;
     text-align: right;
     color: #e4093a; }
+pre {
+  background: #f1f3f5;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    overflow: scroll;
+}
 
 
 // Fixes images in popup boxes from Google Translate
@@ -84,26 +90,54 @@ blockquote::after { content: "\2013 \2003" attr(cite);
   border-radius: 2px;
 }
 
-.header-title { font-family: 'Titillium Web', sans-serif; margin: 0; color: $darkGray; cursor: pointer; font-size: 24px; display: flex; align-items: center;
+.header-title { margin: 0; color: $darkGray; cursor: pointer; font-size: 24px; display: flex; align-items: center;
   @include mobile { margin-bottom: 15px; }
 }
 .header-title:hover { text-decoration: none; }
 
 .header-description {
-  font-family: 'Titillium Web', sans-serif;
   margin: 5px 0 0 0;
   color: rgba(0, 0, 0, 0.7);
   font-size: 16px;
 }
 
 .nav-wrap { display: flex; }
-.nav { font-family: 'Titillium Web', sans-serif; margin-left: 20px; color: rgba(0, 0, 0, 0.7); }
+.nav { margin-left: 20px; color: rgba(0, 0, 0, 0.7); }
 .nav:hover { text-decoration: none; }
 .nav.active { }
 
-.search-wrap  { display: flex; align-items: center; justify-content: flex-end; position: relative; margin: 15px 0; }
-#search-input { flex: 1; border: 1px solid #ccc; font-size: 14px; }
-.search-results { position: absolute; }
+.search-wrap  { display: flex; align-items: center; justify-content: flex-end; position: relative; margin-left: 20px; }
+.search-results { position: absolute; margin: 0;
+    top: 30px;
+    right: 0;
+    background: #fff;
+    border: 1px solid #ccc;
+    white-space: nowrap;
+    padding: 10px 15px;
+    min-width: 100%;
+    background: #f1f3f5; }
+.search-text {    background-image: url("data:image/svg+xml,%0A%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: 2px 2px;
+    position: relative;
+    transition: z-index 0.8s, width 0.5s, background 0.3s ease, border 0.3s;
+    width: 0;
+    margin: 0;
+    padding: 6px 0 6px 28px;
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+.search-text:focus {
+  width: 200px;
+  border: 1px solid #666;
+  cursor: auto;
+}
+.search-text::-webkit-search-cancel-button {
+	cursor:pointer;
+}
+
+
+
 
 .footer-wrap { padding: 100px 0 10px 0; }
 
@@ -114,10 +148,11 @@ blockquote::after { content: "\2013 \2003" attr(cite);
   padding: 15px 0;
 
   .post-title {
+    margin-bottom: 10px;
   }
   .post-title a {
     color: #000;
-    font-weight: 500;
+
   }
   .post-title a:hover {
     text-decoration: none;
@@ -126,9 +161,10 @@ blockquote::after { content: "\2013 \2003" attr(cite);
     color: #969696;
     text-transform: uppercase;
     font-size: 13px;
+    margin-bottom: 10px;
   }
   .post-entry {
-    font-size: 14px;
+    font-size: 13px;
   }
 }
 
@@ -138,10 +174,22 @@ blockquote::after { content: "\2013 \2003" attr(cite);
 }
 
 
+.accent {
+  color: #e4093a;
+}
+.bold {
+  font-weight: bold;
+}
 
 
+
+.pagination {
+  text-align: center;
+  border-top: 1px solid #ccc;
+padding-top: 10px;
+}
 .pagination li {
-  float: left;
+  display: inline-block;
     margin-right: 5px;
     list-style: none;
 }
@@ -149,16 +197,14 @@ blockquote::after { content: "\2013 \2003" attr(cite);
 .pagination span {
     display: block;
     padding: 4px 11px;
-    background: #e7e7e7;
-    color: #888;
+
+    color: #000;
     text-decoration: none;
-    font-size: 12px;
-    font-family: Verdana;
-    line-height: 22px;
+    font-size: 13px;
 
 }
 .pagination .current {
-    background-color: #5FBF98;
+    background-color: #e4093a;
     color: #FFF;
 }
 .pagination .prev,
@@ -238,4 +284,3 @@ background-image: url("{{ site.baseurl }}/images/about/steve_jobs.png");
 // Settled on moving the import of syntax highlighting to the bottom of the CSS
 // ... Otherwise it really bloats up the top of the CSS file and makes it difficult to find the start
 @import "highlights";
-@import "svg-icons";

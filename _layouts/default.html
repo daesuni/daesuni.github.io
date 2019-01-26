@@ -11,7 +11,8 @@
     <script src="{{ site.baseurl }}/assets/utils/jquery-1.12.4/jquery-1.12.4.min.js"></script>
     <script src="{{ site.baseurl }}/assets/utils/simple-jekyll-search.min.js"></script>
 
-    <link href="https://fonts.googleapis.com/css?family=Titillium+Web:400,500|Roboto:300,400,500|Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700|Titillium+Web:400,700&amp;subset=korean" rel="stylesheet">
     <!-- <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/assets/utils/material-icons/material-icons.css" /> -->
     <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css" />
     <link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}" href="{{ site.baseurl }}/feed.xml" />
@@ -29,14 +30,13 @@
         <div class="spacer"></div>
 
         <nav class="nav-wrap">
-          <a href="{{ site.baseurl }}/" class="nav">Posts</a>
+          <a href="{{ site.baseurl }}/" class="nav">POSTS</a>
           <!-- <a href="{{ site.baseurl }}/playground/" class="nav">playground</a> -->
           <!-- <a href="{{ site.baseurl }}/works/" class="nav">works</a> -->
-          <a href="{{ site.baseurl }}/about/" class="nav">About</a>
+          <a href="{{ site.baseurl }}/about/" class="nav">ABOUT</a>
         </nav>
         <div class="search-wrap">
-          <i class="material-icons">search</i>
-          <input type="text" id="search-input" placeholder="검색어를 입력하세요">
+      		<input id="search-input" class="search-text" type="search" placeholder="검색어를 입력하세요" autocomplete="off" />
           <ul id="results-container" class="search-results"></ul>
         </div>
       </div>
@@ -60,7 +60,7 @@
       });
 
       $(document).ready(function() {
-        $('.nav[href="' + location.pathname + '"]').addClass('active');
+        $('.nav[href="' + location.pathname + '"]').addClass('accent');
       });
     </script>
   </body>

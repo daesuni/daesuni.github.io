@@ -31,7 +31,7 @@ layout: default
     {% if page == paginator.page %}
       <li><span class="current">{{ page }}</span></li>
     {% elsif page == 1 %}
-      <li><a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">{{ page }}</a></li>
+      <li><a href="{{ '/index' | prepend: site.baseurl | replace: '//', '/' }}">{{ page }}</a></li>
     {% else %}
       <li><a href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a></li>
     {% endif %}

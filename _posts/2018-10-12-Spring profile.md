@@ -20,9 +20,6 @@ title: Spring Profiles 사용해서 property 파일 개발, 운영 자동연동 
 
 <!-- Properties 설정 -->
 <util:properties id="config" location="classpath:config/properties/${spring.profiles.active}.properties"/>
-.
-.
-.
 ```
 
 2. web.xml 에 프로필 설정 (3.1 이상)
@@ -55,7 +52,7 @@ xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/
 <c:set var="MALL_URL">
     <spring:eval expression="@property['MALL.URL.SSO']"/>
 </c:set>
-var mall_url = '<c:out value="${MALL_URL}" />
+var mall_url = '<c:out value="${MALL_URL}" />';
 ```
 
 3-4. xml에서 사용하기
@@ -63,7 +60,7 @@ var mall_url = '<c:out value="${MALL_URL}" />
 #{config['db.sso.pw']}
 ```
 
-3-5. java에서 혀재 사용중인 spring profile 가져오기
+3-5. java에서 현재 사용중인 spring profile 가져오기
 ```java
 @Autowired
 Environment environment;
