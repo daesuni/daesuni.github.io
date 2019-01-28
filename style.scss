@@ -7,18 +7,18 @@
 
 // common
 html    { font-size: 100%; }
-body    { background: #fff; font-size: 16px; line-height: 1.8; font-family: 'Titillium Web', 'Nanum Gothic', sans-serif; tab-size: 4; }
+body    { background: #fff; font-size: 16px; line-height: 1.8; font-family: 'Lato', 'Nanum Gothic', sans-serif; }
 input, textarea { padding: 5px; }
-h1, h2, h3, h4, h5, h6 { margin: 1em 0 15px; padding: 0; }
-h1      { font-size: 24px; }
+h1, h2, h3, h4, h5, h6 { margin: 1em 0 15px; padding: 0; font-weight: bold; }
+h1      { font-size: 28px; }
 h1 a    { color: inherit; }
-h2      { font-size: 22px; }
+h2      { font-size: 26px; }
 h2 a    { color: inherit; }
-h3      { font-size: 20px; }
+h3      { font-size: 24px; }
 h3 a    { color: inherit; }
-h4      { font-size: 18px; color: $gray; }
+h4      { font-size: 22px; color: $gray; }
 h4 a    { color: inherit; }
-h5      { font-size: 16px; }
+h5      { font-size: 20px; }
 h5 a    { color: inherit; }
 p       { margin: 15px 0; }
 a       { cursor: pointer; color: #375eb5; text-decoration: none; }
@@ -52,13 +52,15 @@ blockquote::after { content: "\2013 \2003" attr(cite);
     text-align: right;
     color: #e4093a; }
 pre {
-    background: #f1f3f5;
+  border: 1px solid #d1d1e8;
+  background-color: #f7f8f9;
     padding: 10px 15px;
-    border: 1px solid #ccc;
+tab-size: 4;
     overflow: auto;
-    font-family: Courier New, 'Nanum Gothic';
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
     font-size: 13px;
-    white-space: pre-wrap;
+    hyphens: none;
+    white-space: pre;
 }
 
 
@@ -99,9 +101,9 @@ pre {
 .header-title:hover { text-decoration: none; }
 
 .header-description {
-  margin: 5px 0 0 0;
+  margin: 8px 0 0 4px;
   color: rgba(0, 0, 0, 0.7);
-  font-size: 16px;
+  font-size: 13px;
 }
 
 .nav-wrap { display: flex; }

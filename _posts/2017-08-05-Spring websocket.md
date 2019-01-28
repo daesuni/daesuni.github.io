@@ -8,7 +8,10 @@ title: Spring에서 웹소켓을 이용한 채팅
 - <http://d2.naver.com/helloworld/1336>
 - <http://www.joinc.co.kr/w/man/12/websocket>
 
-##### POM.xml에 다음을 추가한다.
+##### Spring 환경에서 웹소켓을 이용한 간단한 jsp 채팅을 구현해보자
+
+1\. POM.xml에 다음을 추가한다.
+
 ```xml
 <dependency>
     <groupId>javax</groupId>
@@ -17,7 +20,8 @@ title: Spring에서 웹소켓을 이용한 채팅
 </dependency>
 ```
 
-##### Broadsocket.java 생성
+2\. Broadsocket.java 생성
+
 ```java
 import java.io.IOException;
 import java.util.Collections;
@@ -65,7 +69,8 @@ public class Broadsocket {
 }
 ```
 
-##### broadcast.jsp 생성
+3\. broadcast.jsp 생성
+
 ```markup
 <!DOCTYPE html>
 <html>

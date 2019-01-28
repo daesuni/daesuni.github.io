@@ -3,7 +3,8 @@ layout: post
 title: Spring Profiles 사용해서 property 파일 개발, 운영 자동연동 설정하기
 ---
 
-1. context-common.xml 에 프로퍼티 파일 설정 (3.1 이상)
+1\. context-common.xml 에 프로퍼티 파일 설정 (3.1 이상)
+
 ```xml
 <beans xmlns:context="http://www.springframework.org/schema/context"
     xmlns:p="http://www.springframework.org/schema/p"
@@ -22,7 +23,8 @@ title: Spring Profiles 사용해서 property 파일 개발, 운영 자동연동 
 <util:properties id="config" location="classpath:config/properties/${spring.profiles.active}.properties"/>
 ```
 
-2. web.xml 에 프로필 설정 (3.1 이상)
+2\. web.xml 에 프로필 설정 (3.1 이상)
+
 ```xml
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
  xmlns="http://xmlns.jcp.org/xml/ns/javaee"
@@ -34,20 +36,23 @@ xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/
 </context-param>
 ```
 
-3. 사용하기
+3\. 사용하기
 
-3-1. jsp에서 사용하기
+3-1\. jsp에서 사용하기
+
 ```jsp
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <script src="<spring:eval expression="@config['js.path']"/>/jquery-1.7.1.js" type="text/javascript"></script>
 ```
 
-3-2. java에서 사용하기
+3-2\. java에서 사용하기
+
 ```java
 @Value("#{config['root.path']}") public String RootPath;
 ```
 
-3-3. javascript에서 사용하기
+3-3\. javascript에서 사용하기
+
 ```javascript
 <c:set var="MALL_URL">
     <spring:eval expression="@property['MALL.URL.SSO']"/>
@@ -55,12 +60,14 @@ xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/
 var mall_url = '<c:out value="${MALL_URL}" />';
 ```
 
-3-4. xml에서 사용하기
+3-4\. xml에서 사용하기
+
 ```xml
 #{config['db.sso.pw']}
 ```
 
-3-5. java에서 현재 사용중인 spring profile 가져오기
+3-5\. java에서 현재 사용중인 spring profile 가져오기
+
 ```java
 @Autowired
 Environment environment;
