@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Postgres 데이터베이스 만들기, 권한부여
+category: Postgres
 ---
 
 -	192.168.x.xxx ssh 접속

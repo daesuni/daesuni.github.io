@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Javascript/Jquery 시간을 몇분전, 몇시간 전으로 표시하기
+category: Javascript/Jquery
 ---
 
 ```javascript

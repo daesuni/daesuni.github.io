@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Spring XSS filter 적용하기
+category: Spring
 ---
 
 ##### 크로스사이트 스크립팅(XSS) 이란?

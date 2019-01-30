@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Spring Profiles 사용해서 property 파일 개발, 운영 자동연동 설정하기
+category: Spring
 ---
 
 1\. context-common.xml 에 프로퍼티 파일 설정 (3.1 이상)

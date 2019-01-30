@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Javascript/Jquery array compare
+category: Javascript/Jquery
 ---
 
 서로 다른 두 배열이 같은지 비교

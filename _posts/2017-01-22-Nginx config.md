@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Nginx config 설정
+category: Nginx
 ---
 
 ##### Nginx란?

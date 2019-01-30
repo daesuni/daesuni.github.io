@@ -112,15 +112,17 @@ tab-size: 4;
 .nav.active { }
 
 .search-wrap  { display: flex; align-items: center; justify-content: flex-end; position: relative; margin-left: 20px; }
-.search-results { position: absolute; margin: 0;
+#search-result { position: absolute;
+    margin: 0;
+    padding: 10px 15px;
+    list-style: none;
     top: 30px;
     right: 0;
     background: #fff;
-    border: 1px solid #ccc;
     white-space: nowrap;
-    padding: 10px 15px;
     min-width: 100%;
-    background: #f1f3f5; }
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+    font-size: 13px; display: none; }
 .search-text {    background-image: url("data:image/svg+xml,%0A%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: 2px 2px;
@@ -147,36 +149,19 @@ tab-size: 4;
 .footer-wrap { padding: 100px 0 10px 0; }
 
 // main
-.post-wrap > .post {
-  border-bottom: 1px solid $lightGray;
-  align-items: center;
-  padding: 15px 0;
+.post-wrap > .post:last-child { padding-bottom: 1em; border-bottom: none; }
 
-  .post-title {
-    margin-bottom: 10px;
-  }
-  .post-title a {
-    color: #000;
+.post-list { border-bottom: 1px solid $lightGray; align-items: center; padding: 15px 0; }
+.post-list > .post-title { margin-bottom: 10px; }
+.post-list > .post-title a { color: #000; }
+.post-list > .post-title a:hover { text-decoration: none; }
+.post-list > .post-date { color: #969696; text-transform: uppercase; font-size: 13px; margin-bottom: 10px; }
+.post-list > .post-entry { font-size: 13px; }
 
-  }
-  .post-title a:hover {
-    text-decoration: none;
-  }
-  .post-date {
-    color: #969696;
-    text-transform: uppercase;
-    font-size: 13px;
-    margin-bottom: 10px;
-  }
-  .post-entry {
-    font-size: 13px;
-  }
-}
-
-.post-wrap > .post:last-child {
-  padding-bottom: 1em;
-  border-bottom: none;
-}
+.post > .post-category { }
+.post > .post-title { margin-bottom: 10px; }
+.post > .post-date { color: #969696; text-transform: uppercase; font-size: 13px; margin-bottom: 10px; }
+.post > .post-entry { font-size: 13px; }
 
 
 .accent {

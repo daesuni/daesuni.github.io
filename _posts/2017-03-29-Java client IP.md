@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Java client IP 가져오기
+category: Java
 ---
 
 ##### XFF란?

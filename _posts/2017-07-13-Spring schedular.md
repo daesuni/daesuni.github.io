@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Spring을 이용한 스케쥴러
+category: Spring
 ---
 
 &nbsp;특정 시간마다 DB insert를 실행한다거나, 주기적으로 반복적인 작업을 해야 할 때가 있다. 예를 들면 기상청에서 날씨정보를 매 시간 받아와서 DB에 Insert 해주어야 하는 경우가 있다.<br/>

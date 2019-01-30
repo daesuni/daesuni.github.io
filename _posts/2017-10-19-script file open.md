@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Javascript로 서버 없이 파일 읽기
+category: Javascript/Jquery
 ---
 
 Javascript를 이용해서 서버 없이 파일 읽는 방법

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Javascript/Jquery array distinct
+category: Javascript/Jquery
 ---
 
 배열에 중복요소가 있는지 체크

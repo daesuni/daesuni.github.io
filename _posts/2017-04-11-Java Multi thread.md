@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Java Multi-thread 적용하기
+category: Java
 ---
 
 ```java

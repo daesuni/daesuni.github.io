@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Mybatis Insert 후 sequence 가져오기
+category: Mybatis
 ---
 
 &nbsp;개발을 하다보면 방금 Insert된 data의 seq값을 써야 할때가 있다.<br/>

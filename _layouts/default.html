@@ -37,7 +37,7 @@
         </nav>
         <div class="search-wrap">
       		<input id="search-input" class="search-text" type="search" placeholder="검색어를 입력하세요" autocomplete="off" />
-          <ul id="results-container" class="search-results"></ul>
+          <ul id="search-result"></ul>
         </div>
       </div>
     </div>
@@ -55,7 +55,7 @@
     <script type="text/javascript">
       var sjs = SimpleJekyllSearch({
         searchInput: document.getElementById('search-input'),
-        resultsContainer: document.getElementById('results-container'),
+        resultsContainer: document.getElementById('search-result'),
         json: '/search.json'
       });
 
@@ -63,6 +63,13 @@
         var pathName = location.pathname.indexOf('page') > -1 ? '/' : location.pathname;
         $('.nav[href="' + pathName + '"]').addClass('accent');
       });
+
+      $(document).on('focus', '#search-input', function() {
+        $('#search-result').show();
+      }).on('blur', '#search-input', function() {
+        $('#search-result').hide();
+      });
+
     </script>
   </body>
 </html>

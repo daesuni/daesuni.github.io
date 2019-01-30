@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Spring에서 웹소켓을 이용한 채팅
+category: Spring
 ---
 
 ##### 웹소켓이란 ?

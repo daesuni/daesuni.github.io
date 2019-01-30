@@ -1,6 +1,7 @@
 ---
-layout : post
-title : Linux/리눅스 자주 쓰는 명령어 정리
+layout: post
+title: Linux/리눅스 자주 쓰는 명령어 정리
+category: Linux 
 ---
 
 &nbsp;실무에서 자주 쓰는 Linux/리눅스 명령어를 설명과 함께 정리한다.<br/>

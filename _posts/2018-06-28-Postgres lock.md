@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Postgres 락 확인/제거하기
+category: Postgres
 ---
 
 ##### 락 확인

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Java 오브젝트 리스트를 속성으로 정렬하기
+category: Java
 ---
 
 ```java
