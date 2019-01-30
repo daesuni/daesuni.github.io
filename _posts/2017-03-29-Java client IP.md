@@ -4,7 +4,7 @@ title: Java client IP 가져오기
 category: Java
 ---
 
-##### XFF란?
+### XFF란?
 
 &nbsp;XFF(X-Forwarded-For)는 HTTP 헤더 중 하나로, 원래의 IP 주소를 식별하기 위한 표준 헤더이다.
 &nbsp;웹 서버나 WAS 앞에 L4 같은 Load Balancers나 Proxy server(HAProxy), Caching server(Varnish), HTTP 서버용 WAS Connector(웹로직 커넥터- mod_wl, 톰캣 커넥터 -mod_jk 등) 등이 있을 경우 이런 제품들은 웹서버/WAS에 HTTP나 전용 프로토콜(AJP)로 요청을 보낸 후에 받은 결과를 가공하여 클라이언트에 재전송하게 된다.
@@ -16,7 +16,7 @@ category: Java
 X-Forwarded-For: client, proxy1, proxy2
 ```
 
-##### WAS에서 사용하기
+### WAS에서 사용하기
 
 &nbsp;여기까지 읽고 웹 어플리케이션을 개발할 경우 client ip 를 식별할 필요가 있다면 먼저 저 헤더가 있는지 확인한 후에 없으면 getRemoteAddr() 로 IP 를 얻으면 되겠지라고 생각할 수도 있겠지만 이게 끝은 아니다.<br/>
 &nbsp;XFF 는 사실상의 표준이지 정식 RFC 에 포함된게 아니므로 대개는 착실하게 저 헤더를 사용하지만 엉뚱한 헤더를 사용하는 제품들이 있다.<br/>
@@ -41,7 +41,7 @@ if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
 }
 ```
 
-##### NGINX 설정하기
+### NGINX 설정하기
 
 &nbsp;nginx 는 --with-http_realip_module 옵션을 주고 컴파일해야 실제 ip 를 얻어올 수 있다. 배포판에 포함된 nginx 는 기본 컴파일 옵션일것이라고 생각되며 다음 명령어로 지원 여부를 확인할 수 있다.
 

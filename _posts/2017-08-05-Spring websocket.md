@@ -4,12 +4,12 @@ title: Spring에서 웹소켓을 이용한 채팅
 category: Spring
 ---
 
-##### 웹소켓이란 ?
+### 웹소켓이란 ?
 
 - <http://d2.naver.com/helloworld/1336>
 - <http://www.joinc.co.kr/w/man/12/websocket>
 
-##### Spring 환경에서 웹소켓을 이용한 간단한 jsp 채팅을 구현해보자
+### Spring 환경에서 웹소켓을 이용한 간단한 jsp 채팅을 구현해보자
 
 1\. POM.xml에 다음을 추가한다.
 
