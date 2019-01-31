@@ -8,8 +8,10 @@ layout: default
       <div class="post-title">
         <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
       </div>
-      <div class="post-date">
-        {{ post.date | date: "%B %d, %Y" }}
+      <div class="post-info">
+        <span class="post-category">{{ post.category }}</span>
+        <span class="post-info-sep">|</span>
+        <span class="post-date">{{ post.date | date: "%B %d, %Y" }}</span>
       </div>
       <div class="post-entry">
         {{ post.excerpt | strip_html }}

@@ -12,6 +12,7 @@
     <script src="{{ site.baseurl }}/assets/utils/simple-jekyll-search.min.js"></script>
 
     <link href="https://fonts.googleapis.com/css?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700|Lato:400,700&amp;subset=korean" rel="stylesheet">
     <!-- <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/assets/utils/material-icons/material-icons.css" /> -->
     <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css" />
@@ -19,26 +20,40 @@
   </head>
 
   <body>
+
+    <div class="search-wrap">
+      <div class="container">
+        <input id="search-input" class="search-text" type="search" placeholder="검색어를 입력하세요" autocomplete="off" />
+      </div>
+    </div>
+
     <div class="container">
       <div class="header-wrap">
-        <a href="{{ site.baseurl }}/" class="header-title">
+        <!-- <a href="{{ site.baseurl }}/" class="header-title">
           <div class="header-avatar"><img src="{{ site.avatar }}" /></div>
           {{ site.name }}
           <span class="header-description"> : {{ site.description }}</span>
         </a>
 
-        <div class="spacer"></div>
+        <div class="spacer"></div> -->
 
         <nav class="nav-wrap">
           <a href="{{ site.baseurl }}/" class="nav">POSTS</a>
           <!-- <a href="{{ site.baseurl }}/playground/" class="nav">playground</a> -->
           <!-- <a href="{{ site.baseurl }}/works/" class="nav">works</a> -->
-          <a href="{{ site.baseurl }}/about/" class="nav">ABOUT</a>
+          <!-- <a href="{{ site.baseurl }}/about/" class="nav">ABOUT</a> -->
+
+          <a href="#" class="nav">WHATS</a>
+          <a href="#" class="nav">HAPPEN</a>
         </nav>
-        <div class="search-wrap">
-      		<input id="search-input" class="search-text" type="search" placeholder="검색어를 입력하세요" autocomplete="off" />
-          <ul id="search-result"></ul>
-        </div>
+
+        <div class="spacer"></div>
+
+        <i id="search-toggle" class="material-icons">search</i>
+
+
+        <ul id="search-result"></ul>
+
       </div>
     </div>
 
@@ -56,18 +71,17 @@
       var sjs = SimpleJekyllSearch({
         searchInput: document.getElementById('search-input'),
         resultsContainer: document.getElementById('search-result'),
+        noResultsText: '검색 결과가 없습니다.',
         json: '/search.json'
       });
 
       $(document).ready(function() {
-        var pathName = location.pathname.indexOf('page') > -1 ? '/' : location.pathname;
-        $('.nav[href="' + pathName + '"]').addClass('accent');
-      });
-
-      $(document).on('focus', '#search-input', function() {
-        $('#search-result').show();
-      }).on('blur', '#search-input', function() {
-        $('#search-result').hide();
+        var $nav = $('.nav[href="' + location.pathname + '"]');
+        if ($nav.length > 0) {
+          $nav.addClass('active');
+        } else {
+          $('.nav[href="/"]').addClass('active');
+        }
       });
 
     </script>
