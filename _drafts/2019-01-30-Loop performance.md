@@ -94,8 +94,31 @@ var newArr = arr.filter(function(el) { return el; });
 - 원래 배열을 훼손하지 않는다.
 - 빈 배열 요소를 반환하지 않는다.
 - 대용량 배열 처리시 메모리 overflow 가능성이 있다.
+- return 값은 true/false 이며, 요소를 반환한다.
 
 ### 4. map
+
+map은 기본적으로 다음과 같이 쓴다. filter와 문법은 똑같다.
+
+```javascript
+var newArr = arr.map(function(v, i, arr) {
+  return condition;
+});
+```
+
+&nbsp;filter와 다른점이라고 하면, filter는 return 값으로 true/false만 쓸 수 있으며, 요소를 반환한다.<br/>
+하지만 map의 경우 요소가 아닌 새로운 값을 반환할 수 있다.
+
+```javascript
+var arr = [1, 2, 3, 4, 5];
+var newArr = arr.map(function(v, i, arr) {
+  return v + 1;
+});
+// 2, 3, 4, 5, 6
+```
+
+- 기본적인 특징은 filter와 같다.
+- return 값 자체를 반환한다.
 
 ### 5. reduce
 
@@ -111,7 +134,3 @@ $('.rows').each(function(i, el) {
 
 ![Loop performance test]({{"/assets/images/posts/loopperformance.png"| relative_url}})
 *<https://jsperf.com/dslooppf>*
-
-### Console test
-
-<iframe width="100%" height="300" src="//jsfiddle.net/daesuni/5h9rpefo/8/embedded/js,result/dark/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>

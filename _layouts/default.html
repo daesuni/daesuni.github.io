@@ -21,9 +21,13 @@
 
   <body>
 
-    <div class="search-wrap">
+    <div class="search-layer">
       <div class="container">
-        <input id="search-input" class="search-text" type="search" placeholder="검색어를 입력하세요" autocomplete="off" />
+        <div class="search-wrap">
+          <input id="search-input" class="search-text" type="text" placeholder="검색어를 입력하세요" autocomplete="off" />
+          <div class="search-toggle search-close"><i class="material-icons">close</i></div>
+        </div>
+        <ul id="search-result"></ul>
       </div>
     </div>
 
@@ -49,10 +53,7 @@
 
         <div class="spacer"></div>
 
-        <i id="search-toggle" class="material-icons">search</i>
-
-
-        <ul id="search-result"></ul>
+        <div class="search-toggle search-open"><i class="material-icons">search</i></div>
 
       </div>
     </div>
@@ -82,6 +83,15 @@
         } else {
           $('.nav[href="/"]').addClass('active');
         }
+      });
+
+      $(document).on('click', '.search-toggle', function() {
+        $('.search-layer').toggle();
+        if ($(this).hasClass('search-open')) {
+          $('#search-input').focus();
+        } else {
+          $('#search-input').val('');
+        };
       });
 
     </script>
