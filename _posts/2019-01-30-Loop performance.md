@@ -1,6 +1,6 @@
 ---
 layout: post
-title: for, foreach, filter, map, reduce, $.each 기능 및 성능 비교
+title: for, foreach, filter, map, reduce 기능 및 성능 비교
 category: Javascript/Jquery
 ---
 
@@ -20,7 +20,7 @@ for (int i = 0; i < 10; i++) {
 ```
 
 - 가장 빠르고 단순하다. 그래서 효율적이다.
-- 중간에 loop 종료가 가능하다. (continue or break)
+- 중간에 loop종료가 가능하다. (continue or break)
 - 반복범위 컨트롤이 가능하다.
 - 변수를 활용할 수 있다. (var i 값을 사용할 수 있다)
 
@@ -94,7 +94,7 @@ var newArr = arr.filter(function(el) { return el; });
 - 원래 배열을 훼손하지 않는다.
 - 빈 배열 요소를 반환하지 않는다.
 - 대용량 배열 처리시 메모리 overflow 가능성이 있다.
-- return 값은 true/false 이며, 요소를 반환한다.
+- return값은 true/false이며, 요소를 반환한다.
 
 ### 4. map
 
@@ -106,7 +106,7 @@ var newArr = arr.map(function(v, i, arr) {
 });
 ```
 
-&nbsp;filter와 다른점이라고 하면, filter는 return 값으로 true/false만 쓸 수 있으며, 요소를 반환한다.<br/>
+&nbsp;filter와 다른점이라고 하면, filter는 return값으로 true/false만 쓸 수 있으며, 요소를 반환한다.<br/>
 하지만 map의 경우 요소가 아닌 새로운 값을 반환할 수 있다.
 
 ```javascript
@@ -118,19 +118,35 @@ var newArr = arr.map(function(v, i, arr) {
 ```
 
 - 기본적인 특징은 filter와 같다.
-- return 값 자체를 반환한다.
+- return값 자체를 반환한다.
 
 ### 5. reduce
 
-### 6. $.each
+&nbsp;reduce는 위에 나왔던 반복문들과는 약간 개념과 사용법이 다르다.
 
-$('.rows').each(function(i, el) {
-    // do something with ALL the rows
-}).filter('.even').each(function(i, el) {
-    // do something with the even rows
+```javascript
+var arr = [1, 2, 3, 4, 5];
+var newArr = arr.reduce(function(acc, v, i, arr) {
+  return acc + v;
 });
+// 15
+```
+
+&nbsp;reduce의 가장 큰 특징으로는 첫번째 인자인 accumulator 이다. accumulator 는 return값을 누적하는데, 계속해서 전달받아서 사용할 수도 있다.
+
+두번째 특징은 accumulator의 초기값을 설정할 수 있다는 점이다. optional하며 생력시에는 첫번째 return값이 된다. 아래 예시를 보자.
+
+```javascript
+var arr = [1,2,3,4,5]
+var newArr = arr.reduce(function(acc, v, i, arr) {
+  return acc + v;
+}, 100);
+// 115
+```
+
+첫번째 예시와 다르게 초기값 때문에 115라는 값이 나오게 됬다. 어떻게 활용하느냐에 따라 reduce는 강력하고 확장성이 높다. accumulator의 값은 배열이 될수도 있고, object가 될수도 있다.
 
 ### 성능 비교
 
-![Loop performance test]({{"/assets/images/posts/loopperformance.png"| relative_url}})
+![loop performance test]({{"/images/posts/loopperformance.png"| relative_url}})
 *<https://jsperf.com/dslooppf>*
