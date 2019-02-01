@@ -9,11 +9,10 @@
       <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     <script src="{{ site.baseurl }}/assets/utils/jquery-1.12.4/jquery-1.12.4.min.js"></script>
-    <script src="{{ site.baseurl }}/assets/utils/simple-jekyll-search.min.js"></script>
+    <script src="{{ site.baseurl }}/assets/utils/simple-jekyll-search.js"></script>
 
     <link href="https://fonts.googleapis.com/css?family=Material+Icons" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700|Lato:400,700&amp;subset=korean" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700|Noto+Sans+KR:400,700" rel="stylesheet">
     <!-- <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/assets/utils/material-icons/material-icons.css" /> -->
     <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css" />
     <link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}" href="{{ site.baseurl }}/feed.xml" />
@@ -73,7 +72,7 @@
         searchInput: document.getElementById('search-input'),
         resultsContainer: document.getElementById('search-result'),
         noResultsText: '검색 결과가 없습니다.',
-        json: '/search.json'
+        json: '/search.json',
       });
 
       $(document).ready(function() {

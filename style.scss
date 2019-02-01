@@ -5,8 +5,8 @@
 @import "variables";
 
 // common
-html    { font-size: 14px; }
-body    { background: #fff; line-height: 1.8; font-family: 'Noto Sans', sans-serif; border-top: 2px solid #253e49; }
+html    {  }
+body    { background: #fff; line-height: 1.8; font-family: 'Lato', 'Noto Sans KR', sans-serif; border-top: 2px solid #253e49; }
 input, textarea { padding: 5px; }
 h1, h2, h3, h4, h5, h6 { margin: 1em 0 15px; padding: 0; font-weight: bold; }
 h1      { font-size: 28px; }
@@ -118,17 +118,25 @@ background: transparent;
     background: red;
 }
 
-#search-result {     position: absolute;
+#search-result {      position: absolute;
     margin: 0;
-    padding: 0;
+    padding: 1.5em 2em;
     list-style: none;
     top: 55px;
-    /* right: 0; */
+    left: 0;
     background: #fff;
     white-space: nowrap;
     min-width: 100%;
-    box-shadow: 0 4px 40px rgba(0,0,0,.39);;
+    box-shadow: 0 4px 40px rgba(0, 0, 0, 0.39);
     }
+
+#search-result li {
+    margin-bottom: 5px;
+}
+#search-result li:last-child { margin-bottom: 0; }
+#search-result li a {
+  color: #000;
+}
 
 
 .header-wrap  { align-items: center; height: 55px; border-bottom: 1px solid #ccc; display: flex;
@@ -153,7 +161,7 @@ background: transparent;
 }
 
 .nav-wrap { display: flex; }
-.nav { margin-left: 20px; padding: 0 10px; color: #000; border-radius: 2px; }
+.nav { margin-left: 20px; padding: 0 10px; color: #000; border-radius: 2px; font-size: 0.9rem; }
 .nav:first-child { margin-left: 0; }
 .nav:hover { text-decoration: none; }
 .nav.active { background: #e4093a; color: #fff; }
@@ -180,6 +188,9 @@ background: transparent;
 .post-date { color: rgba(0, 0, 0, 0.75); }
 
 .post-list .post-entry { font-size: 0.9rem; color: rgba(0, 0, 0, 0.5); }
+
+.post .post-title { text-align: center; }
+.post .post-info { text-align: center; }
 .post .post-entry { color: rgba(0, 0, 0, 0.75); }
 
 
