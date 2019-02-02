@@ -78,7 +78,23 @@
           $nav.addClass('active');
         } else {
           $('.nav[href="/"]').addClass('active');
-        }
+        };
+
+        // $.ajax({
+        //   type : 'GET',
+        //   url : "https://www.googleapis.com/analytics/v3/data/ga?ids=ga%3A150211858&start-date=2019-02-02&end-date=2019-02-02&metrics=ga%3Asessions%2Cga%3Apageviews&dimensions=ga%3Asource%2Cga%3Akeyword&access_token=ya29.GlykBmlqN67m5LCWXl2iLkQCD545zwTMxQGgmK8dv3sSfi523heQxPtHvPSCe8H2K8Vq_j5I2O4Wph-Oq2dwyoYVBIxkO160neab22CtRGTX99uezJJ6kPG5ZmoCiQ",
+        //   //data : {"id" : id},
+        //   success : function (data) {
+        //     if (data) {
+        //         console.log(data)
+        //     }
+        //   }
+        //
+        // });
+
+
+
+
       });
 
       $(document).on('click', '.search-toggle', function() {
