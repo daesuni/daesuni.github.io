@@ -149,4 +149,4 @@ var newArr = arr.reduce(function(acc, v, i, arr) {
 ### 성능 비교
 
 ![loop performance test]({{"/images/posts/loopperformance.png"| relative_url}})
-*<https://jsperf.com/dslooppf>*
+*<a target="_blank" href="https://jsperf.com/dslooppf">https://jsperf.com/dslooppf</a>*
