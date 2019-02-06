@@ -4,10 +4,10 @@ title: for, foreach, filter, map, reduce 기능 및 성능 비교
 category: Javascript/Jquery
 ---
 
-&nbsp;Javascript와 Jquery를 주로 쓰면서도 궁금했다.<br/>
-&nbsp;반복문에는 우리가 일반적으로 알고있는 for문, $.each, forEach, map, filter 등 정말 많은 종류가 있다.<br/>
-&nbsp;주로 하나의 메서드로 대부분 것들을 할 수 있지만, 어떨때는 each를 써야 하고 또 어떤 경우에는 filter가 좋은지를 정확히 알고 쓰지 못했다.<br/>
-&nbsp;이번 포스트에서 각 메서드들을 어떨때 어떻게 사용해야하는지 정리하고 성능비교도 해보자!
+Javascript와 Jquery를 주로 쓰면서도 궁금했다.<br/>
+반복문에는 우리가 일반적으로 알고있는 for문, $.each, forEach, map, filter 등 정말 많은 종류가 있다.<br/>
+주로 하나의 메서드로 대부분 것들을 할 수 있지만, 어떨때는 each를 써야 하고 또 어떤 경우에는 filter가 좋은지를 정확히 알고 쓰지 못했다.<br/>
+이번 포스트에서 각 메서드들을 어떨때 어떻게 사용해야하는지 정리하고 성능비교도 해보자!
 
 ### 1. for loop
 
@@ -34,7 +34,7 @@ arr.forEach(function(v, i, arr) {
 });
 ```
 
-&nbsp;1번에서 살펴본 일반 for문보다 훨씬 가독성이 좋다. 예를 들어보자.
+1번에서 살펴본 일반 for문보다 훨씬 가독성이 좋다. 예를 들어보자.
 
 ```javascript
 for (var i = 0; i <arr.length; i++) {
@@ -50,9 +50,9 @@ arr.forEach (function (v, i) {
 });
 ```
 
-&nbsp;위와 아래 중 어떤것이 더 눈에 들어올까? 좀더 복잡해진다면?<br/>
-&nbsp;가독성이 좋다는 것은 개발에서 엄청난 차이를 가져온다. forEach는 복잡한 객체를 처리하는데 있어서 유리하다. 좀더 인간친화적인(?) 방법이라고 할 수 있다.<br/>
-&nbsp;개인적으로 성능에 큰 문제가 없다면 되도록 forEach를 사용하는걸 추천한다. (성능에 대해서는 아래에서)
+위와 아래 중 어떤것이 더 눈에 들어올까? 좀더 복잡해진다면?<br/>
+가독성이 좋다는 것은 개발에서 엄청난 차이를 가져온다. forEach는 복잡한 객체를 처리하는데 있어서 유리하다. 좀더 인간친화적인(?) 방법이라고 할 수 있다.<br/>
+개인적으로 성능에 큰 문제가 없다면 되도록 forEach를 사용하는걸 추천한다. (성능에 대해서는 아래에서)
 
 - 빠른편이다.
 - 일반 for문보다 가독성이 좋고, 객체를 다루기가 쉽다.
@@ -69,8 +69,8 @@ var newArr = arr.filter(function(v, i, arr) {
 });
 ```
 
-&nbsp;filter의 가장 큰 특징은 boolean형태의 return값을 갖는다. return값이 true일경우, 그 요소를 반환하고 false일경우, 반환하지 않는다.
-&nbsp;예를 들어보자.
+filter의 가장 큰 특징은 boolean형태의 return값을 갖는다. return값이 true일경우, 그 요소를 반환하고 false일경우, 반환하지 않는다.
+예를 들어보자.
 
 ```javascript
 var arr = [1, 2, 3, 4, 5];
@@ -80,7 +80,7 @@ var newArr = arr.filter(function(v) {
 // 2, 4
 ```
 
-&nbsp;또다른 큰 특징은, 빈 요소를 반환하지 않는다는 것이다. 이것을 이용하면 유용하게 쓸 수 있다.
+또다른 큰 특징은, 빈 요소를 반환하지 않는다는 것이다. 이것을 이용하면 유용하게 쓸 수 있다.
 
 ```javascript
 var arr = [0, , , 1, , , , , 2, , , , 3];
@@ -106,7 +106,7 @@ var newArr = arr.map(function(v, i, arr) {
 });
 ```
 
-&nbsp;filter와 다른점이라고 하면, filter는 return값으로 true/false만 쓸 수 있으며, 요소를 반환한다.<br/>
+filter와 다른점이라고 하면, filter는 return값으로 true/false만 쓸 수 있으며, 요소를 반환한다.<br/>
 하지만 map의 경우 요소가 아닌 새로운 값을 반환할 수 있다.
 
 ```javascript
@@ -122,7 +122,7 @@ var newArr = arr.map(function(v, i, arr) {
 
 ### 5. reduce
 
-&nbsp;reduce는 위에 나왔던 반복문들과는 약간 개념과 사용법이 다르다.
+reduce는 위에 나왔던 반복문들과는 약간 개념과 사용법이 다르다.
 
 ```javascript
 var arr = [1, 2, 3, 4, 5];
@@ -132,7 +132,7 @@ var newArr = arr.reduce(function(acc, v, i, arr) {
 // 15
 ```
 
-&nbsp;reduce의 가장 큰 특징으로는 첫번째 인자인 accumulator 이다. accumulator 는 return값을 누적하는데, 계속해서 전달받아서 사용할 수도 있다.
+reduce의 가장 큰 특징으로는 첫번째 인자인 accumulator 이다. accumulator 는 return값을 누적하는데, 계속해서 전달받아서 사용할 수도 있다.
 
 두번째 특징은 accumulator의 초기값을 설정할 수 있다는 점이다. optional하며 생력시에는 첫번째 return값이 된다. 아래 예시를 보자.
 

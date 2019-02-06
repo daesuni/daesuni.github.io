@@ -4,7 +4,7 @@ title: Spring + Maven + Git + Jenkins 연동하기
 category: Spring
 ---
 
-&nbsp;Spring으로 개발하고, Github을 사용하면서 Jenkins로 자동 배포를 하는 환경세팅 이다. 그 전에 주의할 점은 DEPLOY 할 대상에 톰캣 webapps 경로에 manager 폴더를 삭제하면 불가능하므로, 만약 삭제했다면 톰캣을 다운받아 manager 폴더만 복사하면 된다.
+Spring으로 개발하고, Github을 사용하면서 Jenkins로 자동 배포를 하는 환경세팅 이다. 그 전에 주의할 점은 DEPLOY 할 대상에 톰캣 webapps 경로에 manager 폴더를 삭제하면 불가능하므로, 만약 삭제했다면 톰캣을 다운받아 manager 폴더만 복사하면 된다.
 
 1\. POM.xml 에 다음 코드를 추가한다.
 
