@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Javscript/Jquery data-url를 이미지 파일로 다운로드
-category: Javascript/Jquery
+title: Javscript/JQuery data-url를 이미지 파일로 다운로드
+category: Javascript/JQuery
 ---
 
 ```markup

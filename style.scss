@@ -55,7 +55,7 @@ pre {
     padding: 10px 15px;
 tab-size: 4;
     overflow: auto;
-    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    font-family: Courier new, Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
     font-size: 13px;
     hyphens: none;
     white-space: pre;
@@ -163,6 +163,11 @@ background: transparent;
 .nav:hover { text-decoration: none; }
 .nav.active { background: #e4093a; color: #fff; }
 
+.comments {
+  border-top: 1px solid #ddd;
+  margin-top: 3rem;
+  padding-top: 3rem;
+}
 
 
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Javascript 세미콜론(;) 써야하나, 말아야 하나?
-category: Javascript/Jquery
+category: Javascript/JQuery
 ---
 
 Javascript에서 세미콜론은 필수가 아닌 선택사항이다. 그래서 stack overflow나 다양한 개발 커뮤니티에서는 이것에 대해 찬/반이 갈리곤 한다. 나 또한 어느 한 쪽으로 결정을 내리지 못한 상태이기 때문에 이 주제에 대해 생각해보고 정리하는 포스팅을 하기로 한다.

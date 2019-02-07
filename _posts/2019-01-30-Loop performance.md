@@ -1,10 +1,10 @@
 ---
 layout: post
 title: for, foreach, filter, map, reduce 기능 및 성능 비교
-category: Javascript/Jquery
+category: Javascript/JQuery
 ---
 
-Javascript와 Jquery를 주로 쓰면서도 궁금했다.<br/>
+Javascript와 jQuery를 주로 쓰면서도 궁금했다.<br/>
 반복문에는 우리가 일반적으로 알고있는 for문, $.each, forEach, map, filter 등 정말 많은 종류가 있다.<br/>
 주로 하나의 메서드로 대부분 것들을 할 수 있지만, 어떨때는 each를 써야 하고 또 어떤 경우에는 filter가 좋은지를 정확히 알고 쓰지 못했다.<br/>
 이번 포스트에서 각 메서드들을 어떨때 어떻게 사용해야하는지 정리하고 성능비교도 해보자!
