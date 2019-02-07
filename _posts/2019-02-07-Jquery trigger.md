@@ -21,11 +21,13 @@ function (data, fn) {
 
 ### 2. 성능 비교
 
+둘의 퍼포먼스 테스트 결과는?
+
 ![clicktrigger]({{"/images/posts/clicktrigger.png"| relative_url}})
 *<a target="_blank" href="https://jsperf.com/eventtest13412">https://jsperf.com/eventtest13412</a>*
 
 ### 3. 결론
 
 ```click();```과 ```trigger('click');``` 모두 같은 동작을 한다.<br/>
-단지 차이점이라고 한다면 ```click();```메서드에는 trigger 전에 한단계의 코드가 더 있기 때문에 약간의 오버헤드가 발생하는 것을 알 수 있었다. 큰 차이는 없지만 약간의 퍼포먼스 차이가 있었다.<br/>
+단지 차이점이라고 한다면 ```click();```메서드에는 trigger 전에 한단계의 코드가 더 있기 때문에 약간의 오버헤드가 발생하는 것을 알 수 있었다. 큰 차이는 없지만 테스트 결과 약간의 퍼포먼스 차이가 있었다.<br/>
 따라서 조건이 같은 상황이면 ```trigger()```을 사용하는 것이 좋다고 말할 수 있겠다.

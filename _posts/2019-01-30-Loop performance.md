@@ -20,8 +20,9 @@ for (int i = 0; i < 10; i++) {
 ```
 
 - 가장 빠르고 단순하다. 그래서 효율적이다.
-- 중간에 loop종료가 가능하다. (continue or break)
-- 반복범위 컨트롤이 가능하다.
+- 모든 자료형에 대해 사용이 가능하다.
+- 중간에 loop 건너뛰기나 종료가 가능하다. (continue or break)
+- 반복범위 컨트롤이 가능하다. (i++, i--, i+=2*i 등)
 - 변수를 활용할 수 있다. (var i 값을 사용할 수 있다)
 
 ### 2. forEach
@@ -39,25 +40,35 @@ arr.forEach(function(v, i, arr) {
 ```javascript
 for (var i = 0; i <arr.length; i++) {
   console.log('element', i, arr[i]);
-  console.log(arr[i].property1);
+  console.log(arr[i].property1 + arr[i].property2);
   console.log(arr[i].property2);
 };
 
 arr.forEach (function (v, i) {
   console.log('element', i, v);
-  console.log(v.property1);
+  console.log(v.property1 + v.property2);
   console.log(v.property2);
 });
 ```
 
-위와 아래 중 어떤것이 더 눈에 들어올까? 좀더 복잡해진다면?<br/>
+위와 아래 중 어떤것이 더 눈에 들어올까? 좀더 복잡해진다면 어떨까?<br/>
 가독성이 좋다는 것은 개발에서 엄청난 차이를 가져온다. forEach는 복잡한 객체를 처리하는데 있어서 유리하다. 좀더 인간친화적인(?) 방법이라고 할 수 있다.<br/>
-개인적으로 성능에 큰 문제가 없다면 되도록 forEach를 사용하는걸 추천한다. (성능에 대해서는 아래에서)
+
+forEach문은 구문 밖으로 return값을 받지 못한다. 아래의 예를 보자.
+
+```javascript
+var arr = [1,2,3,4,5];
+var newArr = arr.forEach(function(e, i) {
+  return e;
+});
+// undefined
+```
 
 - 빠른편이다.
-- 일반 for문보다 가독성이 좋고, 객체를 다루기가 쉽다.
+- Array객체에서 사용이 가능하다.
+- 일반 for문보다 가독성이 좋고, 객체형을 다루기가 쉽다.
 - for문과 다르게 중간에 끊을 방법이 없다. (return으로 skip가능)
-- 원래 배열을 훼손한다.
+- return값을 받지 못한다.
 
 ### 3. filter
 
@@ -69,7 +80,7 @@ var newArr = arr.filter(function(v, i, arr) {
 });
 ```
 
-filter의 가장 큰 특징은 boolean형태의 return값을 갖는다. return값이 true일경우, 그 요소를 반환하고 false일경우, 반환하지 않는다.
+filter의 가장 큰 특징은 boolean형태의 return값을 갖는다. return값이 true일경우, 그 요소를 반환하고 false일경우, 반환하지 않는다. 기본값은 false이다.
 예를 들어보자.
 
 ```javascript
@@ -78,8 +89,17 @@ var newArr = arr.filter(function(v) {
   return v % 2 == 0;
 });
 // 2, 4
+
+var distances = [
+  {from: 'Seoul', to: 'Jejudo', distance: 23451},
+  {from: 'Busan', to: 'Daegu', distance: 6457},
+  {from: 'Daejeon', to: 'Incheon', distance: 233}
+];
+var filteredDistances = distances.filter(item => item.distance < 10000);
+console.log(filteredDistances);
 ```
 
+위의 두 가지 예를 보면 알겠지만, 깔끔하게 원하는 요소들만 필터링할 수 있는 유용한 메서드다.<br/>
 또다른 큰 특징은, 빈 요소를 반환하지 않는다는 것이다. 이것을 이용하면 유용하게 쓸 수 있다.
 
 ```javascript
@@ -90,8 +110,8 @@ var newArr = arr.filter(function(el) { return el; });
 ```
 
 - 빠른편이다.
+- Array객체에서 사용이 가능하다.
 - chainable하다.
-- 원래 배열을 훼손하지 않는다.
 - 빈 배열 요소를 반환하지 않는다.
 - 대용량 배열 처리시 메모리 overflow 가능성이 있다.
 - return값은 true/false이며, 요소를 반환한다.
@@ -106,8 +126,7 @@ var newArr = arr.map(function(v, i, arr) {
 });
 ```
 
-filter와 다른점이라고 하면, filter는 return값으로 true/false만 쓸 수 있으며, 요소를 반환한다.<br/>
-하지만 map의 경우 요소가 아닌 새로운 값을 반환할 수 있다.
+filter와 다른점이라고 하면, filter는 return값으로 true/false만 쓸 수 있으며, 요소를 반환하지만, map의 경우 요소가 아닌 새로운 값을 만들어서 return할 수 있다.
 
 ```javascript
 var arr = [1, 2, 3, 4, 5];
@@ -117,7 +136,10 @@ var newArr = arr.map(function(v, i, arr) {
 // 2, 3, 4, 5, 6
 ```
 
-- 기본적인 특징은 filter와 같다.
+- 빠른편이다.
+- Array객체에서 사용이 가능하다.
+- chainable하다.
+- 대용량 배열 처리시 메모리 overflow 가능성이 있다.
 - return값 자체를 반환한다.
 
 ### 5. reduce
