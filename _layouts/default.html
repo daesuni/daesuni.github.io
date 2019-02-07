@@ -21,17 +21,6 @@
   </head>
 
   <body>
-
-    <div class="search-layer">
-      <div class="container">
-        <div class="search-wrap">
-          <input id="search-input" class="search-text" type="text" placeholder="검색어를 입력하세요" autocomplete="off" />
-          <div class="search-toggle search-close"><i class="material-icons">close</i></div>
-        </div>
-        <ul id="search-result"></ul>
-      </div>
-    </div>
-
     <div class="container">
       <div class="header-wrap">
         <!-- <a href="{{ site.baseurl }}/" class="header-title">
@@ -54,6 +43,15 @@
         <div class="search-toggle search-open"><i class="material-icons">search</i></div>
 
       </div>
+
+      <div class="search-layer">
+        <div class="search-wrap">
+          <input id="search-input" class="search-text" type="search" placeholder="검색어를 입력하세요" autocomplete="off" />
+          <div class="search-toggle search-close"><i class="material-icons">close</i></div>
+        </div>
+        <ul id="search-result"></ul>
+      </div>
+
     </div>
 
     <div id="main" role="main" class="container">
@@ -79,22 +77,6 @@
         } else {
           $('.nav[href="/"]').addClass('active');
         };
-
-        // $.ajax({
-        //   type : 'GET',
-        //   url : "https://www.googleapis.com/analytics/v3/data/ga?ids=ga%3A150211858&start-date=2019-02-02&end-date=2019-02-02&metrics=ga%3Asessions%2Cga%3Apageviews&dimensions=ga%3Asource%2Cga%3Akeyword&access_token=ya29.GlykBmlqN67m5LCWXl2iLkQCD545zwTMxQGgmK8dv3sSfi523heQxPtHvPSCe8H2K8Vq_j5I2O4Wph-Oq2dwyoYVBIxkO160neab22CtRGTX99uezJJ6kPG5ZmoCiQ",
-        //   //data : {"id" : id},
-        //   success : function (data) {
-        //     if (data) {
-        //         console.log(data)
-        //     }
-        //   }
-        //
-        // });
-
-
-
-
       });
 
       $(document).on('click', '.search-toggle', function() {
