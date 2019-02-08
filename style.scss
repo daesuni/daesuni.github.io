@@ -2,7 +2,13 @@
 ---
 
 @import "reset";
-@import "variables";
+
+// Mobile breakpoints
+@mixin mobile {
+  @media screen and (max-width: 640px) {
+    @content;
+  }
+}
 
 // common
 html    {  }
@@ -70,8 +76,8 @@ line-height: 2rem; }
 .gmnoprint img { max-width: none; }
 
 // Specify the color of the selection
-::-moz-selection  { color: $black; background: $lightGray; }
-::selection       { color: $black; background: $lightGray; }
+::-moz-selection  { color: #fff; background: #222; }
+::selection       { color: #fff; background: #222; }
 
 // Nicolas Gallagher's micro clearfix hack
 // http://nicolasgallagher.com/micro-clearfix-hack/
@@ -305,7 +311,7 @@ margin-top: 20px;
   margin-top: 50px;
   border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
-  background-color: $lightGray;
+  background-color: #ccc;
 }
 
 footer {
@@ -316,4 +322,3 @@ footer {
 // Settled on moving the import of syntax highlighting to the bottom of the CSS
 // ... Otherwise it really bloats up the top of the CSS file and makes it difficult to find the start
 @import "highlights";
-@import "svg-icons";
