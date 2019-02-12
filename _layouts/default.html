@@ -21,36 +21,34 @@
   </head>
 
   <body>
-    <div class="container">
-      <div class="header-wrap">
-        <!-- <a href="{{ site.baseurl }}/" class="header-title">
-          <div class="header-avatar"><img src="{{ site.avatar }}" /></div>
-          {{ site.name }}
-          <span class="header-description"> : {{ site.description }}</span>
-        </a>
 
-        <div class="spacer"></div> -->
+    <div class="header-wrap">
+      <a href="{{ site.baseurl }}/" class="header-title">
+        <div class="header-avatar"><img src="{{ site.avatar }}" /></div>
+        {{ site.name }}
+        <span class="header-description"> : {{ site.description }}</span>
+      </a>
 
-        <nav class="nav-wrap">
-          <a href="{{ site.baseurl }}/" class="nav">POSTS</a>
-          <!-- <a href="{{ site.baseurl }}/playground/" class="nav">playground</a> -->
-          <!-- <a href="{{ site.baseurl }}/works/" class="nav">works</a> -->
-          <a href="{{ site.baseurl }}/about/" class="nav">ABOUT</a>
-        </nav>
+      <div class="spacer"></div>
 
-        <div class="spacer"></div>
+      <nav class="nav-wrap">
+        <a href="{{ site.baseurl }}/" class="nav">POSTS</a>
+        <!-- <a href="{{ site.baseurl }}/playground/" class="nav">playground</a> -->
+        <!-- <a href="{{ site.baseurl }}/works/" class="nav">works</a> -->
+        <a href="{{ site.baseurl }}/about/" class="nav">ABOUT</a>
+      </nav>
 
-        <div class="search-wrap">
-          <input id="search-input" class="search-text" type="search" placeholder="검색어를 입력하세요" autocomplete="off" />
-          <div class="search-toggle"></div>
-        </div>
+      <div class="search-wrap">
+        <input id="search-input" class="search-text" type="search" placeholder="검색어를 입력하세요" autocomplete="off" />
+        <div class="search-toggle"></div>
       </div>
-
-      <div class="search-layer">
-        <ul id="search-result"></ul>
-      </div>
-
     </div>
+
+    <div class="search-layer">
+      <ul id="search-result"></ul>
+    </div>
+
+
 
     <div id="main" role="main" class="container">
       {{ content }}

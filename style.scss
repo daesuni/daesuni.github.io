@@ -12,7 +12,7 @@
 
 // common
 html    {  }
-body    { background: #fff; line-height: 1.8; font-family: 'Nunito', 'Noto Sans KR', sans-serif; color: rgba(35, 35, 35, 0.85); border-top: 2px solid #253e49; }
+body    { background: #fff; line-height: 1.8; font-family: 'Nunito', 'Noto Sans KR', sans-serif; color: rgba(35, 35, 35, 0.85); }
 input, textarea { padding: 0.5rem; border-radius: 2px;
     font-family: 'Nunito', 'Noto Sans KR', sans-serif;
     border: 1px solid #ccc; line-height: 1.8; }
@@ -160,7 +160,8 @@ content: "\e5cd"; }
 
 
 
-.header-wrap  { align-items: center; height: 55px; border-bottom: 1px solid #ccc; display: flex; margin-top: 1rem; position: relative;
+.header-wrap  { align-items: center; height: 100px; box-shadow: 0 1px 1px 0px rgba(0, 0, 0, 0.15); display: flex; position: relative; background: #fff; padding: 0 1.5rem;
+  border-top: 2px solid #253e49;
   @include mobile {  }
 }
 .header-avatar {
@@ -171,7 +172,7 @@ content: "\e5cd"; }
 .header-avatar img {
   border-radius: 2px;
 }
-.header-title { margin: 0; cursor: pointer; font-size: 24px; display: flex; align-items: center;
+.header-title { margin: 0; cursor: pointer; font-size: 24px; display: flex; align-items: center; color: #232323;
   @include mobile { margin-bottom: 15px; }
 }
 .header-title:hover { text-decoration: none; }
@@ -200,6 +201,7 @@ content: "\e5cd"; }
 .footer-wrap { padding: 100px 0 10px 0; }
 
 // main
+.post-wrap { margin: 1rem 0; }
 .post-list { border-bottom: 1px solid #ddd; align-items: center; padding: 15px 0; }
 .post-list:last-child { border-bottom: none;}
 .post { padding: 1rem 0; }
