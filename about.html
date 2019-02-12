@@ -73,34 +73,29 @@ layout: default
 
 <h3>Get in touch</h3>
 
+<p>
+	<form id="contact-form" action="https://formspree.io/eotnd2@gmail.com" method="POST">
+		<div class="contact-wrap">
+			<div class="contact-top">
+				<input type="text" name="name" placeholder="Name" required />
+				<input type="email" name="email" placeholder="Email" required />
+			</div>
+			<div class="contact-bottom">
+				<textarea name="message" placeholder="Message" required></textarea>
+			</div>
+		</div>
+		<input type="submit" value="Send it" />
+	</form>
+</p>
+
+<p>
+	You can also find me on the following channels.
+</p>
+
 <ul>
 	<li>GitHub - <a target="_blank" href="{{ site.github }}">{{ site.github }}</a></li>
 	<li>Instagram - <a target="_blank" href="{{ site.instagram }}">{{ site.instagram }}</a></li>
 	<li>Kakaotalk ID - {{ site.kakaotalk }}</li>
-	<li>
-		Email
-		<form id="contact-form" action="https://formspree.io/eotnd2@gmail.com" method="POST">
-			<div class="contact-wrap">
-				<div class="contact-left">
-					<label>
-						Name
-						<input type="text" name="name" required />
-					</label>
-					<label>
-						Email
-						<input type="email" name="email" required />
-					</label>
-				</div>
-				<div class="contact-right">
-					<label>
-						Message
-						<textarea name="message" required></textarea>
-					</label>
-				</div>
-			</div>
-			<input type="submit" value="POST" />
-		</form>
-	</li>
 </ul>
 
 <script type="text/javascript">

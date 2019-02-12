@@ -14,7 +14,7 @@
     <script src="{{ site.baseurl }}/assets/utils/simple-jekyll-search.js"></script>
 
     <link href="https://fonts.googleapis.com/css?family=Material+Icons" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,700|Noto+Sans+KR:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:400,700|Noto+Sans+KR:400,700" rel="stylesheet">
     <!-- <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/assets/utils/material-icons/material-icons.css" /> -->
     <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css" />
     <link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}" href="{{ site.baseurl }}/feed.xml" />
@@ -40,15 +40,13 @@
 
         <div class="spacer"></div>
 
-        <div class="search-toggle search-open"><i class="material-icons">search</i></div>
-
+        <div class="search-wrap">
+          <input id="search-input" class="search-text" type="search" placeholder="검색어를 입력하세요" autocomplete="off" />
+          <div class="search-toggle"></div>
+        </div>
       </div>
 
       <div class="search-layer">
-        <div class="search-wrap">
-          <input id="search-input" class="search-text" type="search" placeholder="검색어를 입력하세요" autocomplete="off" />
-          <div class="search-toggle search-close"><i class="material-icons">close</i></div>
-        </div>
         <ul id="search-result"></ul>
       </div>
 
@@ -63,10 +61,11 @@
     </div>
 
     <script type="text/javascript">
+
       var sjs = SimpleJekyllSearch({
         searchInput: document.getElementById('search-input'),
         resultsContainer: document.getElementById('search-result'),
-        noResultsText: '검색 결과가 없습니다.',
+        noResultsText: '',
         json: '/search.json',
       });
 
@@ -79,12 +78,25 @@
         };
       });
 
-      $(document).on('click', '.search-toggle', function() {
-        $('.search-layer').toggle();
-        if ($(this).hasClass('search-open')) {
+      $(window).click(function(e) {
+        if (!$(e.target).hasClass('search-toggle') && !$(e.target).hasClass('search-text')) {
+          $('.search-wrap').removeClass('opened');
+          $('.search-layer').css('display', 'none');
+          $('#search-input').val('');
+          $('#search-result').empty();
+        };
+      });
+
+      $(document).on('click', '.search-toggle', function(e) {
+        $('.search-wrap').toggleClass('opened');
+
+        if ($('.search-wrap').hasClass('opened')) {
+          $('.search-layer').css('display', 'block');
           $('#search-input').focus();
         } else {
+          $('.search-layer').css('display', 'none');
           $('#search-input').val('');
+          $('#search-result').empty();
         };
       });
 
