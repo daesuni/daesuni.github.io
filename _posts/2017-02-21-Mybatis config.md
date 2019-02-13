@@ -4,8 +4,7 @@ title: Mybatis-config.xml 설정
 category: Mybatis
 ---
 
-Spring 환경에서 mybatis를 사용할때, query 결과가 NULL이면 ""(공백)으로 받게되는데 이것을 NULL로 그대로 받고싶을 때가 있다.<br/>
-이때는 mybatis-config.xml에 설정해주면 해결할 수 있다.
+Spring 환경에서 mybatis를 사용할때, query 결과가 NULL이면 ""(공백)으로 받게되는데 이것을 NULL로 그대로 받고싶을 때가 있다. 이때는 mybatis-config.xml에 설정해주면 해결할 수 있다.
 
 1\. 우선 SqlSessionFactoryBean에 mybatis-config.xml파일을 불러올 수 있도록 맵핑해준다.
 

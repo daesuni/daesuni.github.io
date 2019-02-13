@@ -118,7 +118,7 @@ public class Broadsocket {
 </html>
 ```
 
-##### 참고
+### 참고
 
 - <http://stackoverflow.com/questions/21038100/getting-errors-in-websocket-server-endpoint>
 - <http://choiyb2.tistory.com/81>

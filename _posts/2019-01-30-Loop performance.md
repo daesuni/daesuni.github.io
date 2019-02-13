@@ -4,10 +4,9 @@ title: for, foreach, filter, map, reduce 기능 및 성능 비교
 category: Javascript/JQuery
 ---
 
-Javascript와 jQuery를 주로 쓰면서도 궁금했다.<br/>
-반복문에는 우리가 일반적으로 알고있는 for문, $.each, forEach, map, filter 등 정말 많은 종류가 있다.<br/>
-주로 하나의 메서드로 대부분 것들을 할 수 있지만, 어떨때는 each를 써야 하고 또 어떤 경우에는 filter가 좋은지를 정확히 알고 쓰지 못했다.<br/>
-이번 포스트에서 각 메서드들을 어떨때 어떻게 사용해야하는지 정리하고 성능비교도 해보자!
+Javascript와 jQuery를 주로 쓰면서도 궁금했다. 반복문에는 우리가 일반적으로 알고있는 for문, $.each, forEach, map, filter 등 정말 많은 종류가 있다.
+
+주로 하나의 메서드로 대부분 것들을 할 수 있지만, 어떨때는 each를 써야 하고 또 어떤 경우에는 filter가 좋은지를 정확히 알고 쓰지 못했고 왜 이렇게 따로따로 만들어놨을까 라는 생각도 했다. 이번 포스트에서 각 메서드들을 어떨때 어떻게 사용해야하는지 정리하고 성능비교도 해보자!
 
 ### 1. for loop
 
@@ -51,8 +50,8 @@ arr.forEach (function (v, i) {
 });
 ```
 
-위와 아래 중 어떤것이 더 눈에 들어올까? 좀더 복잡해진다면 어떨까?<br/>
-가독성이 좋다는 것은 개발에서 엄청난 차이를 가져온다. forEach는 복잡한 객체를 처리하는데 있어서 유리하다. 좀더 인간친화적인(?) 방법이라고 할 수 있다.<br/>
+위와 아래 중 어떤것이 더 눈에 들어올까? 좀더 복잡해진다면 어떨까?
+가독성이 좋다는 것은 개발에서 엄청난 차이를 가져온다. forEach는 복잡한 객체를 처리하는데 있어서 유리하다. 좀더 인간친화적인(?) 방법이라고 할 수 있다.
 
 forEach문은 구문 밖으로 return값을 받지 못한다. 아래의 예를 보자.
 
@@ -80,8 +79,7 @@ var newArr = arr.filter(function(v, i, arr) {
 });
 ```
 
-filter의 가장 큰 특징은 boolean형태의 return값을 갖는다. return값이 true일경우, 그 요소를 반환하고 false일경우, 반환하지 않는다. 기본값은 false이다.
-예를 들어보자.
+filter의 가장 큰 특징은 boolean형태의 return값을 갖는다. return값이 true일경우, 그 요소를 반환하고 false일경우, 반환하지 않는다. 기본값은 false이다. 예를 들어보자.
 
 ```javascript
 var arr = [1, 2, 3, 4, 5];
@@ -99,8 +97,7 @@ var filteredDistances = distances.filter(item => item.distance < 10000);
 console.log(filteredDistances);
 ```
 
-위의 두 가지 예를 보면 알겠지만, 깔끔하게 원하는 요소들만 필터링할 수 있는 유용한 메서드다.<br/>
-또다른 큰 특징은, 빈 요소를 반환하지 않는다는 것이다. 이것을 이용하면 유용하게 쓸 수 있다.
+위의 두 가지 예를 보면 알겠지만, 깔끔하게 원하는 요소들만 필터링할 수 있는 유용한 메서드다. 또 다른 큰 특징은, 빈 요소를 반환하지 않는다는 것이다. 이것을 이용하면 유용하게 쓸 수 있다.
 
 ```javascript
 var arr = [0, , , 1, , , , , 2, , , , 3];
