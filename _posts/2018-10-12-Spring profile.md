@@ -56,20 +56,20 @@ xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/
 
 ### 3. 사용하기
 
-##### 3-1. jsp에서 사용하기
+1\. jsp에서 사용하기
 
 ```jsp
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <script src="<spring:eval expression="@config['js.path']"/>/jquery-1.7.1.js" type="text/javascript"></script>
 ```
 
-##### 3-2. java에서 사용하기
+2\. java에서 사용하기
 
 ```java
 @Value("#{config['root.path']}") public String RootPath;
 ```
 
-##### 3-3. javascript에서 사용하기
+3\. javascript에서 사용하기
 
 ```javascript
 <c:set var="MALL_URL">
@@ -78,13 +78,13 @@ xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/
 var mall_url = '<c:out value="${MALL_URL}" />';
 ```
 
-##### 3-4. xml에서 사용하기
+4\. xml에서 사용하기
 
 ```xml
 #{config['db.sso.pw']}
 ```
 
-##### 3-5. java에서 현재 사용중인 spring profile 가져오기
+5\. java에서 현재 사용중인 spring profile 가져오기
 
 ```java
 @Autowired

@@ -18,16 +18,19 @@ input, textarea { padding: 0.5rem; border-radius: 2px;
     border: 1px solid #ccc; line-height: 1.8; }
 input[type="button"], input[type="submit"], button { background: #f1f3f5; cursor: pointer; transition: 0.15s background; }
 input[type="button"]:hover, input[type="submit"]:hover, button:hover { background: #e3e4e5; }
+table   { width: 100%; border: 1px solid #ccc; border-radius: 2px; }
+table th{ background: #f1f3f5; border-bottom: 1px solid #ccc; border-right: 1px solid #ccc; }
+table td{ padding: 0.2rem 0.5rem; border-bottom: 1px solid #ddd; border-right: 1px solid #ddd; }
 h1, h2, h3, h4, h5, h6 { margin: 1em 0 0.5rem; padding: 0; font-weight: bold; }
-h1      { font-size: 2rem; }
+h1      { font-size: 2.5rem; }
 h1 a    { color: inherit; }
-h2      { font-size: 1.8rem; }
+h2      { font-size: 2.2rem; }
 h2 a    { color: inherit; }
-h3      { font-size: 1.6rem; }
+h3      { font-size: 1.9rem; }
 h3 a    { color: inherit; }
-h4      { font-size: 1.4rem; }
+h4      { font-size: 1.6rem; }
 h4 a    { color: inherit; }
-h5      { font-size: 1.1rem; }
+h5      { font-size: 1.3rem; }
 h5 a    { color: inherit; }
 hr      { border: none; border-bottom: 1px solid #ddd; margin: 3rem 0; }
 p       { margin: 1rem 0; text-indent: 0.5rem; }
@@ -38,7 +41,7 @@ ul      { list-style-type: disc; }
 ol      { list-style-type: decimal; }
 ol ul, ul ol, ul ul, ol ol { margin: 0; }
 ul ul, ol ul { list-style-type: circle; }
-strong, b { font-weight: bold;}
+strong, b { background: #faf0e6; }
 img     { max-width: 100%; }
 blockquote { display: block; border-width: 1px 0; border-style: solid; border-color: #ddd; padding: 20px 0; margin: 20px 0; position: relative; text-align: center; }
 blockquote::before {
@@ -160,7 +163,7 @@ content: "\e5cd"; }
 
 
 
-.header-wrap  { align-items: center; height: 100px; box-shadow: 0 1px 1px 0px rgba(0, 0, 0, 0.15); display: flex; position: relative; background: #fff; padding: 0 1.5rem;
+.header-wrap  { align-items: center; height: 75px; box-shadow: 0 1px 1px 0px rgba(0, 0, 0, 0.15); display: flex; position: relative; background: #fff; padding: 0 1.5rem;
   border-top: 2px solid #253e49;
   @include mobile {  }
 }
@@ -172,14 +175,13 @@ content: "\e5cd"; }
 .header-avatar img {
   border-radius: 2px;
 }
-.header-title { margin: 0; cursor: pointer; font-size: 24px; display: flex; align-items: center; color: #232323; font-weight: bold;
-  @include mobile { margin-bottom: 15px; }
+.header-title { margin: 0; cursor: pointer; font-size: 2rem; display: flex; align-items: center; color: #232323; font-weight: bold;
+  @include mobile { }
 }
 .header-title:hover { text-decoration: none; }
 .header-description {
   margin: 8px 0 0 4px;
-  font-size: 13px;
-  font-weight: normal;
+  font-size: 0.9rem;
 }
 
 .nav-wrap { display: flex; }
