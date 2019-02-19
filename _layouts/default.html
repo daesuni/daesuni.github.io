@@ -11,7 +11,7 @@
     <script src="{{ site.baseurl }}/assets/utils/simple-jekyll-search.js"></script>
 
     <link href="https://fonts.googleapis.com/css?family=Material+Icons" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:400,700|Noto+Sans+KR:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:400,700|Noto+Sans+KR:400,700|PT+Sans:400,700" rel="stylesheet">
     <!-- <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/assets/utils/material-icons/material-icons.css" /> -->
     <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css" />
     <link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}" href="{{ site.baseurl }}/feed.xml" />
@@ -19,25 +19,24 @@
 
   <body>
 
-    <div class="header-wrap">
-      <div class="header-avatar"><img src="{{ site.avatar }}" /></div>
-      <a href="{{ site.baseurl }}/" class="header-title">{{ site.name }}</a>
-      <span class="header-description"> : {{ site.description }}</span>
-
+    <div class="header-wrap container">
+      <a href="{{ site.baseurl }}/" class="header-title">
+        <div class="header-title-left">S<span class="fade">LOW</span></div>
+        n
+        <div class="header-title-right">S<span class="fade">TEADY</span></div>
+      </a>
       <div class="spacer"></div>
-
+      <nav class="nav-wrap">
+        <a href="{{ site.baseurl }}/" class="nav">Posts</a>
+        <!-- <a href="{{ site.baseurl }}/playground/" class="nav">playground</a> -->
+        <!-- <a href="{{ site.baseurl }}/works/" class="nav">works</a> -->
+        <a href="{{ site.baseurl }}/about/" class="nav">About</a>
+      </nav>
       <div class="search-wrap">
         <input id="search-input" class="search-text" type="search" placeholder="검색어를 입력하세요" autocomplete="off" />
         <div class="search-toggle"></div>
       </div>
     </div>
-
-    <nav class="nav-wrap">
-      <a href="{{ site.baseurl }}/" class="nav">Posts</a>
-      <!-- <a href="{{ site.baseurl }}/playground/" class="nav">playground</a> -->
-      <!-- <a href="{{ site.baseurl }}/works/" class="nav">works</a> -->
-      <a href="{{ site.baseurl }}/about/" class="nav">About</a>
-    </nav>
 
     <div class="search-layer">
       <ul id="search-result"></ul>
@@ -45,10 +44,6 @@
 
     <div id="main" role="main" class="container">
       {{ content }}
-    </div>
-
-    <div class="footer-wrap">
-
     </div>
 
     <script type="text/javascript">
@@ -90,7 +85,6 @@
           $('#search-result').empty();
         };
       });
-
     </script>
   </body>
 </html>
