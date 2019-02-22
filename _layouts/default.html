@@ -16,39 +16,37 @@
     <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css" />
     <link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}" href="{{ site.baseurl }}/feed.xml" />
   </head>
-
   <body>
 
-    <div class="header-wrap">
-      <div class="container">
+    <div class="container">
+      <div class="header-wrap" role="header">
         <img class="header-logo" src="{{ site.baseurl }}/images/logo.png" alt="">
         <a href="{{ site.baseurl }}/" class="header-title">
           <div class="header-title-left">S<span class="sub">LOW</span></div>
           n
           <div class="header-title-right">S<span class="sub">TEADY</span></div>
         </a>
+
         <div class="search-wrap">
           <input id="search-input" class="search-text" type="search" placeholder="검색어를 입력하세요" autocomplete="off" />
           <div class="search-toggle"></div>
         </div>
+
+        <nav class="nav-wrap">
+          <a href="{{ site.baseurl }}/" class="nav">Posts</a>
+          <!-- <a href="{{ site.baseurl }}/playground/" class="nav">playground</a> -->
+          <!-- <a href="{{ site.baseurl }}/works/" class="nav">works</a> -->
+          <a href="{{ site.baseurl }}/about/" class="nav">About</a>
+        </nav>
       </div>
-    </div>
 
-    <nav class="nav-wrap">
-      <a href="{{ site.baseurl }}/" class="nav">Posts</a>
-      <!-- <a href="{{ site.baseurl }}/playground/" class="nav">playground</a> -->
-      <!-- <a href="{{ site.baseurl }}/works/" class="nav">works</a> -->
-      <a href="{{ site.baseurl }}/about/" class="nav">About</a>
-    </nav>
+      <div class="search-layer">
+        <ul id="search-result"></ul>
+      </div>
 
-
-
-    <div class="search-layer">
-      <ul id="search-result"></ul>
-    </div>
-
-    <div id="main" role="main" class="container">
-      {{ content }}
+      <div class="main-wrap" role="main">
+        {{ content }}
+      </div>
     </div>
 
     <script type="text/javascript">
