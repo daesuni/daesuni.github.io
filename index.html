@@ -2,6 +2,17 @@
 layout: default
 ---
 
+<h1 class="main-title">
+  Posts
+  <div class="search-wrap">
+    <input id="search-input" class="search-text" type="search" placeholder="검색어를 입력하세요" autocomplete="off" />
+    <div class="search-toggle"></div>
+  </div>
+  <div class="search-layer">
+    <ul id="search-result"></ul>
+  </div>
+</h1>
+
 <div class="post-wrap">
   {% for post in paginator.posts %}
     <article class="post-list">
