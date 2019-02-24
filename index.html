@@ -2,18 +2,6 @@
 layout: default
 ---
 
-<h3 class="main-title">
-  Posts
-  <div class="spacer"></div>
-  <div class="search-wrap">
-    <div class="search-toggle"></div>
-    <input id="search-input" class="search-text" type="search" placeholder="검색어를 입력하세요" autocomplete="off" />
-  </div>
-  <div class="search-layer">
-    <ul id="search-result"></ul>
-  </div>
-</h3>
-
 <div class="post-wrap">
   {% for post in paginator.posts %}
     <article class="post-list">
@@ -36,9 +24,9 @@ layout: default
 {% if paginator.total_pages > 1 %}
 <ul class="pagination">
   {% if paginator.previous_page %}
-    <li><a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&laquo; Prev</a></li>
+    <li><a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&laquo;</a></li>
   {% else %}
-    <li><span class="disabled">&laquo; Prev</span></li>
+    <li><span class="disabled">&laquo;</span></li>
   {% endif %}
 
   {% for page in (1..paginator.total_pages) %}
@@ -52,9 +40,9 @@ layout: default
   {% endfor %}
 
   {% if paginator.next_page %}
-    <li><a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Next &raquo;</a></li>
+    <li><a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">&raquo;</a></li>
   {% else %}
-    <li><span class="disabled">Next &raquo;</span></li>
+    <li><span class="disabled">&raquo;</span></li>
   {% endif %}
 </ul>
 {% endif %}

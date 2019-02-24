@@ -11,43 +11,49 @@
     <script src="{{ site.baseurl }}/assets/utils/simple-jekyll-search.js"></script>
 
     <link href="https://fonts.googleapis.com/css?family=Material+Icons" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:400,700|Noto+Sans+KR:400,700|PT+Sans:400,700" rel="stylesheet">
-    <!-- <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/assets/utils/material-icons/material-icons.css" /> -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,700|Noto+Sans+KR:300,400,700|Raleway:400,700" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/assets/utils/fontawesome-free-5.7.2-web/css/all.min.css" />
     <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css" />
     <link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}" href="{{ site.baseurl }}/feed.xml" />
   </head>
   <body>
 
-    <div class="container">
+    <div class="header-wrap" role="header">
+      <div class="container">
+        <a href="{{ site.baseurl }}/" class="header-title">
+          <div class="header-title-left">S<span class="sub">LOW</span></div>
+          and
+          <div class="header-title-right">S<span class="sub">TEADY</span></div>
+        </a>
+      </div>
+    </div>
 
-      <div class="container-left">
-        <div class="header-wrap" role="header">
-          <a href="{{ site.baseurl }}/" class="header-title">
-            <div class="header-title-left">S<span class="sub">LOW</span></div>
-            and
-            <div class="header-title-right">S<span class="sub">TEADY</span></div>
-          </a>
-
-          <nav class="nav-wrap">
-            <a href="{{ site.baseurl }}/" class="nav">Posts</a>
-            <!-- <a href="{{ site.baseurl }}/playground/" class="nav">playground</a> -->
-            <!-- <a href="{{ site.baseurl }}/works/" class="nav">works</a> -->
-            <a href="{{ site.baseurl }}/about/" class="nav">About</a>
-          </nav>
-
-          <div class="spacer"></div>
-
-          <div class="footer-wrap">
-            Powered by GitHub Pages & Jekyll
-            <div id="heart"></div>
-          </div>
+    <nav class="nav-wrap">
+      <div class="container">
+        <a href="{{ site.baseurl }}/" class="nav">Posts</a>
+        <!-- <a href="{{ site.baseurl }}/playground/" class="nav">playground</a> -->
+        <!-- <a href="{{ site.baseurl }}/works/" class="nav">works</a> -->
+        <a href="{{ site.baseurl }}/about/" class="nav">About</a>
+        <div class="spacer"></div>
+        <div class="search-wrap">
+          <div class="search-toggle"></div>
+          <input id="search-input" class="search-text" type="search" placeholder="검색어를 입력하세요" autocomplete="off" />
         </div>
       </div>
+    </nav>
 
-      <div class="container-right">
-        <div class="main-wrap" role="main">
-          {{ content }}
-        </div>
+    <!--
+    <div class="search-layer">
+      <ul id="search-result"></ul>
+    </div> -->
+
+    <div class="main-wrap container" role="main">
+      {{ content }}
+    </div>
+
+    <div class="footer-wrap">
+      <div class="container">
+        Powered by GitHub Pages & Jekyll<i id="heart" class="fas fa-heart"></i>
       </div>
     </div>
 
