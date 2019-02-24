@@ -153,7 +153,7 @@ var newArr = arr.reduce(function(acc, v, i, arr) {
 
 reduce의 가장 큰 특징으로는 첫번째 인자인 accumulator 이다. accumulator 는 return값을 누적하는데, 계속해서 전달받아서 사용할 수도 있다.
 
-두번째 특징은 accumulator의 초기값을 설정할 수 있다는 점이다. optional하며 생력시에는 첫번째 return값이 된다. 아래 예시를 보자.
+두번째 특징은 accumulator의 초기값을 설정할 수 있다는 점이다. optional하며 생략시에는 첫번째 return값이 된다. 아래 예시를 보자.
 
 ```javascript
 var arr = [1,2,3,4,5]
