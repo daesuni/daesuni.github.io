@@ -28,32 +28,24 @@
       </div>
     </div>
 
-    <nav class="nav-wrap">
+    <nav class="nav-wrap" role="nav">
       <div class="container">
         <a href="{{ site.baseurl }}/" class="nav">Posts</a>
         <!-- <a href="{{ site.baseurl }}/playground/" class="nav">playground</a> -->
         <!-- <a href="{{ site.baseurl }}/works/" class="nav">works</a> -->
         <a href="{{ site.baseurl }}/about/" class="nav">About</a>
-        <div class="spacer"></div>
+
         <div class="search-wrap">
           <div class="search-toggle"></div>
           <input id="search-input" class="search-text" type="search" placeholder="검색어를 입력하세요" autocomplete="off" />
         </div>
+        <ul id="search-result"></ul>
       </div>
     </nav>
 
-    <!--
-    <div class="search-layer">
-      <ul id="search-result"></ul>
-    </div> -->
-
-    <div class="main-wrap container" role="main">
-      {{ content }}
-    </div>
-
-    <div class="footer-wrap">
+    <div class="main-wrap" role="main">
       <div class="container">
-        Powered by GitHub Pages & Jekyll<i id="heart" class="fas fa-heart"></i>
+        {{ content }}
       </div>
     </div>
 

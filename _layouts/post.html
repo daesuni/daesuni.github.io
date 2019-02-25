@@ -3,25 +3,22 @@ layout: default
 ---
 
 <article class="post">
-
   <h1 class="post-title">{{ page.title }}</h1>
-
   <div class="post-info">
     <span class="post-category">{{ page.category }}</span>
     <span class="post-info-sep">|</span>
     <span class="post-date">{{ page.date | date: "%B %d, %Y" }}</span>
   </div>
-
   <hr>
-
   <div class="post-entry">
     {{ content }}
   </div>
-
   <!-- <div class="date">
     Written on {{ page.date | date: "%B %e, %Y" }}
   </div> -->
-
   {% include disqus.html %}
-
 </article>
+
+<script>
+  $('.header-wrap, .nav-wrap').hide();
+</script>
