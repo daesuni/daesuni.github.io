@@ -8,7 +8,7 @@ Jquery에서 이벤트를 처리할때 크게 두가지 방법이 있다. 클릭
 
 ### 1. click(); vs trigger('click');
 
-`click();`의 Jquery의 내부 소스코드를 보면 다음과 같다. (<a target="_blank" href="https://j11y.io/jquery/#v=1.11.2&fn=$.fn.click">jQuery 1.11.2</a> 기준)
+`click();`의 Jquery의 내부 소스코드를 보면 다음과 같다. (<a href="https://j11y.io/jquery/#v=1.11.2&fn=$.fn.click">jQuery 1.11.2</a> 기준)
 
 ```javascript
 function (data, fn) {
@@ -23,7 +23,7 @@ function (data, fn) {
 둘의 퍼포먼스 테스트 결과는?
 
 ![clicktrigger]({{"/images/posts/clicktrigger.png"| relative_url}})
-*<a target="_blank" href="https://jsperf.com/eventtest13412">https://jsperf.com/eventtest13412</a>*
+*<a href="https://jsperf.com/eventtest13412">https://jsperf.com/eventtest13412</a>*
 
 ### 3. 결론
 

@@ -75,6 +75,26 @@
         };
       });
 
+      $(window).click(function(e) {
+        if (!$(e.target).hasClass('search-toggle') && !$(e.target).hasClass('search-text')) {
+          $('.search-wrap').removeClass('opened');
+          $('.search-layer').css('display', 'none');
+          $('#search-input').val('');
+          $('#search-result').empty();
+        };
+      });
+      $(document).on('click', '.search-toggle', function(e) {
+        $('.search-wrap').toggleClass('opened');
+        if ($('.search-wrap').hasClass('opened')) {
+          $('.search-layer').css('display', 'block');
+          $('#search-input').focus();
+        } else {
+          $('.search-layer').css('display', 'none');
+          $('#search-input').val('');
+          $('#search-result').empty();
+        };
+      });
+
     </script>
   </body>
 </html>

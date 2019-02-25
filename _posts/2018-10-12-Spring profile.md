@@ -10,7 +10,7 @@ Spring 프레임워크로 개발하다 보면 로컬환경, 개발환경, 운영
 
 ### 1. Spring profile이란?
 
-<a target="_blank" href="https://spring.io/understanding/profiles">스프링 공식 홈페이지</a>를 참고하자면, 다음과 같다.<br/>
+<a href="https://spring.io/understanding/profiles">스프링 공식 홈페이지</a>를 참고하자면, 다음과 같다.<br/>
 A Spring ApplicationContext can run in different profiles, defined by the user. You can use profiles to control the contents of the application depending on the environment, for instance to run a different set of beans in a test, or in a cloud platform.
 
 - 애플리케이션을 각개 다른 환경으로 세팅할 수 있고 원하는 환경으로 선택해서 실행할 수 있는 기능

@@ -14,13 +14,13 @@ Github은 가입되어 있다고 가정하고 진행한다.
 
 Windows에서 github을 이용하기 위해서는 git이 설치되어야 한다. 아래 링크를 클릭하면 자동으로 다운받을 수 있다. 별다른 주의사항은 없고 그냥 설치하면 된다.
 
-<a target="_blank" href="https://git-scm.com/download/win">https://git-scm.com/download/win</a>
+<a href="https://git-scm.com/download/win">https://git-scm.com/download/win</a>
 
 ### 2. Ruby 설치하기
 
 Ruby는 인터프리터 형식으로 실행되는 고기능 스크립트 언어이자 뛰어난 객체 지향적 언어이다. Jekyll은 Ruby기반이기 때문에 jekyll에 앞서 윈도우에 Ruby를 설치한다.
 
-<a target="_blank" href="https://rubyinstaller.org/downloads/">https://rubyinstaller.org/downloads/</a>
+<a href="https://rubyinstaller.org/downloads/">https://rubyinstaller.org/downloads/</a>
 
 위 링크로 들어가보면, 다운로드 링크가 여러개 있는데 우리는 DEVKIT도 필요하므로 WITH DEVKIT 목록에서 자신의 윈도우 환경에 맞는 버전을 다운받는다. (본인은 Ruby+Devkit 2.5.3-1 (x64)로 진행함)
 
@@ -44,7 +44,7 @@ gem install tzinfo-data
 
 ### 4. Git repository 생성하기
 
-자신의 github repository에 새로운 repository를 만든다. 이때 주의할점은 repository명은 반드시 username.github.io로 만들어야 한다는 것! (깃헙의 username) 그래야만 gitpage를 구성해준다. 추가 설명은 github 공식 사이트 <a target="_blank" href="https://pages.github.com/">https://pages.github.com//</a> 를 참고한다.
+자신의 github repository에 새로운 repository를 만든다. 이때 주의할점은 repository명은 반드시 username.github.io로 만들어야 한다는 것! (깃헙의 username) 그래야만 gitpage를 구성해준다. 추가 설명은 github 공식 사이트 <a href="https://pages.github.com/">https://pages.github.com//</a> 를 참고한다.
 
 ### 5. 개발환경
 
