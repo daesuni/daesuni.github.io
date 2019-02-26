@@ -72,7 +72,7 @@ public class Broadsocket {
 
 3\. broadcast.jsp 생성
 
-```markup
+```html
 <!DOCTYPE html>
 <html>
 <head>
