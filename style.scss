@@ -112,8 +112,8 @@ blockquote::before {
 // background: #224b8a; color: #fff;
 }
 .nav-wrap > .container { display: flex; align-items: center; justify-content: center; height: 100%; }
-.nav { padding: 0 10px; color: inherit; text-transform: uppercase; font-size: 0.9rem; }
-.nav.active { font-weight: normal; -webkit-transition: -webkit-box-shadow .2s; transition: -webkit-box-shadow .2s; transition: box-shadow .2s; transition: box-shadow .2s,-webkit-box-shadow .2s; -webkit-box-shadow: 0 -0.2em #ff9797 inset, 0 -2em transparent inset; box-shadow: 0 -0.2em #ff9797 inset, 0 -2em transparent inset; }
+.nav { padding: 0 10px; color: inherit; text-transform: uppercase; font-size: 0.9rem; height: 38px; line-height: 36px; }
+.nav.active { font-weight: normal; border-bottom: 2px solid #3066bb; position: relative; bottom: -1px; }
 
 .main-wrap   { }
 .main-wrap > .container { padding-bottom: 50px; }
@@ -186,9 +186,10 @@ z-index: 1;
   font-size: 0.9rem;
   cursor: default;
   display: block;
+  font-weight: normal;
 }
 #search-result li a:hover {
-  background: red;
+  background: rgba(46, 99, 181, 0.15);
 }
 #search-result li:first-child a { margin-top: 0.5em; }
 #search-result li:last-child a { margin-bottom: 0.5em; }
