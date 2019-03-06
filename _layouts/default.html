@@ -30,8 +30,13 @@
 
     <nav class="nav-wrap" role="nav">
       <div class="container">
+
+        <a href="{{ site.baseurl }}/" class="post-backspace">
+          <i class="fas fa-home"></i>
+        </a>
+
         <a href="{{ site.baseurl }}/" class="nav">Posts</a>
-        <!-- <a href="{{ site.baseurl }}/playground/" class="nav">playground</a> -->
+        <a href="{{ site.baseurl }}/playground/" class="nav">playground</a>
         <!-- <a href="{{ site.baseurl }}/works/" class="nav">works</a> -->
         <a href="{{ site.baseurl }}/about/" class="nav">About</a>
 
@@ -52,6 +57,7 @@
     <script type="text/javascript">
 
       var sjs = SimpleJekyllSearch({
+        searchResultTemplate: '<li><a href="{{ site.url }}{url}"><span class="search-category">[{category}]</span>{title}<span class="spacer"></span><span class="search-date">{date}</span></a></li>',
         searchInput: document.getElementById('search-input'),
         resultsContainer: document.getElementById('search-result'),
         noResultsText: '',
@@ -63,7 +69,7 @@
         if ($nav.length > 0) {
           $nav.addClass('active');
         } else {
-          $('.nav[href="/"]').addClass('active');
+          //$('.nav[href="/"]').addClass('active');
         };
       });
 
