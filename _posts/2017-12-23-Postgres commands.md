@@ -1,8 +1,14 @@
 ---
 layout: post
-title: Postgres 데이터베이스 만들기, 권한부여
+title: Postgres 명령 정리
 category: Postgres
 ---
+
+- <span class="accent">pg_ctl stop -m fast</span> - Postgres 종료
+- <span class="accent">pg_ctl start</span> - Postgres 시작
+
+
+### Postgres 데이터베이스 생성 방법
 
 -	192.168.x.xxx ssh 접속
 -	su – postgres
