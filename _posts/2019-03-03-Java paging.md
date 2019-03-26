@@ -227,7 +227,11 @@ Integer end = paging.getEndSeq();
 
 시작 글 번호와 끝 글 번호를 구해서 sql문의 where조건에 걸어주어도 되고, 경우에 따라 offset을 이용할 수도 있다.
 
-### 2. Javascript/Jquery front-paging
+### 2. Javascript/Jquery front-paging - 1
+
+프론트 페이징에는 자주 사용하는 방식 2가지가 있다. 첫번째는 다음 그림과 같은 페이징 방식이다.
+
+![pagination1]({{"/images/posts/paging-1.png"| relative_url}})
 
 ```html
 <div id="paging"></div>
@@ -289,6 +293,61 @@ function paging(page) {
 $('document').ready(function(){
   paging(1);
 });
+```
+
+### 2. Javascript/Jquery front-paging - 2
+
+두번째 방식은 직접 페이지를 입력해서 이동하는 방식이다.
+
+![pagination1]({{"/images/posts/paging-2.png"| relative_url}})
+
+아래 소스를 응용하면 된다.
+
+```javascript
+function paging(page, pageSize, totalCount) {
+
+  if (!totalCount) return false;
+  if (!page) page = 1;
+  if (!pageSize) pageSize = 100;
+
+  page = parseInt(page);
+  pageSize = parseInt(pageSize);
+  totalCount = parseInt(totalCount);
+
+  var firstPage = 1;
+  var finalPage = null;
+  var prevPage = null;
+  var nextPage = null;
+  var isNowFirst = false;
+  var isNowFinal = false;
+
+  finalPage = Math.ceil(totalCount / pageSize);
+  if (page > finalPage) page = finalPage;
+  if (page < 0 || page > finalPage) page = 1;
+
+  isNowFirst = page == 1 ? true : false;
+  isNowFinal = page == finalPage ? true : false;
+
+  if (isNowFirst) {
+    prevPage = 1;
+  } else {
+    prevPage = (page - 1) < 1 ? 1 : (page - 1);
+  };
+
+  if (isNowFinal) {
+  	nextPage = finalPage;
+  } else {
+      nextPage = (page + 1) > finalPage ? finalPage : (page + 1);
+  };
+
+  console.log('first: ' + firstPage);
+  console.log('prev: ' + prevPage);
+  console.log('next: ' + nextPage);
+  console.log('final: ' + finalPage);
+  console.log('current: ' + page);
+  console.log('total: ' + finalPage);
+
+};
 ```
 
 ##### 참고
