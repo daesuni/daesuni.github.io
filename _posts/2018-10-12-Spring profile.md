@@ -87,8 +87,6 @@ var mall_url = '<c:out value="${MALL_URL}" />';
 5\. java에서 현재 사용중인 spring profile 가져오기
 
 ```java
-@Autowired
-Environment environment;
-String profile = environment.getActiveProfiles()[0];
-servletContextEvent.getServletContext().getInitParameter("spring.profiles.active"));
+// httpServletRequset를 사용한다.
+request.getServletContext().getInitParameter("spring.profiles.active"));
 ```
