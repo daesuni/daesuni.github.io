@@ -36,7 +36,7 @@ result
 Ramesh,Khilan,kaushik,Chaitali,Hardik,Komal,Muffy
 ```
 
-### 3. similar to
+### 3. similar to (multiple like 검색)
 
 특정 키워드를 포함하는 검색을 할때 보통 like '%키워드%' 를 사용한다. 하지만 여러가지 키워드를 한꺼번에 할 수 없다. similar to문은 여러 키워드에 대해 like검색을 할 때 사용한다.
 
