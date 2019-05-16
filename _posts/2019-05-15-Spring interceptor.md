@@ -33,7 +33,7 @@ $(document).ajaxSend(function(event, request, settings) {
 
 // ajax 에러처리
 $(document).ajaxError(function(event, request, settings, thrownError) {
-  if (request.status == 401 || request.status == 0) {
+  if (request.status == -1) {
     alert('세션이 종료 되었습니다. 다시 로그인 해주세요.');
     location.href = contextPath + '/login.jsp';
   } else {
@@ -79,7 +79,7 @@ public class LoggerInterceptor extends HandlerInterceptorAdapter {
         try {
         	if (usr_id == null || usr_id.equals("")) {
                 if (isAjaxRequest(request)){
-                    response.sendError(401);
+                    response.sendError(-1);
                     return false;
                 } else {
                     response.sendRedirect(webRoot + "/login.jsp");
@@ -118,7 +118,7 @@ preHandler는 요청이 서버에 가기 전에, postHandler는 서버에서 응
 
 preHandler에는 세션에서 유저 아이디를 체크해서 유효하면 true를 반환한다.
 
-유효하지 않으면 false를 반환하게 된다. 세션의 유저 아이디가 없으면 `isAjaxRequest(request)` 에서 헤더를 검사한다. 만약 ajax 요청이라면 위에서 헤더에 `'AJAX': true` 를 삽입하도록 구현했으므로 응답에 401에러를 함께 보내고, ajax 요청이 아니라면 login.jsp 페이지로 redirect하게 된다.
+유효하지 않으면 false를 반환하게 된다. 세션의 유저 아이디가 없으면 `isAjaxRequest(request)` 에서 헤더를 검사한다. 만약 ajax 요청이라면 위에서 헤더에 `'AJAX': true` 를 삽입하도록 구현했으므로 응답에 -1에러를 함께 보내고, ajax 요청이 아니라면 login.jsp 페이지로 redirect하게 된다.
 
 ### 5. Dispatcher servlet 에 등록하기
 
