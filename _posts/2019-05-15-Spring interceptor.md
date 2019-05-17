@@ -33,7 +33,7 @@ $(document).ajaxSend(function(event, request, settings) {
 
 // ajax 에러처리
 $(document).ajaxError(function(event, request, settings, thrownError) {
-  if (request.status == -1) {
+  if (request.status == -1 || request.status == 0) {
     alert('세션이 종료 되었습니다. 다시 로그인 해주세요.');
     location.href = contextPath + '/login.jsp';
   } else {
