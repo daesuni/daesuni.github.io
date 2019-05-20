@@ -38,3 +38,36 @@ SELECT
 FROM
 	table
 ```
+
+### 4. 특정 컬럼으로 중복 제거
+
+```sql
+SELECT DISTINCT ON (name)
+	name,
+	adress
+FROM
+	table
+```
+
+### 5. Paging 처리하기
+
+```sql
+SELECT
+	row_number() OVER () AS i,
+	name
+FROM
+	table
+OFFSET
+	pageNum
+LIMIT
+	pageSize
+```
+
+### 6. Case when then else 문
+
+```sql
+SELECT
+	CASE WHEN name = '김XX' then 1 ELSE 0 END as code
+FROM
+	table
+```
