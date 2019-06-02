@@ -81,6 +81,7 @@
           $('#search-result').empty();
         };
       });
+
       $(document).on('click', '.search-toggle', function(e) {
         $('.search-wrap').toggleClass('opened');
         if ($('.search-wrap').hasClass('opened')) {
@@ -92,6 +93,20 @@
           $('#search-result').empty();
         };
       });
+
+      // $(document).on('keydown', '#search-input', function(e) {
+      //   if ($('.search-wrap').hasClass('opened')) {
+      //     var key = e.keyCode;
+      //     var $selected = $('#search-result > li.selected');
+      //     if (key == 38) {
+      //       if ($selected.length > 0) {
+      //
+      //       }
+      //     } else if (key == 40) {
+      //
+      //     }
+      //   };
+      // });
 
     </script>
   </body>
