@@ -36,7 +36,7 @@
         </a>
 
         <a href="{{ site.baseurl }}/" class="nav">Posts</a>
-        <a href="{{ site.baseurl }}/playground/" class="nav">playground</a>
+        <a href="{{ site.baseurl }}/play/" class="nav">play</a>
         <!-- <a href="{{ site.baseurl }}/works/" class="nav">works</a> -->
         <a href="{{ site.baseurl }}/about/" class="nav">About</a>
 
@@ -57,7 +57,7 @@
     <script type="text/javascript">
 
       var sjs = SimpleJekyllSearch({
-        searchResultTemplate: '<li><a href="{{ site.url }}{url}"><span class="search-category">[{category}]</span>{title}<span class="spacer"></span><span class="search-date">{date}</span></a></li>',
+        searchResultTemplate: '<li class="search-list"><a href="{{ site.url }}{url}"><span class="search-category">[{category}]</span>{title}<span class="spacer"></span><span class="search-date">{date}</span></a></li>',
         searchInput: document.getElementById('search-input'),
         resultsContainer: document.getElementById('search-result'),
         noResultsText: '',
@@ -65,7 +65,8 @@
       });
 
       $(document).ready(function() {
-        var $nav = $('.nav[href="' + location.pathname + '"]');
+        var path = location.pathname.startsWith('/page') ? '/' : location.pathname;
+        var $nav = $('.nav[href="' + path + '"]');
         if ($nav.length > 0) {
           $nav.addClass('active');
         } else {
@@ -94,19 +95,41 @@
         };
       });
 
-      // $(document).on('keydown', '#search-input', function(e) {
-      //   if ($('.search-wrap').hasClass('opened')) {
-      //     var key = e.keyCode;
-      //     var $selected = $('#search-result > li.selected');
-      //     if (key == 38) {
-      //       if ($selected.length > 0) {
-      //
-      //       }
-      //     } else if (key == 40) {
-      //
-      //     }
-      //   };
-      // });
+      $(document).on('mouseenter', '.search-list', function(e) {
+        var $this = $(this);
+        if (!$this.hasClass('selected')) {
+          $('.search-list').removeClass('selected');
+          $this.addClass('selected');
+        };
+      });
+
+      $(document).on('mouseleave', '.search-list', function(e) {
+        $('.search-list').removeClass('selected');
+      });
+
+      $(document).on('keydown', '#search-input', function(e) {
+        var keyCode = e.keyCode;
+        if ($('.search-wrap').hasClass('opened')) {
+          var $selected = $('.search-list.selected');
+          if (keyCode == 38) { // up
+            if ($selected.length > 0) {
+              $('.search-list').removeClass('selected');
+              $selected.prev().addClass('selected');
+            } else {
+              $('.search-list').last().addClass('selected');
+            };
+          } else if (keyCode == 40) { // down
+            if ($selected.length > 0) {
+              $('.search-list').removeClass('selected');
+              $selected.next().addClass('selected');
+            } else {
+              $('.search-list').first().addClass('selected');
+            };
+          } else if (keyCode == 13) {
+            window.location.href = $('a', $selected).attr('href');
+          };
+        };
+      });
 
     </script>
   </body>
