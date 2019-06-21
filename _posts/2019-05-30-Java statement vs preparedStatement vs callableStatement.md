@@ -2,6 +2,11 @@
 layout: post
 title: Java statement vs preparedStatement vs callableStatement 비교
 category: Java
+keywords:
+  - java
+  - statement
+  - prepared statement
+  - callable statement
 ---
 
 Java에서 JDBC를 이용하여 DB에 접속 하고자 할때 JDBC API는 3종류의 인터페이스를 제공한다.

@@ -2,6 +2,11 @@
 layout: post
 title: Linux/리눅스 자주 쓰는 명령어 정리
 category: Linux
+keywords:
+  - 리눅스
+  - linux
+  - 명령어
+  - command
 ---
 
 실무에서 자주 쓰는 Linux/리눅스 명령어를 설명과 함께 정리한다. 리눅스에는 명령어와 옵션이 이것말고도 아주 많이 있지만, 내 기준으로 주로 사용하는 명령어를 기준으로 꾸준히 업데이트 한다.

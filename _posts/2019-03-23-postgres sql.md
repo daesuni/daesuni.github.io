@@ -2,6 +2,11 @@
 layout: post
 title: Postgres 자주쓰는 쿼리 모음
 category: Postgres
+keywords:
+  - postgres
+  - sql
+  - 쿼리
+  - query
 ---
 
 ### 1. SELECT 결과 컬럼을 하나의 스트링으로 가져오기

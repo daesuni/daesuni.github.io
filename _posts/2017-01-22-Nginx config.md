@@ -2,6 +2,10 @@
 layout: post
 title: Nginx config 설정
 category: Nginx
+keywords:
+  - nginx
+  - config
+  - 설정
 ---
 
 ### Nginx란?

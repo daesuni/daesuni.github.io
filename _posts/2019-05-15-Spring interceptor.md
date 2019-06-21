@@ -2,6 +2,12 @@
 layout: post
 title: Spring Interceptor/스프링 인터셉터를 이용한 세션관리
 category: Spring
+keywords:
+  - spring
+  - 스프링
+  - interceptor
+  - 인터셉터
+  - 세션관리
 ---
 
 어떤 웹 프로젝트를 진행하건 로그인 기능은 거의 필수로 적용된다. 세션 역시 유효시간을 설정하게 되며 만료된 세션으로는 웹서비스에 접근할 수 없어야 한다. 개발을 시작했을때, 세션체크를 위해 모든 서버로직에 같은 코드를 복사했던게 생각난다. 나와같은 실수를 하는 사람은 없겠지만 혹시모를 누군가를 위해 이번 포스트에서는 Spring framework 기반으로 웹 프로젝트를 진행할때, Spring Interceptor를 이용한 세션/로그인 관리방법에 대해서 알아본다.

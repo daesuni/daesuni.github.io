@@ -2,6 +2,9 @@
 layout: post
 title: Postgres 명령 정리
 category: Postgres
+keywords:
+  - postgres
+  - pgsql
 ---
 
 - <span class="accent">pg_ctl stop -m fast</span> - Postgres 종료

@@ -2,6 +2,10 @@
 layout: post
 title: Javascript/JQuery 시간을 몇분전, 몇시간 전으로 표시하기
 category: Javascript/JQuery
+keywords:
+  - javascript
+  - jQuery
+  - 작성시간
 ---
 
 ```javascript

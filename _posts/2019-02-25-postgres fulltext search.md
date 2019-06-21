@@ -2,6 +2,11 @@
 layout: post
 title: Postgres를 이용한 full-text search
 category: Postgres
+keywords:
+  - postgres
+  - full text
+  - seach
+  - stemming
 ---
 
 검색을 구현할 때는 RDBMS보다는 몽고DB같은 NoSQL이나 Solar같은 검색엔진을 사용한다.

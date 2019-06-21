@@ -2,6 +2,11 @@
 layout: post
 title: Java paging & Javascript paging
 category: Java
+keywords:
+  - java
+  - javascript
+  - paging
+  - 페이징
 ---
 
 대용량 데이터 처리에 있어서 페이징처리는 중요하다. 브라우저가 담을 수 있는 데이터는 한계가 있고, 서버가 데이터를 가져오는 속도의 한계 때문이다. 대용량일지라도 페이징처리를 하면 front는 물론 back에서도 처리속도와 처리용량에 큰 이득을 볼 수 있다. 페이징 처리에는 front에서 또는 back에서 처리가 가능한데, 두 경우에 특징이 명확하다.

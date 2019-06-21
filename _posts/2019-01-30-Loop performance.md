@@ -2,6 +2,14 @@
 layout: post
 title: for, foreach, filter, map, reduce 기능 및 성능 비교
 category: Javascript/JQuery
+keywords:
+  - javascript
+  - jQuery
+  - for
+  - for each
+  - map
+  - reduce
+  - filter
 ---
 
 Javascript와 jQuery를 주로 쓰면서도 궁금했다. 반복문에는 우리가 일반적으로 알고있는 for문, $.each, forEach, map, filter 등 정말 많은 종류가 있다.

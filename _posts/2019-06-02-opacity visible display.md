@@ -2,6 +2,11 @@
 layout: post
 title: CSS opacity, visibility, display 의 차이점
 category: CSS
+keywords:
+  - css
+  - opacity
+  - visibility
+  - display
 ---
 
 CSS style 에서 opacity, visibility, display 차이점을 정확히 알고 싶었다. 3가지 속성 모두 숨기기/보이기로 대충 알고있었는데, 이번기회에 정확하게 정리해 보자.

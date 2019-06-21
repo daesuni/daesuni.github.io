@@ -2,6 +2,11 @@
 layout: post
 title: Windows에서 Jekyll + Github 이용해서 개인 블로그 만들기
 category: Jekyll
+keywords:
+  - jekyll
+  - github
+  - profile
+  - blog
 ---
 
 개발하면서 기억해야될 것들이나, 나중에 또 쓸거같은것들을 메모장이나 즐겨찾기에 관리하기에는 뭔가 너저분하고.. 기존 포털 블로그를 이용하기에는 잡다한기능이 너무 많고 커스터마이징이 힘들어서 고민을 하던중 jekyll + github 조합이 딱이라는 생각이 들었다.

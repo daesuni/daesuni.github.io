@@ -2,6 +2,11 @@
 layout: post
 title: Spring에서 웹소켓을 이용한 채팅
 category: Spring
+keywords:
+  - 스프링
+  - spring
+  - 웹소켓
+  - web socket
 ---
 
 ### 웹소켓이란 ?

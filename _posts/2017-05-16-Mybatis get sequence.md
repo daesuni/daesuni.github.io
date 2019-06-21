@@ -2,6 +2,11 @@
 layout: post
 title: Mybatis Insert 후 sequence 가져오기
 category: Mybatis
+keywords:
+  - mybatis
+  - insert
+  - sequence
+  - useGeneratedKeys
 ---
 
 개발을 하다보면 방금 Insert된 data의 seq값을 써야 할때가 있다. 예를 들면 즐겨찾기 기능을 구현하거나, 데이터의 key값을 가지고 이미지를 다른 table에 저장하거나 할때 필요했다. Mybatis에서는 다음과 같은 방법이 있다.

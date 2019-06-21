@@ -2,6 +2,11 @@
 layout: post
 title: Jquery click(); vs trigger('click');
 category: Javascript/JQuery
+keywords:
+  - javascript
+  - jQuery
+  - click
+  - trigger
 ---
 
 Jquery에서 이벤트를 처리할때 크게 두가지 방법이 있다. 클릭 이벤트를 예로 들자면 하나는 `click();`이고 다른 하나는 `trigger('click');`이다. 이 둘의 차이는 뭘까?

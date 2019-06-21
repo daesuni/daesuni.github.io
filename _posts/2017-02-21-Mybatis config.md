@@ -2,6 +2,11 @@
 layout: post
 title: Mybatis-config.xml 설정
 category: Mybatis
+keywords:
+  - mybatis
+  - null
+  - config
+  - 설정
 ---
 
 Spring 환경에서 mybatis를 사용할때, query 결과가 NULL이면 ""(공백)으로 받게되는데 이것을 NULL로 그대로 받고싶을 때가 있다. 이때는 mybatis-config.xml에 설정해주면 해결할 수 있다.

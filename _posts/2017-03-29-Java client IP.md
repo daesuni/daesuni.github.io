@@ -2,6 +2,11 @@
 layout: post
 title: Java client IP 가져오기
 category: Java
+keywords:
+  - java
+  - client ip
+  - 아이피
+  - 자바
 ---
 
 ### XFF란?

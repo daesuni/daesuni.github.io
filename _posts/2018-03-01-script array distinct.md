@@ -2,6 +2,11 @@
 layout: post
 title: Javascript/JQuery array distinct
 category: Javascript/JQuery
+keywords:
+  - javascript
+  - jQuery
+  - array distinct
+  - 배열 중복제거
 ---
 
 배열에 중복요소가 있는지 체크

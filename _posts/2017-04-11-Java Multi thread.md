@@ -2,6 +2,10 @@
 layout: post
 title: Java Multi-thread 적용하기
 category: Java
+keywords:
+  - 자바
+  - 멀티 쓰레드
+  - multi thread
 ---
 
 ```java

@@ -2,6 +2,10 @@
 layout: post
 title: Postgres 락 확인/제거하기
 category: Postgres
+keywords:
+  - postgres
+  - lock
+  - unlock
 ---
 
 ### 락 확인
