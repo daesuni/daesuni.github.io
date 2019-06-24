@@ -67,8 +67,8 @@ blockquote::before { position: absolute; top: 0; left: 50%; -webkit-transform: t
 .header-wrap  { height: 100px; display: flex; align-items: center; }
 .header-title { cursor: pointer; font-size: 1.5rem; display: flex; align-items: center; color: inherit; font-family: 'Raleway', sans-serif; justify-content: center; }
 .header-title .sub  { font-size: 1.2rem; }
-.header-title-left  { /*transform: scale(-1, 1);*/ margin-right: 6px; }
-.header-title-right { margin-left: 6px; }
+.header-title-left  { /*transform: scale(-1, 1);*/ margin-right: 6px; border-top: 2px solid #000; }
+.header-title-right { margin-left: 6px; border-bottom: 2px solid #000; }
 
 .nav-wrap { display: flex; align-items: center; height: 40px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; }
 .nav-wrap > .container { display: flex; align-items: center; justify-content: center; height: 100%; }
