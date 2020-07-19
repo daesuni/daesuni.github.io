@@ -1,4 +1,4 @@
-I"T<h3 id="1-log4j-란">1. log4j 란?</h3>
+I"�<h3 id="1-log4j-란">1. log4j 란?</h3>
 
 <p>log4j는 Apache에서 만든 자바기반의 로그 오픈소스 라이브러리를 말한다.</p>
 
@@ -23,12 +23,14 @@
 
 <p><a href="https://to-dy.tistory.com/20">이 블로그</a>에 아주 상세히 설명이 되어 있는거 같으니 필요하신분은 참고!</p>
 
+<p>쿼리 로그나 result table 로그를 보고싶으면 해당 logger의 level을 수정해주면 된다.</p>
+
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 <span class="cp">&lt;!DOCTYPE log4j:configuration PUBLIC "-//APACHE//DTD LOG4J 1.2//EN" "log4j.dtd"&gt;</span>
 <span class="nt">&lt;log4j:configuration</span> <span class="na">xmlns:log4j=</span><span class="s">"http://jakarta.apache.org/log4j/"</span><span class="nt">&gt;</span>
 
    <span class="c">&lt;!-- Daily file out --&gt;</span>
-     <span class="nt">&lt;appender</span> <span class="na">name=</span><span class="s">"console.file"</span> <span class="na">class=</span><span class="s">"org.apache.log4j.DailyRollingFileAppender"</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;appender</span> <span class="na">name=</span><span class="s">"console.file"</span> <span class="na">class=</span><span class="s">"org.apache.log4j.DailyRollingFileAppender"</span><span class="nt">&gt;</span>
       <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"file"</span> <span class="na">value=</span><span class="s">"/home/weblog.log"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- 로그 파일 저장위치 --&gt;</span>
       <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Append"</span> <span class="na">value=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
       <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"DatePattern"</span> <span class="na">value=</span><span class="s">"'.'yyyy-MM-dd"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- 로그 날짜 포맷 --&gt;</span>
@@ -52,14 +54,15 @@
    <span class="nt">&lt;/logger&gt;</span>
 
    <span class="c">&lt;!--  Query Loggers --&gt;</span>
-    <span class="nt">&lt;logger</span> <span class="na">name=</span><span class="s">"jdbc.sqlonly"</span> <span class="na">additivity=</span><span class="s">"false"</span><span class="nt">&gt;</span>
-       <span class="nt">&lt;level</span> <span class="na">value=</span><span class="s">"DEBUG"</span><span class="nt">/&gt;</span>
-        <span class="nt">&lt;appender-ref</span> <span class="na">ref=</span><span class="s">"console"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;logger</span> <span class="na">name=</span><span class="s">"jdbc.sqlonly"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;level</span> <span class="na">value=</span><span class="s">"WARN"</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;appender-ref</span> <span class="na">ref=</span><span class="s">"console.print"</span> <span class="nt">/&gt;</span>
     <span class="nt">&lt;/logger&gt;</span>
 
-    <span class="nt">&lt;logger</span> <span class="na">name=</span><span class="s">"jdbc.resultsettable"</span> <span class="na">additivity=</span><span class="s">"false"</span><span class="nt">&gt;</span>
-       <span class="nt">&lt;level</span> <span class="na">value=</span><span class="s">"DEBUG"</span><span class="nt">/&gt;</span>
-        <span class="nt">&lt;appender-ref</span> <span class="na">ref=</span><span class="s">"console"</span><span class="nt">/&gt;</span>
+    <span class="c">&lt;!-- Result Table Loggers --&gt;</span>
+    <span class="nt">&lt;logger</span> <span class="na">name=</span><span class="s">"jdbc.resultsettable"</span> <span class="nt">&gt;</span>
+      <span class="nt">&lt;level</span> <span class="na">value=</span><span class="s">"WARN"</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;appender-ref</span> <span class="na">ref=</span><span class="s">"console.print"</span> <span class="nt">/&gt;</span>
     <span class="nt">&lt;/logger&gt;</span>
 
    <span class="c">&lt;!-- Root Logger --&gt;</span>
