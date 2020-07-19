@@ -1,0 +1,120 @@
+I"�1<h3 id="웹소켓이란-">웹소켓이란 ?</h3>
+
+<ul>
+  <li><a href="http://d2.naver.com/helloworld/1336">http://d2.naver.com/helloworld/1336</a></li>
+  <li><a href="http://www.joinc.co.kr/w/man/12/websocket">http://www.joinc.co.kr/w/man/12/websocket</a></li>
+</ul>
+
+<h3 id="spring-환경에서-웹소켓을-이용한-간단한-jsp-채팅을-구현해보자">Spring 환경에서 웹소켓을 이용한 간단한 jsp 채팅을 구현해보자</h3>
+
+<p>1. POM.xml에 다음을 추가한다.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>javax<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>javaee-api<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>7.0<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</code></pre></div></div>
+
+<p>2. Broadsocket.java 생성</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Collections</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.HashSet</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Set</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">javax.websocket.OnClose</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.websocket.OnMessage</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.websocket.OnOpen</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.websocket.Session</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.websocket.server.ServerEndpoint</span><span class="o">;</span>
+
+<span class="nd">@ServerEndpoint</span><span class="o">(</span><span class="s">"/broadcasting"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Broadsocket</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="kd">static</span> <span class="nc">Set</span><span class="o">&lt;</span><span class="nc">Session</span><span class="o">&gt;</span> <span class="n">clients</span> <span class="o">=</span> <span class="nc">Collections</span>
+            <span class="o">.</span><span class="na">synchronizedSet</span><span class="o">(</span><span class="k">new</span> <span class="nc">HashSet</span><span class="o">&lt;</span><span class="nc">Session</span><span class="o">&gt;());</span>
+
+    <span class="nd">@OnMessage</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onMessage</span><span class="o">(</span><span class="nc">String</span> <span class="n">message</span><span class="o">,</span> <span class="nc">Session</span> <span class="n">session</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">message</span><span class="o">);</span>
+        <span class="kd">synchronized</span> <span class="o">(</span><span class="n">clients</span><span class="o">)</span> <span class="o">{</span>
+            <span class="c1">// Iterate over the connected sessions</span>
+            <span class="c1">// and broadcast the received message</span>
+            <span class="k">for</span> <span class="o">(</span><span class="nc">Session</span> <span class="n">client</span> <span class="o">:</span> <span class="n">clients</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">if</span> <span class="o">(!</span><span class="n">client</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">session</span><span class="o">))</span> <span class="o">{</span>
+                    <span class="n">client</span><span class="o">.</span><span class="na">getBasicRemote</span><span class="o">().</span><span class="na">sendText</span><span class="o">(</span><span class="n">message</span><span class="o">);</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="nd">@OnOpen</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onOpen</span><span class="o">(</span><span class="nc">Session</span> <span class="n">session</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// Add session to the connected sessions set</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">session</span><span class="o">);</span>
+        <span class="n">clients</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">session</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@OnClose</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClose</span><span class="o">(</span><span class="nc">Session</span> <span class="n">session</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// Remove session from the connected sessions set</span>
+        <span class="n">clients</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">session</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>3. broadcast.jsp 생성</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Testing websockets<span class="nt">&lt;/title&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;fieldset&gt;</span>
+        <span class="nt">&lt;textarea</span> <span class="na">id=</span><span class="s">"messageWindow"</span> <span class="na">rows=</span><span class="s">"10"</span> <span class="na">cols=</span><span class="s">"50"</span> <span class="na">readonly=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/textarea&gt;</span>
+        <span class="nt">&lt;br/&gt;</span>
+        <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">"inputMessage"</span> <span class="na">type=</span><span class="s">"text"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">value=</span><span class="s">"send"</span> <span class="na">onclick=</span><span class="s">"send()"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/fieldset&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
+        <span class="kd">var</span> <span class="nx">textarea</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">messageWindow</span><span class="dl">"</span><span class="p">);</span>
+        <span class="kd">var</span> <span class="nx">webSocket</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WebSocket</span><span class="p">(</span><span class="dl">'</span><span class="s1">ws://localhost:8080/프로젝트명/broadcasting</span><span class="dl">'</span><span class="p">);</span>
+        <span class="kd">var</span> <span class="nx">inputMessage</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">inputMessage</span><span class="dl">'</span><span class="p">);</span>
+    <span class="nx">webSocket</span><span class="p">.</span><span class="nx">onerror</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">onError</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span>
+    <span class="p">};</span>
+    <span class="nx">webSocket</span><span class="p">.</span><span class="nx">onopen</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">onOpen</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span>
+    <span class="p">};</span>
+    <span class="nx">webSocket</span><span class="p">.</span><span class="nx">onmessage</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">onMessage</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span>
+    <span class="p">};</span>
+    <span class="kd">function</span> <span class="nx">onMessage</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">textarea</span><span class="p">.</span><span class="nx">value</span> <span class="o">+=</span> <span class="dl">"</span><span class="s2">상대 : </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">event</span><span class="p">.</span><span class="nx">data</span> <span class="o">+</span> <span class="dl">"</span><span class="se">\n</span><span class="dl">"</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kd">function</span> <span class="nx">onOpen</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">textarea</span><span class="p">.</span><span class="nx">value</span> <span class="o">+=</span> <span class="dl">"</span><span class="s2">연결 성공</span><span class="se">\n</span><span class="dl">"</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kd">function</span> <span class="nx">onError</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">alert</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="kd">function</span> <span class="nx">send</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">textarea</span><span class="p">.</span><span class="nx">value</span> <span class="o">+=</span> <span class="dl">"</span><span class="s2">나 : </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">inputMessage</span><span class="p">.</span><span class="nx">value</span> <span class="o">+</span> <span class="dl">"</span><span class="se">\n</span><span class="dl">"</span><span class="p">;</span>
+        <span class="nx">webSocket</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">inputMessage</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
+        <span class="nx">inputMessage</span><span class="p">.</span><span class="nx">value</span> <span class="o">=</span> <span class="dl">""</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<h3 id="참고">참고</h3>
+
+<ul>
+  <li><a href="http://stackoverflow.com/questions/21038100/getting-errors-in-websocket-server-endpoint">http://stackoverflow.com/questions/21038100/getting-errors-in-websocket-server-endpoint</a></li>
+  <li><a href="http://choiyb2.tistory.com/81">http://choiyb2.tistory.com/81</a></li>
+</ul>
+:ET

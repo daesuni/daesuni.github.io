@@ -40,11 +40,16 @@ Ruby를 설치했으니 이제 Jekyll과 블로그를 만들기 위해 필요한
 cmd 창으로 이동 한 후 다음을 순서대로 설치한다.
 
 ```
+필수사항
 gem install jekyll
 gem install minima
 gem install bundler
 gem install jekyll-feed
 gem install tzinfo-data
+
+선택사항
+gem install jekyll-sitemap
+gem install jekyll-paginate
 ```
 
 ### 4. Git repository 생성하기

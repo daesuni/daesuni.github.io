@@ -1,0 +1,52 @@
+I"<p>Spring 환경에서 mybatis를 사용할때, query 결과가 NULL이면 ““(공백)으로 받게되는데 이것을 NULL로 그대로 받고싶을 때가 있다. 이때는 mybatis-config.xml에 설정해주면 해결할 수 있다.</p>
+
+<p>1. 우선 SqlSessionFactoryBean에 mybatis-config.xml파일을 불러올 수 있도록 맵핑해준다.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">"SSOSqlSessionBean"</span> <span class="na">class=</span><span class="s">"org.mybatis.spring.SqlSessionFactoryBean"</span><span class="nt">&gt;</span>
+	<span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"dataSource"</span> <span class="na">ref=</span><span class="s">"dataSourceSpiedSSO"</span> <span class="nt">/&gt;</span>
+	<span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"configLocation"</span> <span class="na">value=</span><span class="s">"classpath:/config/mybatis/mybatis-config.xml"</span><span class="nt">&gt;&lt;/property&gt;</span>
+	<span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"mapperLocations"</span> <span class="na">value=</span><span class="s">"classpath:/mapper/sso/*_SQL.xml"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/bean&gt;</span>
+</code></pre></div></div>
+
+<p>2. 위 맵핑 경로에 mybatis-config.xml를 만들고, callSettersOnNulls를 설정해준다.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;</span>
+<span class="cp">&lt;!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd"&gt;</span>
+	<span class="nt">&lt;configuration&gt;</span>
+		<span class="nt">&lt;settings&gt;</span>
+    		<span class="nt">&lt;setting</span> <span class="na">name=</span><span class="s">"callSettersOnNulls"</span> <span class="na">value=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+		<span class="nt">&lt;/settings&gt;</span>
+	<span class="nt">&lt;/configuration&gt;</span>
+</code></pre></div></div>
+
+<p>3. 그 외 기타 mybatis 설정들은 다음과 같다. 여러가지 더 많은 mybatis-config mapper 설정이 있는데 자세한 사항은 mybatis3 공식 홈페이지인 <a href="http://www.mybatis.org/mybatis-3/ko/configuration.html" target="_blank">http://www.mybatis.org/mybatis-3/ko/configuration.html</a>이곳에 자세히 나와있다.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;</span>
+<span class="cp">&lt;!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd"&gt;</span>
+	<span class="nt">&lt;configuration&gt;</span>
+		<span class="nt">&lt;settings&gt;</span>
+			<span class="nt">&lt;setting</span> <span class="na">name=</span><span class="s">"callSettersOnNulls"</span> <span class="na">value=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+			<span class="nt">&lt;setting</span> <span class="na">name=</span><span class="s">"cacheEnabled"</span> <span class="na">value=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+			<span class="nt">&lt;setting</span> <span class="na">name=</span><span class="s">"lazyLoadingEnabled"</span> <span class="na">value=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+			<span class="nt">&lt;setting</span> <span class="na">name=</span><span class="s">"multipleResultSetsEnabled"</span> <span class="na">value=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+			<span class="nt">&lt;setting</span> <span class="na">name=</span><span class="s">"useColumnLabel"</span> <span class="na">value=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+			<span class="nt">&lt;setting</span> <span class="na">name=</span><span class="s">"useGeneratedKeys"</span> <span class="na">value=</span><span class="s">"false"</span><span class="nt">/&gt;</span>
+			<span class="nt">&lt;setting</span> <span class="na">name=</span><span class="s">"autoMappingBehavior"</span> <span class="na">value=</span><span class="s">"PARTIAL"</span><span class="nt">/&gt;</span>
+			<span class="nt">&lt;setting</span> <span class="na">name=</span><span class="s">"autoMappingUnknownColumnBehavior"</span> <span class="na">value=</span><span class="s">"WARNING"</span><span class="nt">/&gt;</span>
+			<span class="nt">&lt;setting</span> <span class="na">name=</span><span class="s">"defaultExecutorType"</span> <span class="na">value=</span><span class="s">"SIMPLE"</span><span class="nt">/&gt;</span>
+			<span class="nt">&lt;setting</span> <span class="na">name=</span><span class="s">"defaultStatementTimeout"</span> <span class="na">value=</span><span class="s">"25"</span><span class="nt">/&gt;</span>
+			<span class="nt">&lt;setting</span> <span class="na">name=</span><span class="s">"defaultFetchSize"</span> <span class="na">value=</span><span class="s">"100"</span><span class="nt">/&gt;</span>
+			<span class="nt">&lt;setting</span> <span class="na">name=</span><span class="s">"safeRowBoundsEnabled"</span> <span class="na">value=</span><span class="s">"false"</span><span class="nt">/&gt;</span>
+			<span class="nt">&lt;setting</span> <span class="na">name=</span><span class="s">"mapUnderscoreToCamelCase"</span> <span class="na">value=</span><span class="s">"false"</span><span class="nt">/&gt;</span>
+			<span class="nt">&lt;setting</span> <span class="na">name=</span><span class="s">"localCacheScope"</span> <span class="na">value=</span><span class="s">"SESSION"</span><span class="nt">/&gt;</span>
+			<span class="nt">&lt;setting</span> <span class="na">name=</span><span class="s">"jdbcTypeForNull"</span> <span class="na">value=</span><span class="s">"OTHER"</span><span class="nt">/&gt;</span>
+			<span class="nt">&lt;setting</span> <span class="na">name=</span><span class="s">"lazyLoadTriggerMethods"</span> <span class="na">value=</span><span class="s">"equals,clone,hashCode,toString"</span><span class="nt">/&gt;</span>
+		<span class="nt">&lt;/settings&gt;</span>
+	<span class="nt">&lt;/configuration&gt;</span>
+</code></pre></div></div>
+:ET

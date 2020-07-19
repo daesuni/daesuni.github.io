@@ -9,7 +9,6 @@
     <![endif]-->
     <script src="{{ site.baseurl }}/assets/utils/jquery-1.12.4/jquery-1.12.4.min.js"></script>
     <script src="{{ site.baseurl }}/assets/utils/simple-jekyll-search.js"></script>
-
     <link href="https://fonts.googleapis.com/css?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,700|Noto+Sans+KR:300,400,700|Raleway:400,700" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/assets/utils/fontawesome-free-5.7.2-web/css/all.min.css" />
@@ -17,36 +16,29 @@
     <link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}" href="{{ site.baseurl }}/feed.xml" />
   </head>
   <body>
-
     <div class="header-wrap" role="header">
       <div class="container">
-        <a href="{{ site.baseurl }}/" class="header-title">
+        <a href="{{ site.baseurl }}/about/" class="header-title">
           <div class="header-title-left">S<span class="sub">LOW</span></div>
-          and
+          &
           <div class="header-title-right">S<span class="sub">TEADY</span></div>
         </a>
-      </div>
-    </div>
-
-    <nav class="nav-wrap" role="nav">
-      <div class="container">
-
-        <a href="{{ site.baseurl }}/" class="post-backspace">
-          <i class="fas fa-home"></i>
-        </a>
-
-        <a href="{{ site.baseurl }}/" class="nav">Posts</a>
-        <a href="{{ site.baseurl }}/play/" class="nav">play</a>
-        <!-- <a href="{{ site.baseurl }}/works/" class="nav">works</a> -->
-        <a href="{{ site.baseurl }}/about/" class="nav">About</a>
-
+        <nav class="nav-wrap" role="nav">
+          <div class="container">
+            <!-- <a href="{{ site.baseurl }}/play/" class="nav">play</a> -->
+            <!-- <a href="{{ site.baseurl }}/works/" class="nav">works</a> -->
+            <a href="{{ site.baseurl }}/about/" class="nav">About</a>
+            <a href="{{ site.baseurl }}/" class="nav">Posts</a>
+          </div>
+        </nav>
+        <span class="spacer"></span>
         <div class="search-wrap">
-          <div class="search-toggle"></div>
-          <input id="search-input" class="search-text" type="search" placeholder="검색어를 입력하세요" autocomplete="off" />
+            <input id="search-input" placeholder="Search" />
+            <span class="search-icon"></span>
         </div>
         <ul id="search-result"></ul>
       </div>
-    </nav>
+    </div>
 
     <div class="main-wrap" role="main">
       <div class="container">
@@ -75,20 +67,8 @@
       });
 
       $(window).click(function(e) {
-        if (!$(e.target).hasClass('search-toggle') && !$(e.target).hasClass('search-text')) {
+        if ($(e.target).attr('id') != 'search-input') {
           $('.search-wrap').removeClass('opened');
-          $('.search-layer').css('display', 'none');
-          $('#search-input').val('');
-          $('#search-result').empty();
-        };
-      });
-
-      $(document).on('click', '.search-toggle', function(e) {
-        $('.search-wrap').toggleClass('opened');
-        if ($('.search-wrap').hasClass('opened')) {
-          $('.search-layer').css('display', 'block');
-          $('#search-input').focus();
-        } else {
           $('.search-layer').css('display', 'none');
           $('#search-input').val('');
           $('#search-result').empty();
@@ -125,8 +105,10 @@
             } else {
               $('.search-list').first().addClass('selected');
             };
-          } else if (keyCode == 13) {
-            window.location.href = $('a', $selected).attr('href');
+          } else if (keyCode == 13) { // enter
+            if ($selected.length > 0) {
+              window.location.href = $('a', $selected).attr('href');
+            };
           };
         };
       });

@@ -1,0 +1,18 @@
+I"S<h3 id="락-확인">락 확인</h3>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>	SELECT t.relname,
+	       l.locktype,
+	       page,
+	       virtualtransaction,
+	       pid,
+	       mode,
+	       granted
+	FROM pg_locks l,
+	     pg_stat_all_tables t
+	WHERE l.relation = t.relid
+	ORDER BY relation ASC;
+</code></pre></div></div>
+
+<h3 id="락-제거">락 제거</h3>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>	SELECT pg_terminate_backend(pid) FROM pg_stat_activity;
+</code></pre></div></div>
+:ET

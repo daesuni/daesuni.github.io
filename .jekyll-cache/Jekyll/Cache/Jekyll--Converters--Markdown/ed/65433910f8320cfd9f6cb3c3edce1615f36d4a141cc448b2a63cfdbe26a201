@@ -1,0 +1,140 @@
+I"�3<p>jQuery를 사용하여 AJAX 호출을 작성하는 표준 방법은 $.ajax() 함수를 사용하는 것이다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+    <span class="na">data</span><span class="p">:</span> <span class="nx">someData</span><span class="p">,</span>
+    <span class="na">dataType</span><span class="p">:</span> <span class="dl">'</span><span class="s1">json</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">url</span><span class="p">:</span> <span class="dl">'</span><span class="s1">/path/to/script</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">success</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">jqXHR</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// When AJAX call is successfuly</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">AJAX call successful.</span><span class="dl">'</span><span class="p">);</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+    <span class="p">},</span>
+    <span class="na">error</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">jqXHR</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">errorThrown</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// When AJAX call has failed</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">AJAX call failed.</span><span class="dl">'</span><span class="p">);</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">textStatus</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">: </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">errorThrown</span><span class="p">);</span>
+    <span class="p">},</span>
+    <span class="na">complete</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// When AJAX call is complete, will fire upon success or when error is thrown</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">AJAX call completed</span><span class="dl">'</span><span class="p">);</span>
+    <span class="p">};</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>기본적으로 이렇게 사용하는데, 여기는 몇가지 단점이 있다.</p>
+
+<ul>
+  <li>중첩문제로 가독성이 떨어짐</li>
+  <li>체인 및 합성의 어려움</li>
+  <li>지원중단 (1.8 이후로 jqXHR.success(), error, complete가 공식적으로 추천되지 않는다)</li>
+</ul>
+
+<p>그래서 Promise패턴을 사용하는 것이 좋다.</p>
+
+<h3 id="promises-and-deferred-objects">Promises and deferred objects</h3>
+
+<ul>
+  <li>.success() 대신 .done()을 사용한다.</li>
+  <li>.error() 대신 .fail()을 사용한다.</li>
+  <li>.complete() 대신 always()를 사용한다.</li>
+</ul>
+
+<pre><code class="language-javascipt">$.ajax({
+    data: someData,
+    dataType: 'json',
+    url: '/path/to/script'
+}).done(function(data) {
+    // If successful
+   console.log(data);
+}).fail(function(jqXHR, textStatus, errorThrown) {
+    // If fail
+    console.log(textStatus + ': ' + errorThrown);
+});
+</code></pre>
+
+<h3 id="chaning-works-just-as-usual">Chaning works, just as usual</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">ajaxCall</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+    <span class="na">context</span><span class="p">:</span> <span class="nx">$</span><span class="p">(</span><span class="nx">element</span><span class="p">),</span>
+    <span class="na">data</span><span class="p">:</span> <span class="nx">someData</span><span class="p">,</span>
+    <span class="na">dataType</span><span class="p">:</span> <span class="dl">'</span><span class="s1">json</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">url</span><span class="p">:</span> <span class="dl">'</span><span class="s1">/path/to/script</span><span class="dl">'</span>
+<span class="p">});</span>
+
+<span class="nx">ajaxCall</span><span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<h3 id="multiple-ajax-calls">Multiple AJAX calls</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">a1</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({...}),</span>
+    <span class="nx">a2</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({...});</span>
+
+<span class="nx">$</span><span class="p">.</span><span class="nx">when</span><span class="p">(</span><span class="nx">a1</span><span class="p">,</span> <span class="nx">a2</span><span class="p">).</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">r1</span><span class="p">,</span> <span class="nx">r2</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Each returned resolve has the following structure:</span>
+    <span class="c1">// [data, textStatus, jqXHR]</span>
+    <span class="c1">// e.g. To access returned data, access the array at index 0</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">r1</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">r2</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<h3 id="dependence-chain-of-ajax-requests">Dependence chain of AJAX requests</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">a1</span><span class="err"> </span><span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+             <span class="na">url</span><span class="p">:</span> <span class="dl">'</span><span class="s1">/path/to/file</span><span class="dl">'</span><span class="p">,</span>
+             <span class="na">dataType</span><span class="p">:</span> <span class="dl">'</span><span class="s1">json</span><span class="dl">'</span>
+         <span class="p">}),</span>
+    <span class="nx">a2</span> <span class="o">=</span> <span class="nx">a1</span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+             <span class="c1">// .then() returns a new promise</span>
+             <span class="k">return</span> <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+                 <span class="na">url</span><span class="p">:</span> <span class="dl">'</span><span class="s1">/path/to/another/file</span><span class="dl">'</span><span class="p">,</span>
+                 <span class="na">dataType</span><span class="p">:</span> <span class="dl">'</span><span class="s1">json</span><span class="dl">'</span><span class="p">,</span>
+                 <span class="na">data</span><span class="p">:</span> <span class="nx">data</span><span class="p">.</span><span class="nx">sessionID</span>
+             <span class="p">});</span>
+         <span class="p">});</span>
+
+<span class="nx">a2</span><span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<h3 id="modularizing-ajax-requests">Modularizing AJAX requests</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Generic function to make an AJAX call</span>
+<span class="kd">var</span> <span class="nx">fetchData</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">query</span><span class="p">,</span> <span class="nx">dataURL</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Return the $.ajax promise</span>
+    <span class="k">return</span> <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+        <span class="na">data</span><span class="p">:</span> <span class="nx">query</span><span class="p">,</span>
+        <span class="na">dataType</span><span class="p">:</span> <span class="dl">'</span><span class="s1">json</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">url</span><span class="p">:</span> <span class="nx">dataURL</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+
+<span class="c1">// Make AJAX calls</span>
+<span class="c1">// 1. Get customer order</span>
+<span class="c1">// 2  Get customer ID</span>
+<span class="kd">var</span> <span class="nx">getOrder</span> <span class="o">=</span> <span class="nx">fetchData</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="dl">'</span><span class="s1">hash</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">2528ce2ed5ff3891c71a07448a3003e5</span><span class="dl">'</span><span class="p">,</span>
+        <span class="dl">'</span><span class="s1">email</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">john.doe@gmail.com</span><span class="dl">'</span>
+    <span class="p">},</span> <span class="dl">'</span><span class="s1">/path/to/url/1</span><span class="dl">'</span><span class="p">),</span>
+    <span class="nx">getCustomerID</span> <span class="o">=</span> <span class="nx">fetchData</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="dl">'</span><span class="s1">email</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">john.doe@gmail.com</span><span class="dl">'</span>
+    <span class="p">},</span> <span class="dl">'</span><span class="s1">/path/to/url/2</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="c1">// Use $.when to check if both AJAX calls are successful</span>
+<span class="nx">$</span><span class="p">.</span><span class="nx">when</span><span class="p">(</span><span class="nx">getOrder</span><span class="p">,</span> <span class="nx">getCustomerID</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">order</span><span class="p">,</span> <span class="nx">customer</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">order</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">customer</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<h5 id="참고">참고</h5>
+
+<ul>
+  <li><a href="https://medium.com/coding-design/writing-better-ajax-8ee4a7fb95f">https://medium.com/coding-design/writing-better-ajax-8ee4a7fb95f</a></li>
+</ul>
+:ET

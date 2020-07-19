@@ -1,0 +1,141 @@
+I"!4<p>특정 시간마다 DB insert를 실행한다거나, 주기적으로 반복적인 작업을 해야 할 때가 있다. 예를 들면 기상청에서 날씨정보를 매 시간 받아와서 DB에 Insert 해주어야 하는 경우라던지 매일 주식 정보를 가져오는 등의 작업을 말한다.</p>
+
+<p>스프링 프레임워크는 TaskExecutor 인터페이스와 TaskScheduler 인터페이스로 태스크의 비동기 시행과 스케줄링에 대한 추상화를 각각 제공한다. 여기서는 Spring 을 이용한 간단한 배치 생성과 DB 연동까지 해보도록 한다~!</p>
+
+<p>1. mvc-config.xml : beans 태그를 다음과 같이 변경한다.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;beans</span>  <span class="na">xmlns=</span><span class="s">"http://www.springframework.org/schema/beans"</span>
+        <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span>
+        <span class="na">xmlns:mvc=</span><span class="s">"http://www.springframework.org/schema/mvc"</span>
+        <span class="na">xmlns:context=</span><span class="s">"http://www.springframework.org/schema/context"</span>
+        <span class="na">xmlns:task=</span><span class="s">"http://www.springframework.org/schema/task"</span>
+        <span class="na">xsi:schemaLocation=</span><span class="s">"http://www.springframework.org/schema/mvc
+                            http://www.springframework.org/schema/mvc/spring-mvc.xsd
+                            http://www.springframework.org/schema/beans
+                            http://www.springframework.org/schema/beans/spring-beans.xsd
+                            http://www.springframework.org/schema/context
+                            http://www.springframework.org/schema/context/spring-context.xsd
+                            http://www.springframework.org/schema/task
+                            http://www.springframework.org/schema/task/spring-task-3.1.xsd"</span><span class="nt">&gt;</span>
+</code></pre></div></div>
+
+<p>2. beans 태그 내에 다음 코드를 추가한다.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- 스케쥴러 파일이 존재하는 패키지 설정 --&gt;</span>
+<span class="nt">&lt;context:component-scan</span> <span class="na">base-package=</span><span class="s">"com.crontab"</span> <span class="nt">/&gt;</span>
+<span class="c">&lt;!-- 해당 태그들은 크론탭을 설정에 필요한 태그들 --&gt;</span>
+<span class="nt">&lt;task:scheduler</span> <span class="na">id=</span><span class="s">"jobScheduler"</span> <span class="na">pool-size=</span><span class="s">"10"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;task:annotation-driven</span> <span class="na">scheduler=</span><span class="s">"jobScheduler"</span> <span class="nt">/&gt;</span>
+</code></pre></div></div>
+
+<p>3. 위에서 base-package에 설정한 경로 대로 클래스를 생성한다.</p>
+
+<p>스케쥴 설정은 cron, Fixed rate, Fixed Delay 3가지 방식이 있으며, 사용방법은 다음과 같다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">crontab</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.springframework.scheduling.annotation.Scheduled</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.stereotype.Component</span><span class="o">;</span>
+
+<span class="nd">@Component</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Scheduler</span> <span class="o">{</span>
+
+    <span class="c1">// 초 분 시 일 월 요일</span>
+    <span class="nd">@Scheduled</span><span class="o">(</span><span class="n">cron</span> <span class="o">=</span> <span class="s">"* * * * * *"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">test1</span><span class="o">(){</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"매 초마다 실행"</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Scheduled</span><span class="o">(</span><span class="n">cron</span><span class="o">=</span><span class="s">"*/5 * * * * MON-FRI"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">test2</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"평일에만 실행"</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="c1">// 최초수행시 1초 후, 이전 호출이 완료된 후부터 5초마다 실행</span>
+    <span class="nd">@Scheduled</span><span class="o">(</span><span class="n">fixedDelay</span><span class="o">=</span><span class="mi">5000</span><span class="o">,</span> <span class="n">initialDelay</span> <span class="o">=</span> <span class="mi">1000</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">test3</span><span class="o">()</span> <span class="o">{</span>
+         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"FixedDely 실행"</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="c1">// 이전 호출 완료에 상관 없이 무조건 5초마다 실행</span>
+    <span class="nd">@Scheduled</span><span class="o">(</span><span class="n">fixedRate</span><span class="o">=</span><span class="mi">5000</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">test4</span><span class="o">()</span> <span class="o">{</span>
+         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"FixedRate 실행"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>4. POM.xml에 다음을 추가한다.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.mybatis<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>mybatis<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>3.2.7<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+<span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.mybatis<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>mybatis-spring<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>1.2.2<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+<span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>commons-dbcp<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>commons-dbcp<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>1.4<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+<span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>mysql<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>mysql-connector-java<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>5.1.31<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+<span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.springframework<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>spring-jdbc<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>${spring-framework.version}<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</code></pre></div></div>
+
+<p>5. resource &gt; spring &gt; application-config.xml에 다음을 추가한다.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;context:component-scan</span> <span class="na">base-package=</span><span class="s">"com.spring.web"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">"dataSource"</span> <span class="na">class=</span><span class="s">"org.apache.commons.dbcp.BasicDataSource"</span> <span class="na">destroy-method=</span><span class="s">"close"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"driverClassName"</span> <span class="na">value=</span><span class="s">"com.mysql.jdbc.Driver"</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"url"</span> <span class="na">value=</span><span class="s">"jdbc:mysql://localhost:3306/db명"</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"username"</span> <span class="na">value=</span><span class="s">"아이디"</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"password"</span> <span class="na">value=</span><span class="s">"패스워드"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/bean&gt;</span>
+<span class="c">&lt;!-- SESSIONFACTORY 설정 --&gt;</span>
+ <span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">"sqlSessionFactory"</span> <span class="na">class=</span><span class="s">"org.mybatis.spring.SqlSessionFactoryBean"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"dataSource"</span> <span class="na">ref=</span><span class="s">"dataSource"</span> <span class="nt">/&gt;</span>
+        <span class="c">&lt;!-- ibatis와 다르게 sql디렉토리에 xml 추가만 해주면 별도추가없이 알아서 xml내의 쿼리 인식 --&gt;</span>
+        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"mapperLocations"</span> <span class="na">value=</span><span class="s">"classpath*:sql/**/*.xml"</span> <span class="nt">/&gt;</span>
+ <span class="nt">&lt;/bean&gt;</span>
+ <span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">"sqlSession"</span> <span class="na">class=</span><span class="s">"org.mybatis.spring.SqlSessionTemplate"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;constructor-arg</span> <span class="na">ref=</span><span class="s">"sqlSessionFactory"</span> <span class="nt">/&gt;</span>
+ <span class="nt">&lt;/bean&gt;</span>
+</code></pre></div></div>
+
+<p>6. resource 폴더에 sql.xml 파일을 생성하고 다음과 같이 추가한다.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="cp">&lt;!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"&gt;</span>
+<span class="nt">&lt;mapper</span> <span class="na">namespace=</span><span class="s">"sql"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">"queryTest"</span> <span class="na">resultType=</span><span class="s">"java.util.Map"</span><span class="nt">&gt;</span>
+        쿼리문
+    <span class="nt">&lt;/select&gt;</span>
+<span class="nt">&lt;/mapper&gt;</span>
+</code></pre></div></div>
+
+<p>7. DAO.java 클래스를 생성한다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Repository</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Dao</span> <span class="o">{</span>
+
+    <span class="nd">@Autowired</span>
+    <span class="kd">private</span> <span class="nc">SqlSession</span> <span class="n">sql</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">testquery</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">SQLException</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">sql</span><span class="o">.</span><span class="na">selectOne</span><span class="o">(</span><span class="s">"sql.testquery"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+:ET

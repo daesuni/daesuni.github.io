@@ -1,0 +1,10 @@
+I"#<p>서로 다른 두 배열이 같은지 비교</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>	<span class="kd">function</span> <span class="nx">arrayCompare</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+		<span class="kd">var</span> <span class="nx">bool</span> <span class="o">=</span> <span class="nx">a</span><span class="p">.</span><span class="nx">length</span> <span class="o">==</span> <span class="nx">b</span><span class="p">.</span><span class="nx">length</span> <span class="o">&amp;&amp;</span> <span class="nx">a</span><span class="p">.</span><span class="nx">every</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
+			<span class="k">return</span> <span class="nx">e</span> <span class="o">===</span> <span class="nx">b</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+		<span class="p">});</span>
+		<span class="k">return</span> <span class="nx">bool</span><span class="p">;</span>
+	<span class="p">};</span>
+</code></pre></div></div>
+:ET
