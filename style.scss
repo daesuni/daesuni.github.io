@@ -46,7 +46,8 @@ blockquote::before  { position: absolute; top: 0; left: 50%; -webkit-transform: 
 .highlighter-rouge a:hover { box-shadow: none !important; }
 .highlighter-rouge[class^="language-"] > .highlight  { border: 1px solid #d1d1e8; background-color: #f1f3f5; padding: 1em 1.5em; tab-size: 4; overflow: auto; font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace; font-size: 0.85rem; hyphens: none; white-space: pre; margin: 0; margin-bottom: 15px; vertical-align: middle; }
 .highlighter-rouge:not([class^="language-"]) > .highlight { border-color: transparent; padding: 0.5em 1em; margin: 0; }
-
+.hits-wrap          { text-align: center; }
+.hits-wrap > a      { padding: 0; border-radius: 0; box-shadow: none; border: none; }
 
 // Fixes images in popup boxes from Google Translate
 .gmnoprint img { max-width: none; }
@@ -112,7 +113,7 @@ blockquote::before  { position: absolute; top: 0; left: 50%; -webkit-transform: 
 
 body.post-layout article      { padding: 1em 0; }
 body.post-layout .post-title  { text-align: center; display: block; }
-body.post-layout .post-catedate   { text-align: center; }
+body.post-layout .post-catedate   { text-align: center; margin: 1em 0; }
 body.post-layout .post-entry  {  }
 
 
