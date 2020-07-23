@@ -10,10 +10,17 @@
   }
 }
 
+// font
+@font-face {
+  font-family: 'AppleSDGothic';
+  src: url('./assets/font/AppleSDGothicNeoR.woff') format('woff'), /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  url('./assets/font/AppleSDGothicNeoR.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
+}  
+
 // common
 html                {  }
-body                { background: #fff; color: #404040; line-height: 1.8; font-family: 'Nunito', 'Noto Sans KR', sans-serif; font-weight: lighter; }
-input, textarea     { padding: 0.5em; border-radius: 2px; font-weight: lighter; font-family: 'Nunito', 'Noto Sans KR', sans-serif; border: 1px solid #ccc; line-height: 1.8; outline: none; }
+body                { background: #fff; color: #404040; line-height: 1.8; font-family: 'AppleSDGothic', sans-serif; font-weight: lighter; }
+input, textarea     { padding: 0.5em; border-radius: 2px; font-weight: lighter; font-family: 'AppleSDGothic', sans-serif; border: 1px solid #ccc; line-height: 1.8; outline: none; }
 input:focus, textarea:focus { border: 1px solid #0475f4; border-radius: 3px; box-shadow: 0 0 0 3px rgba(4,117,244,.2); }
 input[type="button"], input[type="submit"], button { background: #f1f3f5; cursor: pointer; transition: 0.15s background; }
 input[type="button"]:hover, input[type="submit"]:hover, button:hover { background: #e3e4e5; }
@@ -77,7 +84,6 @@ blockquote::before  { position: absolute; top: 0; left: 50%; -webkit-transform: 
 .nav-wrap > .container  { display: flex; height: 100%; }
 .nav                    { padding: 1px 15px 0 15px; color: inherit; text-transform: uppercase; font-size: 0.8rem; display: flex; align-items: center; }
 .nav:hover              {  }
-
 
 .main-wrap   { margin-top: 60px; }
 .main-wrap > .container { padding-bottom: 5em; padding-top: 1em; }
