@@ -10,17 +10,10 @@
   }
 }
 
-// font
-@font-face {
-  font-family: 'AppleSDGothic';
-  src: url('./assets/font/AppleSDGothicNeoR.woff') format('woff'), /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-  url('./assets/font/AppleSDGothicNeoR.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
-}  
-
 // common
 html                {  }
-body                { background: #fff; color: #404040; line-height: 1.8; font-family: 'AppleSDGothic', sans-serif; font-weight: lighter; }
-input, textarea     { padding: 0.5em; border-radius: 2px; font-weight: lighter; font-family: 'AppleSDGothic', sans-serif; border: 1px solid #ccc; line-height: 1.8; outline: none; }
+body                { background: #fff; color: #404040; line-height: 1.8; font-family: -apple-system,BlinkMacSystemFont,'Malgun Gothic','맑은 고딕',helvetica,'Apple SD Gothic Neo',sans-serif; font-weight: lighter; font-size: 15px; }
+input, textarea     { padding: 0.5em; border-radius: 2px; font-weight: lighter; font-family: -apple-system,BlinkMacSystemFont,'Malgun Gothic','맑은 고딕',helvetica,'Apple SD Gothic Neo',sans-serif; border: 1px solid #ccc; line-height: 1.8; outline: none; }
 input:focus, textarea:focus { border: 1px solid #0475f4; border-radius: 3px; box-shadow: 0 0 0 3px rgba(4,117,244,.2); }
 input[type="button"], input[type="submit"], button { background: #f1f3f5; cursor: pointer; transition: 0.15s background; }
 input[type="button"]:hover, input[type="submit"]:hover, button:hover { background: #e3e4e5; }
