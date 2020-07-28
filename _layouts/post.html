@@ -10,8 +10,8 @@ layout: default
     <span class="post-date">{{ page.date | date: "%B %d, %Y" }}</span>
   </div>
   <div class="hits-wrap">
-    <a href="http://hits.dwyl.com/{{ site.url | remove_first: 'https://' | remove_first: 'http://' }}{{ page.url }}" target="_blank">
-      <img src="http://hits.dwyl.com/{{ site.url | remove_first: 'https://' | remove_first: 'http://' }}{{ page.url }}.svg" />
+    <a href="http://hits.dwyl.com/{{ site.url | remove_first: 'https://' | remove_first: 'http://' }}{{ page.url | replace: '/' }}" target="_blank">
+      <img src="http://hits.dwyl.com/{{ site.url | remove_first: 'https://' | remove_first: 'http://' }}{{ page.url | replace: '/' }}.svg" />
     </a>
   </div>
   <hr>
