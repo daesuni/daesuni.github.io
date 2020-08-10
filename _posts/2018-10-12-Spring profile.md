@@ -14,6 +14,8 @@ Spring 프레임워크로 개발하다 보면 로컬환경, 개발환경, 운영
 
 하지만 이 방법은 프로퍼티 파일명이 바뀌거나 경로가 바뀌면 모두 수정해주어야 하고 한동안 안보다가 보면 알아보기 쉽지 않다. 그래서 spring profile을 사용하면서 정리하는 포스팅을 하기로 했다.
 
+<br/>
+
 ### 1. Spring profile이란?
 
 <a href="https://spring.io/understanding/profiles">스프링 공식 홈페이지</a>를 참고하자면, 다음과 같다.<br/>
@@ -22,6 +24,8 @@ A Spring ApplicationContext can run in different profiles, defined by the user. 
 - 애플리케이션을 각개 다른 환경으로 세팅할 수 있고 원하는 환경으로 선택해서 실행할 수 있는 기능
 - Spring 3.1 이후부터 등장한 기능이다.
 - 주로 애플리케이션의 로컬/개발/운영 환경설정에 자주 쓰인다.
+
+<br/>
 
 ### 1. context-common.xml에 프로퍼티 파일 설정 (3.1 이상)
 
@@ -45,6 +49,8 @@ A Spring ApplicationContext can run in different profiles, defined by the user. 
 <util:properties id="config" location="classpath:config/properties/${spring.profiles.active}.properties"/>
 ```
 
+<br/>
+
 ### 2. web.xml 에 프로필 설정 (3.1 이상)
 
 web.xml설정에는 사용하고자 하는 환경명을 입력한다. 나중에는 이부분의 환경명만 바꾸어주면 1번에서 active환경명을 불러오도록 설정했기 때문에 자동으로 변경된다.
@@ -59,6 +65,8 @@ xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/
     <param-value>infra</param-value> <!-- 이부분에 사용할 프로필 입력 -->
 </context-param>
 ```
+
+<br/>
 
 ### 3. 사용하기
 

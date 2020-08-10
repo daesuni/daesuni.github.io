@@ -20,6 +20,8 @@ FROM
 	table
 ```
 
+<br/>
+
 ### 2. similar to (multiple like 검색)
 
 특정 키워드를 포함하는 검색을 할때 보통 like '%키워드%' 를 사용한다. 하지만 여러가지 키워드를 한꺼번에 할 수 없다. similar to문은 여러 키워드에 대해 like검색을 할 때 사용한다.
@@ -33,6 +35,8 @@ WHERE
 	name SIMILAR TO '%(lan|dik)%';
 ```
 
+<br/>
+
 ### 3. null값을 다른 값으로 대체
 
 SELECT 결과가 null인 경우, 특정 값으로 대체하여 가져올 수 있다. 아래 쿼리의 경우 name이 null일 경우 name2를 가져오고, name2가 null인 경우 'No name'을 반환한다.
@@ -44,6 +48,8 @@ FROM
 	table
 ```
 
+<br/>
+
 ### 4. 특정 컬럼으로 중복 제거
 
 ```sql
@@ -53,6 +59,8 @@ SELECT DISTINCT ON (name)
 FROM
 	table
 ```
+
+<br/>
 
 ### 5. Paging 처리하기
 
@@ -67,6 +75,8 @@ OFFSET
 LIMIT
 	pageSize
 ```
+
+<br/>
 
 ### 6. Case when then else 문
 

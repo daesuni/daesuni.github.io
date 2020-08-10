@@ -1,0 +1,54 @@
+I"F<h3 id="1-메타-태그meta-tag란">1. 메타 태그(Meta tag)란?</h3>
+
+<p>메타 태그란 HTML Tag의 한 종류로서 특정 웹페이지 혹은 HTML 문서에 대한 색인 정보를 담고 있는 태그다. 즉, 핵심키워드 들과 주제, 요약을 담고 있다.
+<code class="highlighter-rouge">body</code>태그의 앞쪽에 반드시 위치해야 하며, 주로 <code class="highlighter-rouge">&lt;head&gt;</code>태그 내에 선언한다.</p>
+
+<p>우리가 사용하는 웹브라우저는 빠른 성능과 효율을 위해서 여러가지 일을 하는데 그 중에 한가지가 브라우저 캐시다.
+브라우저는 서버에서 내려받은 파일을 캐시에 저장하고, 동일한 파일이 필요한 경우에 브라우저 캐시의 파일을 이용함으로써 다시 서버에서 내려받는 것보다 훨씬 속도를 높일 수 있다. 하지만 캐시 때문에 웹 개발을 하는데 귀찮은 상황이 자주 일어난다.</p>
+
+<p>css, javascript 파일을 수정 후 반영을 하고, 새로고침을 해도 변경되지 않는 상황이 발생한다. 이럴 경우에 대표적으로 이용하는 방법은 다음과 같다.</p>
+
+<ol>
+  <li>브라우저 캐시를 수동 삭제</li>
+  <li>CTRL + F5 강제 새로고침</li>
+  <li>수정한 파일의 이름 변경</li>
+</ol>
+
+<p>이번 포스팅에서는 수정한 파일의 이름을 변경해서 브라우저가 다른 파일로 인식하게 하고, 캐시를 방지하는 방법을 알아보자!</p>
+
+<h3 id="2-직접-쿼리스트링-붙이기">2. 직접 쿼리스트링 붙이기</h3>
+
+<p>뭐 간단한 페이지 같은 경우, 직접 붙여도 무관하다. js/css 파일을 불러올때, 뒤에 suffix를 붙여주면 된다.</p>
+
+<p>변경 전</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span> <span class="na">src=</span><span class="s">"sample.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">type=</span><span class="s">"text/css"</span> <span class="na">href=</span><span class="s">"sample.css"</span><span class="nt">&gt;</span>
+</code></pre></div></div>
+
+<p>변경 후</p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span> <span class="na">src=</span><span class="s">"sample.js?ver=1.0"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">type=</span><span class="s">"text/css"</span> <span class="na">href=</span><span class="s">"sample.css?anything=1.1"</span><span class="nt">&gt;</span>
+</code></pre></div></div>
+
+<p>뒷부분의 <code class="highlighter-rouge">?ver=1.0</code> 이나, <code class="highlighter-rouge">?anything=1.1</code> 을 변경시마다 바꿔주어 브라우저에서 다른 파일이라고 인식하게 하는 방법이다.
+하지만 프로젝트가 조금만 복잡해지면 이런 무식한 방법보다 좀더 효율적인 방법이 있다.</p>
+
+<h3 id="3-자동으로-쿼리스트링-붙이기-with-jstl">3. 자동으로 쿼리스트링 붙이기 (with JSTL)</h3>
+
+<p>브라우저에서 js/css 파일을 불러올때마다 자동으로 suffix를 붙여주면 된다.
+불러올 때의 datetime을 붙여주면, 브라우저는 매번 새로운 파일로 인식하게 되고 한번 설정해 놓으면 편하게 캐시를 방지할 수 있다.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- jstl --&gt;</span>
+<span class="nt">&lt;</span><span class="err">%@</span> <span class="na">taglib</span> <span class="na">uri=</span><span class="s">"http://java.sun.com/jsp/jstl/core"</span> <span class="na">prefix=</span><span class="s">"c"</span> <span class="err">%</span><span class="nt">&gt;</span>
+<span class="nt">&lt;</span><span class="err">%@</span> <span class="na">taglib</span> <span class="na">uri=</span><span class="s">"http://java.sun.com/jsp/jstl/fmt"</span> <span class="na">prefix=</span><span class="s">"fmt"</span> <span class="err">%</span><span class="nt">&gt;</span>
+
+<span class="nt">&lt;jsp:useBean</span> <span class="na">id=</span><span class="s">"now"</span> <span class="na">class=</span><span class="s">"java.util.Date"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;fmt:formatDate</span> <span class="na">var=</span><span class="s">"now"</span> <span class="na">value=</span><span class="s">"${now}"</span> <span class="na">pattern=</span><span class="s">"yyyyMMddHHmmss"</span> <span class="nt">/&gt;</span>
+
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span> <span class="na">src=</span><span class="s">"sample.js?v=${now}"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">type=</span><span class="s">"text/css"</span> <span class="na">href=</span><span class="s">"sample.css?v=${now}"</span><span class="nt">&gt;</span>
+</code></pre></div></div>
+
+<p>위처럼 jstl formatDate를 이용해서 yyyyMMddHHmmss로 버전을 붙여준다. 브라우저에 접속할 때마다 시간이 변하므로 항상 새로운 파일로 인식하게 되고 캐시를 방지할 수 있다. 한번 설정해 놓으면 신경쓰지 않아도 되서 편하다.</p>
+:ET

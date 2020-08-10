@@ -26,6 +26,8 @@ RDBMS로는 full-text search를 하려면 위와 같은 기능들도 없고, lik
 - 추가 소프트웨어 또는 라이브러리를 설치하기 싫다.
 - Postgres를 사용한다.
 
+<br/>
+
 ### 1. 예제 테이블 생성
 
 먼저, 예제에 사용할 테이블을 생성한다. idx(integer), words(text) 컬럼으로 구성된 테이블이다.
@@ -38,6 +40,8 @@ CREATE TABLE example (
 )
 ```
 
+<br/>
+
 ### 2. 데이터 생성
 
 두번째로, 예제에 사용될 dummy data를 insert 해준다. 나는 테스트를 위해 1,000건 insert를 했지만, 줄여도 상관없다. 데이터는 영단어들이 구분자 `,`로 연결되어 있는 텍스트이다.
@@ -48,6 +52,8 @@ INSERT INTO example (idx, words)
 FROM
   generate_series(1, 1000) AS x(idx);
 ```
+
+<br/>
 
 ### 3. Like 검색
 
@@ -65,6 +71,8 @@ WHERE
 ```
 
 가장 일반적으로 생각할 수 있는 쿼리문이다. 영어의 경우, 대소문자 구분역시 해줘야 한다. 위처럼 or조건을 쓰던, LOWER, UPPER함수를 써서 가져오는 방식이다.
+
+<br/>
 
 ### 4. tsvector
 
@@ -101,6 +109,8 @@ SELECT to_tsvector('english', 'a fat cat sat on a mat - it ate a fat rats');
 `a`와 `it`, `on`이 사라졌고, `ate`의 동사원형인 `eat`가 생겼다. 불용어 제거와 정규화가 실행됬다고 짐작할 수 있다. Postgres에서는 이 밖에도 가중치, 랭킹과 같이 검색엔진에서 제공하는 다양한 기능들을 제공하는데 이번 포스팅에서는 다루지 않는다.
 
 그렇다면 이제 words 컬럼을 tsvector형으로 변환시켜 보자.
+
+<br/>
 
 ### 5. tsvector형 컬럼 생성
 

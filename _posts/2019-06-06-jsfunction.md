@@ -31,6 +31,8 @@ var welcome = function(name) {
 
 이 둘을 설명하려면 먼저 알고 있어야 하는 개념이 있다. 바로 <a href="https://www.w3schools.com/js/js_hoisting.asp">javascript hoisting(호이스팅)</a>이다. hoisting의 사전적 의미는 '끌어올리다'라는 뜻이다.
 
+<br/>
+
 ### 1. Hoisting(호이스팅) 이란 ?
 
 javascript 엔진은 소스를 해석할 때, 모든 선언을 현재 스코프(현재 스크립트 및 현재 함수)의 맨 위로 위치시킨다. 이게 무슨말이냐 하면,
@@ -59,6 +61,8 @@ welcome(myname);
 
 호이스팅 개념을 이해하지 못하고 개발을 하면 버그가 생길수 있다. 호이스팅을 항상 염두해두고 개발하도록 하자.
 
+<br/>
+
 ### 2. 함수 선언식 (function declarations)
 
 ```javascript
@@ -74,6 +78,8 @@ function welcome(name) {
 - 호이스팅의 영향을 받아 끌어올림
 - 코드가 실행되기 전에 로드
 - 위와 같이 함수 선언이 되기전에 실행을 해도 정상적으로 작동
+
+<br/>
 
 ### 3. 함수 표현식 (function expressions)
 
@@ -93,6 +99,8 @@ var welcome = function(name) {
 - 클로저로 사용 가능
 - 콜백 인자로 사용 가능 (다른 함수의 인자로 넘길 수 있음)
 - 즉시 호출 된 함수 식 (IIFE) 사용 가능
+
+<br/>
 
 ### 4. 결론
 

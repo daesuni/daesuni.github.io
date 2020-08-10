@@ -37,6 +37,8 @@ car			|	size	|	fuel	|	color
 K7			|	준대형	|	휘발유	|	블랙
 ```
 
+<br/>
+
 ### 1. if
 
 if는 다른 언어들의 if와 같다고 생각하면 된다. 만약 자동차 중에 준중형 차량에서 parameter로 넘어온 색상으로 검색하고 싶다면 다음과 같이 사용할 수 있다.
@@ -74,6 +76,8 @@ WHERE
 </select>
 ```
 
+<br/>
+
 ### 2. choose, when, otherwise
 
 여러 조건에서 하나를 고르고 싶다면 choose를 사용하면 된다. java의 switch문이라고 생각하면 된다.
@@ -101,6 +105,8 @@ WHERE
 ```
 
 위 sql은 color가 있으면 준중형 or 해당색상인 차를 검색하게된다. color가 없고 fuel이 있으면 준중형 or 해당연료인 차를 검색하며, fuel이 없으면 준중형 and 블랙색상인 차를 검색한다.
+
+<br/>
 
 ### 3. trim, where, set
 
@@ -236,6 +242,8 @@ set역시 where와 유사한 기능을 한다.
 ```
 
 여기서 set은 동적으로 SET을 붙혀주고 필요없는 콤마를 제거해 준다.
+
+<br/>
 
 ### 4. foreach
 
