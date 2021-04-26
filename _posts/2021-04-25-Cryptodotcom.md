@@ -1,9 +1,17 @@
 ---
 layout: post
-title: 크립토닷컴(Crypto.com) 스테이킹
+title: 크립토닷컴(Crypto.com) 스테이킹/어닝
 category: bitcoin
 keywords:
- - mybatis
+ - 크립토닷컴
+ - crypto.com
+ - 크립토닷컴 체인
+ - 코인 스테이킹
+ - 코인 어닝
+ - 크립토닷컴 스테이킹
+ - 크립토닷컴 어닝
+ - 크립토닷컴 코인
+ - 크립토닷컴 전망
 ---
 
 <p align="center"><img src="/images/posts/cryptologo.png"></p>
@@ -53,7 +61,7 @@ keywords:
 
 <p align="center"><img src="/images/posts/cryptoearning.png"></p>
 
-자유로운 입출금이 가능한 flexible, 1month, 3month로 기간을 선택할 수 있고, 예상 수익을 확인하실 수 있습니다.
+크립토닷컴에서는 자유로운 입출금이 가능한 flexible, 1month, 3month로 기간을 선택할 수 있고, 예상 수익을 확인하실 수 있습니다.
 
 현재 기준으로 
 - 플랙시블 - 연이율 2%
