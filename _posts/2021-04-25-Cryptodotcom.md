@@ -12,6 +12,11 @@ keywords:
  - 크립토닷컴 어닝
  - 크립토닷컴 코인
  - 크립토닷컴 전망
+ - 크립토닷컴체인
+ - cryptocom
+ - 스테이킹
+ - 어닝
+ - 무료코인
 ---
 
 <p align="center"><img src="/images/posts/cryptologo.png"></p>
@@ -25,12 +30,6 @@ keywords:
 크립토닷컴 또는 크립토닷컴체인은 `비자(VISA)` 선불카드를 만들어, 전 세계 비자카드 가맹점에서 결제 수단으로 사용할 수 있는 암호화폐사업과 ERC-20 기반의 CRO를 수수료 코인 및 이벤트 용으로 적극 활용하고 있는 암호화폐 거래소 사업 두가지를 메인으로 진행 하고 있습니다.
 
 아직까지 그 누구도 전 세계적으로 암호화폐 카드 결제시장을 선점하지 못한 상태입니다. 시장에서 실제로 얼마만큼 활용될 수 있는지, 고객이 받아들일 수 있는 환경 및 서비스가 갖춰져 있는지 등이 향후 성공 여부를 결정할 것이며, 이런 경쟁 속에서 크립토닷컴은 얼마 전 `TIME`지와 파티너십을 맺는 등 활발하게 프로젝트가 진행되고 있어 기대가 되는 코인입니다.
-
-- 크립토닷컴 주소: <a target="_blank" href="https://crypto.com">Crypto.com</a>
-- 회원가입(referral): <a target="_blank" href="https://crypto.com/app/9gj46cdpvj">Crypto.com</a>
-- <span style="background: #ffc6c6;font-weight: bold;">추천인코드: 9gj46cdpvj</span>
-- 가입시 추천인을 입력하시면 우리 모두에게 $25USD 상당의 CRO를 지급해줍니다. 제 레퍼럴로 가입을 하시고 최소 5000 CRO를 스테이킹하시고 둘다 보너스 CRO를 받아가면 좋겠습니다.
-- 설치 후 가입하실때는 꼭 여권으로 하세요! 민증/면허증으로는 가입이 불가능합니다.
 
 
 ### 2. 스테이킹(어닝)이란?
@@ -57,14 +56,34 @@ keywords:
 거래소에서는 CRO스테이킹과 소프트 스테이킹이라는 두가지 상품이 있습니다.
 - CRO스테이킹: 일정량의 CRO(크립토닷컴체인)을 일정기간동안 예치하여 이자를 받는 것 (6month 기간)
 - 소프트 스테이킹: 거래소에 코인을 들고만 있어도(CRO 외에도 다른 코인도 가능) 매일매일 이자를 주는 상품
+- 거래소 회원가입(referral): <a target="_blank" href="https://crypto.com/exch/9gj46cdpvj">Crypto.com 거래소</a>
 
 <b>- 앱에서 하는 어닝</b>
 
 앱에서는 어닝이라는 상품이 존재합니다.
 - 어닝: 코인(CRO 외에 다른 코인 가능)을 일정기간동안 예치하여 이자를 받는 상품이며 flexible, 1month, 3month로 기간선택이 가능함
+- 앱 회원가입(referral): <a target="_blank" href="https://crypto.com/app/9gj46cdpvj">Crypto.com 앱</a>
 
 
-### 4. 스테이킹(어닝) 이자율
+- 가입시 추천인을 입력하시면 우리 모두에게 $25USD 상당의 CRO를 지급해줍니다. 제 레퍼럴로 가입을 하시고 최소 5000 CRO를 스테이킹하시고 둘다 보너스 CRO를 받아가면 좋겠습니다.
+- 설치 후 가입하실때는 꼭 여권으로 하세요! 민증/면허증으로는 가입이 불가능합니다.
+
+
+### 4. (꿀팁) 크립토닷컴에서 무료로 500CRO(현시세기준 115,000원) 받는법
+
+크립토닷컴 거래소에 가입하면 `리워드`에서 입금보너스를 줍니다.
+
+거래소에 입금한 가격의 2%(최대한도 500CRO)를 CRO로 주는데, 업비트나 다른 거래소에서 리플을 산뒤, 크립토닷컴으로 전송하고, 다시 업비트로 출금해도 CRO를 받을 수 있습니다. 
+
+리워드로 주는 CRO는 자동 스테이킹처리되며, 180일후 언스테이킹(출금)이 가능하니, 묻어두고 6개월 후에 보너스라고 생각하면 될 것 같습니다.
+
+거래소는 아래 주소에서 가입하면 됩니다.
+
+- 거래소 회원가입(referral): <a target="_blank" href="https://crypto.com/exch/9gj46cdpvj">Crypto.com 거래소</a>
+- <span style="background: #ffc6c6;font-weight: bold;">추천인코드: 9gj46cdpvj</span>
+
+
+### 5. 스테이킹(어닝) 이자율
 
 - 스테이킹의 이자율 확인 <a target="_blank" href="https://help.crypto.com/ko/articles/3515088-exchange%EC%97%90%EC%84%9C-%EC%A0%9C%EA%B3%B5%EB%90%98%EB%8A%94-cro-%EC%8A%A4%ED%85%8C%EC%9D%B4%ED%82%B9-%ED%98%9C%ED%83%9D">여기</a>
 - 어닝의 이자율 확인 <a target="_blank" href="https://crypto.com/earn">여기</a>
@@ -73,7 +92,7 @@ keywords:
 <p align="center"><img src="/images/posts/cryptoearning.png"></p>
 
 
-### 5. 개인적인 생각
+### 6. 개인적인 생각
 
 물리셨거나 장기투자를 원하시는 분들은 거래소에 방치하는 것보다 추가적인 수익으로 손실을 만회할 수 있는 좋은 방법인것 같습니다.
 다만 기간확정 스테이킹은 원하는 시세에 거래를 하지 못하게되니 이부분에 주의를 하시면 될것 같습니다.
