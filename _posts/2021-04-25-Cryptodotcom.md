@@ -50,7 +50,7 @@ keywords:
 제 레퍼럴로 가입을 하시고 최소 5000 CRO를 스테이킹하시고 보너스 CRO를 받아가면 좋겠습니다.
 
 - 회원가입(referral): <a target="_blank" href="https://crypto.com/app/9gj46cdpvj">Crypto.com</a>
-- 추천인코드: 9gj46cdpvj
+- <span style="background: #ffc6c6;font-weight: bold;font-size: 30px;">추천인코드: 9gj46cdpvj</span>
 
 설치 후 가입하실때는 꼭 여권으로 하세요! 민증/면허증으로는 가입이 불가능합니다.
 
