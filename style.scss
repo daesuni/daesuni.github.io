@@ -12,7 +12,7 @@
 
 // common
 html                {  }
-body                { background: #fff; color: #404040; line-height: 1.8; font-family: -apple-system,BlinkMacSystemFont,'Malgun Gothic','맑은 고딕',helvetica,'Apple SD Gothic Neo',sans-serif; font-weight: lighter; font-size: 15px; }
+body                { background: #fff; color: #404040; line-height: 2; font-family: -apple-system,BlinkMacSystemFont,'Malgun Gothic','맑은 고딕',helvetica,'Apple SD Gothic Neo',sans-serif; font-weight: lighter; font-size: 15px; }
 input, textarea     { padding: 0.5em; border-radius: 2px; font-weight: lighter; font-family: -apple-system,BlinkMacSystemFont,'Malgun Gothic','맑은 고딕',helvetica,'Apple SD Gothic Neo',sans-serif; border: 1px solid #ccc; line-height: 1.8; outline: none; }
 input:focus, textarea:focus { border: 1px solid #0475f4; border-radius: 3px; box-shadow: 0 0 0 3px rgba(4,117,244,.2); }
 input[type="button"], input[type="submit"], button { background: #f1f3f5; cursor: pointer; transition: 0.15s background; }
@@ -37,7 +37,7 @@ ol                  { list-style-type: decimal; }
 ol ul, ul ol, ul ul, ol ol { margin: 0; }
 ul ul, ol ul        { list-style-type: circle; }
 strong, b           {  }
-code                { background: #f1f3f5; }
+code                { background: rgba(255, 228, 150, 0.5); }
 img                 { max-width: 100%; }
 blockquote          { display: block; border-width: 1px 0; border-style: solid; border-color: #ddd; padding: 20px 0; position: relative; text-align: center; }
 blockquote::before  { position: absolute; top: 0; left: 50%; -webkit-transform: translate(-50%, -50%) rotate(180deg); transform: translate(-50%, -50%) rotate(180deg); background: #fff; width: 2em; height: 1em; font-family: "Material Icons"; content: "\e244"; text-align: center; font-size: 28px; line-height: 2rem; }
