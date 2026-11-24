@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>보탐 · Boss Timer</title>
+<!--
+  보스 목록 가져오기 링크 (F-13). https://daesuni.github.io/bosstimer/import/#<코드>
+  '#' 뒤의 코드는 서버로 전송되지 않는다. 이 페이지는 코드를 앱 주소(bosstimer://import?d=<코드>)로 넘긴다.
+  Android: intent 주소로 앱을 열고, 앱이 없으면 Play 스토어로. 앱이 안 열리면 코드를 복사해 앱의 설정 › 보스 목록 가져오기에 붙여 넣는다.
+-->
+<style>
+  :root { --bg:#F5F6F8; --card:#FFFFFF; --text:#14171C; --sub:#5B6270; --line:#E2E5EA; --btn:#14171C; --btnText:#FFFFFF; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#0F1115; --card:#1A1D23; --text:#E8EAF0; --sub:#9AA3B2; --line:#2A2E36; --btn:#E8EAF0; --btnText:#0F1115; }
+  }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans KR", sans-serif; }
+  main { max-width: 440px; margin: 0 auto; padding: 40px 16px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:20px; padding:24px; }
+  h1 { font-size: 22px; margin: 0 0 8px; }
+  p { color: var(--sub); line-height: 1.6; margin: 0 0 16px; font-size: 15px; }
+  a.btn, button.btn { display:block; width:100%; text-align:center; padding:14px; border-radius:14px; font-size:16px; font-weight:700; text-decoration:none; border:none; cursor:pointer; margin-top:12px; }
+  .primary { background: var(--btn); color: var(--btnText); }
+  .outline { background: transparent; color: var(--text); border: 1px solid var(--line) !important; }
+  .small { font-size: 13px; margin-top: 20px; }
+  .hidden { display: none; }
+</style>
+</head>
+<body>
+<main>
+  <div class="card">
+    <h1 id="title"></h1>
+    <p id="lead"></p>
+    <a class="btn primary" id="open" href="#"></a>
+    <a class="btn outline" id="store" href="https://play.google.com/store/apps/details?id=io.github.daesuni.bosstimer"></a>
+    <button class="btn outline" id="copy" type="button"></button>
+    <p class="small" id="help"></p>
+    <p class="small hidden" id="error"></p>
+  </div>
+</main>
+<script>
+(function () {
+  var ko = (navigator.language || '').toLowerCase().indexOf('ko') === 0;
+  var T = ko ? {
+    title: '보탐에서 보스 목록 가져오기',
+    lead: '친구가 보낸 보스 목록과 처치 기록을 보탐으로 가져와요. 가져오기 전에 앱에서 미리보기를 보여 드려요.',
+    open: '보탐에서 열기',
+    store: '보탐 설치하기 (Google Play)',
+    copy: '코드 복사',
+    copied: '복사했어요',
+    help: '앱이 열리지 않으면 코드를 복사해서 보탐의 설정 › 게임 관리 › 보스 목록 가져오기에 붙여 넣어 주세요.',
+    error: '링크에 보스 목록이 없어요. 받은 링크 전체를 다시 열어 주세요.'
+  } : {
+    title: 'Import a boss list into Boss Timer',
+    lead: 'Import the boss list and kill records your friend sent. The app shows a preview before anything is saved.',
+    open: 'Open in Boss Timer',
+    store: 'Get Boss Timer on Google Play',
+    copy: 'Copy code',
+    copied: 'Copied',
+    help: "If the app doesn't open, copy the code and paste it in Boss Timer under Settings › Games › Import boss list.",
+    error: 'This link has no boss list. Please open the full link again.'
+  };
+  document.documentElement.lang = ko ? 'ko' : 'en';
+  var $ = function (id) { return document.getElementById(id); };
+  $('title').textContent = T.title;
+  $('lead').textContent = T.lead;
+  $('open').textContent = T.open;
+  $('store').textContent = T.store;
+  $('copy').textContent = T.copy;
+  $('help').textContent = T.help;
+
+  var code = (location.hash || '').replace(/^#/, '');
+  if (!/^[A-Za-z0-9_-]+$/.test(code)) {
+    $('open').className += ' hidden';
+    $('copy').className += ' hidden';
+    $('error').textContent = T.error;
+    $('error').className = 'small';
+    return;
+  }
+
+  var play = 'https://play.google.com/store/apps/details?id=io.github.daesuni.bosstimer';
+  var app = 'bosstimer://import?d=' + code;
+  var android = /android/i.test(navigator.userAgent);
+  var target = android
+    ? 'intent://import?d=' + code + '#Intent;scheme=bosstimer;package=io.github.daesuni.bosstimer;S.browser_fallback_url=' + encodeURIComponent(play) + ';end'
+    : app;
+  $('open').href = target;
+
+  $('copy').addEventListener('click', function () {
+    var done = function () { $('copy').textContent = T.copied; };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(location.href).then(done, function () { window.prompt(T.copy, location.href); });
+    } else {
+      window.prompt(T.copy, location.href);
+    }
+  });
+
+  // 링크를 누르고 들어오면 바로 앱을 열어 본다 (막히면 버튼을 누르면 된다)
+  if (android) setTimeout(function () { location.href = target; }, 300);
+})();
+</script>
+</body>
+</html>
